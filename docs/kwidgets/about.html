@@ -1,60 +1,59 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>タイトル</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard Style for API Reference" />
+<title>Title</title>
 </head>
 <body>
 <pre>
-2012/4/18 ゆんゆん探偵（Ｍ２）
+2012/4/18 yunyundetective (M2)
 
-・kwidgetsって？
-吉里吉里でGUIアプリを構築するためのウィジェットセットです。
-KAGとは完全に離れて、TJSネイティブなアプリを作るための道具。
-吉里吉里で表示するためのデータを作ったり加工したりするのに適しています。
+* What is kwidgets?
+It is a widget set for building GUI applications in Kirikiri.
+It is a tool for creating native TJS applications, completely independent from KAG.
+It is suitable for creating or processing data to be displayed in Kirikiri.
 
-・誰が作ったの？
-メインオーサーはゆんゆん探偵。
-あと清兵衛さんや吾妻さんが今までの主なコントリビューターです。
-ごうさんの作った多数のプラグインとの組み合わせでさらに強力に。
-そして何よりもdeeさんの作った吉里吉里本体が無ければ動かない。
-皆様の血と汗によって出来ています。
+* Who made it?
+The main author is yunyundetective.
+Seibee-san and Azuma-san are the main contributors so far.
+It becomes even more powerful when combined with many plugins created by Go-san.
+And above all, it wouldn't work without the Kirikiri core itself created by dee-san.
+It is built from everyone's blood and sweat.
 
-・ライセンスどうなってるの？
-吉里吉里２本体と同じライセンス（ＧＰＬと吉里吉里ライセンスのデュアル）です。
+* What about the license?
+It follows the same license as the Kirikiri 2 core (dual license of GPL and the Kirikiri License).
 
-・何が出来るの？
-とりあえずこのフォルダにある krkr.exe を実行してみるとだいたいわかるっぽいですよ？
+* What can it do?
+For now, if you try running the krkr.exe in this folder, you'll probably get the general idea!
 
-・フォルダ構成どうなってる？
-data フォルダ直下にあるのが kwidgets のサンプル動作プログラムで、
-data/kwidegs の下にあるのが kwidgets の本体です。
+* What's the folder structure?
+The files directly under the "data" folder are the kwidgets sample programs.
+The files under "data/kwidegs" are the kwidgets core itself.
 
-・組み込みはどうすればいいのかな…？
-release.bat を実行すると release/kwidgets.xp3 がパックされるので、自分のプロジェクトにコピる。
-それから、吉里吉里側から以下のようなイニシャルコードを実行すればＯＫです。
-（以下の例は krkr.exe と同じ階層にkwidgets.xp3を置いてる場合のコード）。
+* How do I integrate it...?
+If you run release.bat, release/kwidgets.xp3 will be packed, so copy that to your own project.
+Then, you can run the following initialization code from the Kirikiri side and you're good to go.
+(The following example is for when kwidgets.xp3 is placed in the same directory as krkr.exe).
 
    Storages.addAutoPath(System.exePath + "kwidgets.xp3>");
    Scripts.execStorage("KInitialize.tjs");
 
-・マニュアルは無いの？
-残念ながら…。
-一応、doxygenを意識したコメントは入れてあるので、適当に整形してJavaScriptっぽく
-見えるようにすればdoxygenに食わせられるはずなんだけど…そこまで手が回ってません。
-誰かその辺の面倒な作業やってくれるようなら大歓迎です。
-当面、少しずつつぶやいた解説をtogetterにまとめています。
+* Is there no manual?
+Unfortunately...
+I've included comments with Doxygen in mind, so if you format it properly to look like JavaScript, Doxygen should be able to process it... but I haven't gotten around to that yet.
+If someone is willing to do that tedious work, they are very welcome.
+For the time being, I'm summarizing the explanations I've tweeted on Togetter.
    http://togetter.com/li/289394
 
-・今後の拡張予定とかあるの？
-ロジックが適当過ぎて動作が怪しいところとかあるので、その辺ぼちぼち直していくつもりは。
+* Any plans for future expansion?
+Since there are parts where the logic is too loose and the behavior is buggy, I plan to fix those gradually.
 
-・こんな機能欲しいんだけど。
-ツイッターでゆんゆん探偵 ( @yunyundetective )まで、ご相談を。
-対応するかどうか保障の限りでは無いですが、なるたけ目を通します。
+* I want this feature.
+Please consult yunyundetective (@yunyundetective) on Twitter.
+I cannot guarantee that I will implement it, but I will look through your suggestions as much as possible.
 
-・新しいウィジェット作って見たんだけど。
-ぜひぜひ本体に追加させてください！
+* I've tried making a new widget.
+Please, by all means, let me add it to the core!
 </pre>
 </body>
 </html>

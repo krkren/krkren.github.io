@@ -1,69 +1,69 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>吉里吉里Z / FAQ / 開発者編</title>
+<title>KiriKiri Z / FAQ / Developer Edition</title>
 <link rel="stylesheet" href="../../styles-site.css" type="text/css" />
 </head>
 <body>
 <a name="top"></a>
 <div id="container">
-<div id="title-banner"><h1>開発者編 FAQ</h1></div>
+<div id="title-banner"><h1>Developer Edition FAQ</h1></div>
 
 <div class="content">
-<div class="title_bar"><a name="about">初めに</a></div>
+<div class="title_bar"><a name="about">Introduction</a></div>
 <p>
-吉里吉里で開発中に遭遇する可能性のある問題についての FAQ です。
+This is an FAQ regarding problems you may encounter while developing with KiriKiri Z.
 </p>
 <br />
 <!--
-<div class="title_bar"><a name="sound">サウンド</a></div>
+<div class="title_bar"><a name="sound">Sound</a></div>
 <dl>
-<dt>Q.サンプル質問</dt>
-<dd>A.サンプル回答<br />
+<dt>Q. Sample Question</dt>
+<dd>A. Sample Answer<br />
 </dd>
 </dl>
 <br />
-<div class="title_bar"><a name="graphic">グラフィック</a></div>
+<div class="title_bar"><a name="graphic">Graphics</a></div>
 <dl>
-<dt>Q.サンプル質問</dt>
-<dd>A.サンプル回答<br />
+<dt>Q. Sample Question</dt>
+<dd>A. Sample Answer<br />
 </dd>
 </dl>
 <br />
 -->
-<div class="title_bar"><a name="relese">配布</a></div>
+<div class="title_bar"><a name="relese">Distribution</a></div>
 <dl>
-<dt>Q.exeのアイコンを変更したい</dt>
-<dd>A.吉里吉里Zでは標準のアイコン変更ツールは付属していません。<br />
-Visual Studio でアイコンを変更して再ビルドするか、リソースを変更するフリーソフトでアイコンを変更してください。<br />
-<a href="https://www.google.co.jp/?gws_rd=ssl#safe=off&q=exe+%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9+%E6%9B%B8%E3%81%8D%E6%8F%9B%E3%81%88+%E3%83%95%E3%83%AA%E3%83%BC%E3%82%BD%E3%83%95%E3%83%88&pws=0">"exe リソース 書き換え フリーソフト"</a> などで検索してください。<br />
+<dt>Q. I want to change the icon of the exe.</dt>
+<dd>A. KiriKiri Z does not include a standard icon-changing tool.<br />
+Please change the icon in Visual Studio and rebuild, or use free software that can modify resources to change the icon.<br />
+Please search for terms such as <a href="https://www.google.co.jp/?gws_rd=ssl#safe=off&q=exe+%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9+%E6%9B%B8%E3%81%8D%E6%8F%9B%E3%81%88+%E3%83%95%E3%83%AA%E3%83%BC%E3%82%BD%E3%83%95%E3%83%88&pws=0">"free software to rewrite exe resources"</a>.<br />
 </dd>
 </dl>
 <br />
-<div class="title_bar"><a name="movie">動画</a></div>
+<div class="title_bar"><a name="movie">Movies</a></div>
 <dl>
-<dt>Q.MPEG 1を使用して横 1024 を超えるとアスペクト比がおかしくなる</dt>
-<dd>A.Mixer(VMR)やオーバーレイモードの場合アスペクト比がおかしくなる不具合が環境かkrmovieの実装にあるようです。<br />
-レイヤーモードを使用するか WMV、H.264 を使用してください。<br />
+<dt>Q. When using MPEG 1, the aspect ratio becomes incorrect if the width exceeds 1024.</dt>
+<dd>A. In Mixer (VMR) or Overlay mode, there appears to be a bug in the tjsmovie implementation where the aspect ratio may become incorrect depending on the environment.<br />
+Please use Layer mode, or use WMV or H.264.<br />
 </dd>
-<dt>Q.WMV をオーバーレイモードで再生すると上下反転する</dt>
-<dd>A.環境によって発生するようです。<br />
-Mixer(VMR)モードを使用するようにしてください。<br />
-</dd>
-</dl>
-<br />
-<div class="title_bar"><a name="save">セーブデータ</a></div>
-<dl>
-<dt>Q.スクリプトを修正してもその変更が反映されない</dt>
-<dd>A.savedate フォルダに修正前のセーブデータが残っていて、そのデータによって挙動がおかしくなっている可能性があります。<br />
-savedate フォルダを丸々消してから再実行すると解消されるかもしれません。<br />
+<dt>Q. When playing a WMV in Overlay mode, it is inverted vertically.</dt>
+<dd>A. This appears to happen depending on the environment.<br />
+Please ensure you use Mixer (VMR) mode.<br />
 </dd>
 </dl>
 <br />
-<div class="title_bar"><a name="tools">各種ツール</a></div>
+<div class="title_bar"><a name="save">Save Data</a></div>
 <dl>
-<dt>Q.付属のツールなど、吉里吉里で使うデータ以外の用途で使ってもいいの？</dt>
-<dd>A.付属ツールの使い道には特に制限などありません。</dd>
+<dt>Q. Even after modifying the script, the changes are not reflected.</dt>
+<dd>A. It is possible that old save data remains in the savedata folder, and behavior is being affected by that data.<br />
+Deleting the entire savedata folder and then re-running may resolve this.<br />
+</dd>
+</dl>
+<br />
+<div class="title_bar"><a name="tools">Various Tools</a></div>
+<dl>
+<dt>Q. Can I use the included tools for purposes other than data used in KiriKiri Z?</dt>
+<dd>A. There are no particular restrictions on the usage of the included tools.</dd>
 </dl>
 <br />
 </div>
