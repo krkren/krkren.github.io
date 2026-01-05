@@ -1,28 +1,28 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>pointerPos - 文字インデックスに対応したポインタの位置を親の座標系で返す</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard style for API reference" />
+<title>pointerPos - Returns the pointer position corresponding to the character index in the parent coordinate system</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">KTextEditRow.pointerPos</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>文字インデックスに対応したポインタの位置を親の座標系で返す</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_KTextEditRow.html">KTextEditRowクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Returns the pointer position corresponding to the character index in the parent coordinate system</dd>
+<dt>Type</dt>
+<dd>Method of the <a class="jump" href="class_KTextEditRow.html">KTextEditRow class</a></dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">pointerPos(<span class="arg">index</span>, <span class="arg">tail</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="pointerPosの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Arguments of pointerPos">
 <tr><td valign="top"><span class="argname">index</span></td>
-<td>インデックス</td></tr>
+<td>Index</td></tr>
 <tr><td valign="top"><span class="argname">tail</span></td>
-<td>行末文字かどうか(右端で自動改行する行は、折り返しの右端と次の行の左端が同じポインタ位置を意味する。そのどちらの座標を取るかの選択)</td></tr>
+<td>Whether it is the end of the line (For lines that wrap automatically at the right edge, the right edge of the wrap and the left edge of the next line represent the same pointer position. This option selects which coordinate to obtain.)</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>なし (void)</dd>
-<dt>説明</dt>
+<dt>Return Value</dt>
+<dd>None (void)</dd>
+<dt>Description</dt>
 <dd></dd>
 </dl>
 </div>

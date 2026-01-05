@@ -1,28 +1,28 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>KList - リストビュー  入れ子が可能なリストビュー。 リスト本体である KList と、リストアイテム KListItem から鳴る。  KList は KWidget を継承したクラスだが、KListItem は KWidget では無い。 メモリ節約の観点から、KListItem は画面に表示される時のみ 内部的に proxy widget を作る設計になっている。 だが、マウス関連やドラッグ＆ドロップ関連のイベントのほとんどは proxy widget から KListItem に転送されるため、 KListItem を KWidget 継承クラスとみなして扱っても実質的に問題は無い。</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard Style for API Reference" />
+<title>KList - List View. A list view that supports nesting. It consists of the list body KList and list items KListItem. KList is a class that inherits from KWidget, but KListItem is not a KWidget. From the perspective of memory conservation, KListItem is designed to internally create a proxy widget only when it is displayed on screen. However, because most mouse-related and drag-and-drop events are forwarded from the proxy widget to KListItem, there are effectively no issues with treating KListItem as a KWidget-inherited class.</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">KList.KList</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>リストビュー  入れ子が可能なリストビュー。 リスト本体である KList と、リストアイテム KListItem から鳴る。  KList は KWidget を継承したクラスだが、KListItem は KWidget では無い。 メモリ節約の観点から、KListItem は画面に表示される時のみ 内部的に proxy widget を作る設計になっている。 だが、マウス関連やドラッグ＆ドロップ関連のイベントのほとんどは proxy widget から KListItem に転送されるため、 KListItem を KWidget 継承クラスとみなして扱っても実質的に問題は無い。</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_KList.html">KListクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>List View. A list view that supports nesting. It consists of the list body KList and list items KListItem. KList is a class that inherits from KWidget, but KListItem is not a KWidget. From the perspective of memory conservation, KListItem is designed to internally create a proxy widget only when it is displayed on screen. However, because most mouse-related and drag-and-drop events are forwarded from the proxy widget to KListItem, there are effectively no issues with treating KListItem as a KWidget-inherited class.</dd>
+<dt>Type</dt>
+<dd>Method of <a class="jump" href="class_KList.html">KList class</a></dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">KList(<span class="arg">window</span>, <span class="arg">name</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="KListの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Arguments of KList">
 <tr><td valign="top"><span class="argname">window</span></td>
-<td>ウィンドウ</td></tr>
+<td>Window</td></tr>
 <tr><td valign="top"><span class="argname">name</span></td>
-<td>名前</td></tr>
+<td>Name</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>なし (void)</dd>
-<dt>説明</dt>
+<dt>Return Value</dt>
+<dd>None (void)</dd>
+<dt>Description</dt>
 <dd></dd>
 </dl>
 </div>
