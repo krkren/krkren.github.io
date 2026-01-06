@@ -1,70 +1,71 @@
+```html
 <html>
 <head>
 <meta HTTP-EQUIV="CONTENT-TYPE" CONTENT="TEXT/HTML; CHARSET=UTF-8">
-<title>吉里吉里Z 機能仕様書 / 画像処理機能</title>
+<title>Kirikiri Z Functional Specification / Image Processing Functions</title>
 <link rel="stylesheet" href="styles-site.css" type="text/css" />
 </head>
 <body>
 <a name="top"></a>
-<div id="top_link"><a href="./index.html">Topへ</a></div>
+<div id="top_link"><a href="./index.html">To Top</a></div>
 <div id="container">
 <div id="title-banner">
-<h1>画像処理機能</h1>
+<h1>Image Processing Functions</h1>
 </div>
 
 <div class="content">
-<p>吉里吉里Z がサポートする画像処理機能ついて記載。</p>
-<h3>目次</h3>
-<p><a href="#spec">諸元</a><br />
-<a href="#blend_mode">合成演算</a><br />
+<p>Describes the image processing functions supported by Kirikiri Z.</p>
+<h3>Table of Contents</h3>
+<p><a href="#spec">Specifications</a><br />
+<a href="#blend_mode">Blend Operations</a><br />
 <!--
-<a href="#affine">アフィン変換</a><br />
-<a href="#gamma">ガンマ補正</a><br />
-<a href="#glayscale">グレースケール化</a><br />
+<a href="#affine">Affine Transformation</a><br />
+<a href="#gamma">Gamma Correction</a><br />
+<a href="#glayscale">Grayscale Conversion</a><br />
 -->
 </p>
 <br />
 
 
-<div class="title_bar"><a name="spec">諸元</a></div>
+<div class="title_bar"><a name="spec">Specifications</a></div>
 <br />
 <table frame="box" rules="all">
 	<tbody>
 		<tr>
-			<td rowspan="5">合成<br />演算</td>
-			<td>不透明</td>
-			<td>乗算合成</td>
-			<td>Photoshop互換<br />覆い焼き(リニア)合成(加算合成)</td>
-			<td>Photoshop互換<br />ハードライト合成</td>
-			<td>Photoshop互換<br />比較(明)合成</td>
+			<td rowspan="5">Blend<br />Operations</td>
+			<td>Opaque</td>
+			<td>Multiply</td>
+			<td>Photoshop Compatible<br />Linear Dodge (Additive)</td>
+			<td>Photoshop Compatible<br />Hard Light</td>
+			<td>Photoshop Compatible<br />Lighten</td>
 		</tr>
 		<tr>
-			<td>アルファ合成</td>
-			<td>覆い焼き合成</td>
-			<td>Photoshop互換<br />焼き込み(リニア)合成(減算合成)</td>
-			<td>Photoshop互換<br />ソフトライト合成</td>
-			<td>Photoshop互換<br />比較(暗)合成</td>
+			<td>Alpha Blend</td>
+			<td>Dodge</td>
+			<td>Photoshop Compatible<br />Linear Burn (Subtractive)</td>
+			<td>Photoshop Compatible<br />Soft Light</td>
+			<td>Photoshop Compatible<br />Darken</td>
 		</tr>
 		<tr>
-			<td>加算アルファ合成</td>
-			<td>比較(明)合成</td>
-			<td>Photoshop互換<br />乗算合成</td>
-			<td>Photoshop互換<br />覆い焼きカラー合成</td>
-			<td>Photoshop互換<br />差の絶対値合成 	</td>
+			<td>Additive Alpha</td>
+			<td>Lighten</td>
+			<td>Photoshop Compatible<br />Multiply</td>
+			<td>Photoshop Compatible<br />Color Dodge</td>
+			<td>Photoshop Compatible<br />Difference</td>
 		</tr>
 		<tr>
-			<td>加算合成</td>
-			<td>比較(暗)合成</td>
-			<td>Photoshop互換<br />スクリーン合成</td>
-			<td>Photoshop V.5.x以下互換<br />覆い焼きカラー合成</td>
-			<td>Photoshop V.5.x以下互換<br />差の絶対値合成</td>
+			<td>Additive</td>
+			<td>Darken</td>
+			<td>Photoshop Compatible<br />Screen</td>
+			<td>Photoshop V.5.x or lower Compatible<br />Color Dodge</td>
+			<td>Photoshop V.5.x or lower Compatible<br />Difference</td>
 		</tr>
 		<tr>
-			<td>減算合成</td>
-			<td>スクリーン乗算合成</td>
-			<td>Photoshop互換<br />オーバーレイ合成</td>
-			<td>Photoshop互換<br />焼き込みカラー合成</td>
-			<td>Photoshop互換<br />除外合成</td>
+			<td>Subtractive</td>
+			<td>Screen Multiply</td>
+			<td>Photoshop Compatible<br />Overlay</td>
+			<td>Photoshop Compatible<br />Color Burn</td>
+			<td>Photoshop Compatible<br />Exclusion</td>
 		</tr>
 	</tbody>
 </table>
@@ -73,208 +74,208 @@
 <br />
 
 
-<div class="title_bar"><a name="blend_mode">合成演算</a></div>
+<div class="title_bar"><a name="blend_mode">Blend Operations</a></div>
 <br />
 <table frame="box" rules="all">
-	<thead><tr><td>No.</td><td>種類</td><td>式</td><td>説明</td></tr></thead>
+	<thead><tr><td>No.</td><td>Type</td><td>Formula</td><td>Description</td></tr></thead>
 	<tbody>
 		<tr>
 			<td>1</td>
-			<td>不透明</td>
+			<td>Opaque</td>
 			<td>result = src</td>
-			<td>アルファチャンネルを参照せずに合成を行います</td>
+			<td>Performs blending without referencing the alpha channel.</td>
 		</tr>
 		<tr>
 			<td>2</td>
-			<td>アルファ合成</td>
+			<td>Alpha Blend</td>
 			<td>result = blend(dest, src, α)</td>
-			<td>アルファ合成を行います。<br />
-			透過を行う際のもっとも基本的なタイプです。</td>
+			<td>Performs alpha blending.<br />
+			The most basic type used for transparency.</td>
 		</tr>
 		<tr>
 			<td>3</td>
-			<td>加算アルファ合成</td>
+			<td>Additive Alpha</td>
 			<td>result = min(1.0, dest × ( 1.0 - α ) + src)</td>
-			<td>加算アルファ合成を行います。</td>
+			<td>Performs additive alpha blending.</td>
 		</tr>
 		<tr>
 			<td>4</td>
-			<td>加算合成</td>
+			<td>Additive</td>
 			<td>result = min(1.0, dest × ( 1.0 - α ) + src)</td>
-			<td>加算合成を行います。光彩の表現に適しています。<br />
-			11.Photoshopにおける「覆い焼き(リニア)」に相当しますが、本合成ではアルファは無視されます。<br />
-			中性色 (重ね合わせても変化のない色) は黒です。</td>
+			<td>Performs additive blending. Suitable for representing glows/light effects.<br />
+			Equivalent to "Linear Dodge" in Photoshop, but alpha is ignored in this blend.<br />
+			The neutral color (the color that causes no change when layered) is black.</td>
 		</tr>
 		<tr>
 			<td>5</td>
-			<td>減算合成</td>
+			<td>Subtractive</td>
 			<td>result = max(0.0, dest + src - 1.0)<br />
-			※ result = dest - src と違うのは src が反転しないかするかの違いだけです。</td>
-			<td>減算合成を行います。αは無視されます。<br />
-			中性色は白です。</td>
+			* The only difference from result = dest - src is whether src is inverted or not.</td>
+			<td>Performs subtractive blending. Alpha is ignored.<br />
+			The neutral color is white.</td>
 		</tr>
 		<tr>
 			<td>6</td>
-			<td>乗算合成</td>
+			<td>Multiply</td>
 			<td>result = dest × src</td>
-			<td>乗算合成を行います。<br />
-			αは無視されます。<br />
-			中性色は白です。</td>
+			<td>Performs multiply blending.<br />
+			Alpha is ignored.<br />
+			The neutral color is white.</td>
 		</tr>
 		<tr>
 			<td>7</td>
-			<td>覆い焼き合成</td>
+			<td>Dodge</td>
 			<td>result = min(1.0, dest ÷ ( 1.0 - src ) )</td>
-			<td>覆い焼き合成を行います。<br />
-			光に照らされたものの表現に適しています。<br />
-			αは無視されます。<br />
-			中性色は黒です。</td>
+			<td>Performs dodge blending.<br />
+			Suitable for representing things illuminated by light.<br />
+			Alpha is ignored.<br />
+			The neutral color is black.</td>
 		</tr>
 		<tr>
 			<td>8</td>
-			<td>比較(明)合成</td>
+			<td>Lighten</td>
 			<td>result = max(dest, src)</td>
-			<td>「比較(明)」合成を行います。<br />
-			αは無視されます。<br />
-			中性色は黒です。</td>
+			<td>Performs "Lighten" blending.<br />
+			Alpha is ignored.<br />
+			The neutral color is black.</td>
 		</tr>
 		<tr>
 			<td>9</td>
-			<td>比較(暗)合成</td>
+			<td>Darken</td>
 			<td>result = min(dest, src)</td>
-			<td>「比較(暗)」合成を行います。<br />
-			αは無視されます。<br />
-			中性色は白です。</td>
+			<td>Performs "Darken" blending.<br />
+			Alpha is ignored.<br />
+			The neutral color is white.</td>
 		</tr>
 		<tr>
 			<td>10</td>
-			<td>スクリーン乗算合成</td>
+			<td>Screen Multiply</td>
 			<td>result = 1.0 - ( 1.0 - dest ) × ( 1.0 - src )</td>
-			<td>「スクリーン乗算」合成を行います。<br />
-			αは無視されます。<br />
-			中性色は黒です。</td>
+			<td>Performs "Screen Multiply" blending.<br />
+			Alpha is ignored.<br />
+			The neutral color is black.</td>
 		</tr>
 		<tr>
 			<td>11</td>
-			<td>Photoshop互換<br />覆い焼き(リニア)合成<br />(加算合成)</td>
+			<td>Photoshop Compatible<br />Linear Dodge<br />(Additive)</td>
 			<td>result = blend(dest, min(1.0, dest + src), α)</td>
-			<td>Photoshop互換の「覆い焼き(リニア)」合成(加算合成)を行います。<br />
-			4.加算合成と違い、αは無視されません。<br />
-			中性色は黒です。</td>
+			<td>Performs Photoshop-compatible "Linear Dodge" blending (additive blending).<br />
+			Unlike 4. Additive Blend, alpha is not ignored.<br />
+			The neutral color is black.</td>
 		</tr>
 		<tr>
 			<td>12</td>
-			<td>Photoshop互換<br />焼き込み(リニア)合成<br />(減算合成)</td>
+			<td>Photoshop Compatible<br />Linear Burn<br />(Subtractive)</td>
 			<td>result = blend(dest, max(0.0, dest + src - 1.0), α)</td>
-			<td>Photoshop互換の「焼き込み(リニア)」合成(減算合成)を行います。<br />
-			5.減算合成と違い、αは無視されません。<br />
-			中性色は白です。</td>
+			<td>Performs Photoshop-compatible "Linear Burn" blending (subtractive blending).<br />
+			Unlike 5. Subtractive Blend, alpha is not ignored.<br />
+			The neutral color is white.</td>
 		</tr>
 		<tr>
 			<td>13</td>
-			<td>Photoshop互換<br />乗算合成</td>
+			<td>Photoshop Compatible<br />Multiply</td>
 			<td>result = blend(dest, dest × src, α)</td>
-			<td>Photoshop互換の「乗算」合成を行います。<br />
-			6.乗算合成と違い、αは無視されません。<br />
-			中性色は白です。</td>
+			<td>Performs Photoshop-compatible "Multiply" blending.<br />
+			Unlike 6. Multiply Blend, alpha is not ignored.<br />
+			The neutral color is white.</td>
 		</tr>
 		<tr>
 			<td>14</td>
-			<td>Photoshop互換<br />スクリーン合成</td>
+			<td>Photoshop Compatible<br />Screen</td>
 			<td>result = blend(dest, 1.0 - (1.0 - dest) × (1.0 - src), α)</td>
-			<td>Photoshop互換の「スクリーン」合成を行います。<br />
-			10.スクリーン乗算合成と違い、αは無視されません。<br />
-			中性色は黒です。</td>
+			<td>Performs Photoshop-compatible "Screen" blending.<br />
+			Unlike 10. Screen Multiply Blend, alpha is not ignored.<br />
+			The neutral color is black.</td>
 		</tr>
 		<tr>
 			<td>15</td>
-			<td>Photoshop互換<br />オーバーレイ合成</td>
+			<td>Photoshop Compatible<br />Overlay</td>
 			<td>result = blend(dest, overlay(dest, src), α)<br />
-			ここで overlay(a, b) =<br />
-			a × b × 2.0 ( a < 0.5 のとき)<br />
-			1.0 - (1.0 - a) × (1.0 - b) × 2.0 (それ以外のとき)</td>
-			<td>Photoshop互換の「オーバーレイ」合成を行います。<br />
-			中性色は50%灰色です。</td>
+			Where overlay(a, b) =<br />
+			a × b × 2.0 (when a < 0.5)<br />
+			1.0 - (1.0 - a) × (1.0 - b) × 2.0 (otherwise)</td>
+			<td>Performs Photoshop-compatible "Overlay" blending.<br />
+			The neutral color is 50% gray.</td>
 		</tr>
 		<tr>
 			<td>16</td>
-			<td>Photoshop互換<br />ハードライト合成</td>
+			<td>Photoshop Compatible<br />Hard Light</td>
 			<td>result = blend(dest, hardlight(dest, src), α)<br />
-			ここで hardlight(a, b) =<br />
-			a × b × 2.0 (b < 0.5 のとき)<br />
-			1.0 - (1.0 - a) × (1.0 - b) × 2.0 (それ以外のとき)</td>
-			<td>Photoshop互換の「ハードライト」合成を行います。<br />
-			中性色は50%灰色です。</td>
+			Where hardlight(a, b) =<br />
+			a × b × 2.0 (when b < 0.5)<br />
+			1.0 - (1.0 - a) × (1.0 - b) × 2.0 (otherwise)</td>
+			<td>Performs Photoshop-compatible "Hard Light" blending.<br />
+			The neutral color is 50% gray.</td>
 		</tr>
 		<tr>
 			<td>17</td>
-			<td>Photoshop互換<br />ソフトライト合成</td>
+			<td>Photoshop Compatible<br />Soft Light</td>
 			<td>result = blend(dest, softlight(dest, src), α)<br />
-			ここで softlight(a, b) = <br />
-			後でLatexで書いた式を貼り付ける</td>
-			<td>Photoshop互換の「ソフトライト」合成を行います。<br />
-			中性色は50%灰色です。</td>
+			Where softlight(a, b) = <br />
+			(Paste the formula written in Latex later)</td>
+			<td>Performs Photoshop-compatible "Soft Light" blending.<br />
+			The neutral color is 50% gray.</td>
 		</tr>
 		<tr>
 			<td>18</td>
-			<td>Photoshop互換<br />覆い焼きカラー合成</td>
+			<td>Photoshop Compatible<br />Color Dodge</td>
 			<td>result = blend(dest, min(1.0, dest ÷ ( 1.0 - src ) ), α)</td>
-			<td>Photoshop互換の「覆い焼きカラー」合成を行います。<br />
-			ltDodge と違い、αは無視されません。<br />
-			中性色は黒です。</td>
+			<td>Performs Photoshop-compatible "Color Dodge" blending.<br />
+			Unlike ltDodge, alpha is not ignored.<br />
+			The neutral color is black.</td>
 		</tr>
 		<tr>
 			<td>19</td>
-			<td>Photoshop Ver.5.x以下互換<br />覆い焼きカラー合成</td>
+			<td>Photoshop Ver.5.x or lower Compatible<br />Color Dodge</td>
 			<td>result = min(1.0, dest ÷ ( 1.0 - src × α) )</td>
-			<td>Photoshopのバージョン 5.x 以下と互換の「覆い焼きカラー」合成を行います。<br />
-			18.Photoshop互換覆い焼きカラー合成とは式が若干異なります。<br />
-			中性色は黒です。</td>
+			<td>Performs "Color Dodge" blending compatible with Photoshop version 5.x or lower.<br />
+			The formula is slightly different from 18. Photoshop Compatible Color Dodge.<br />
+			The neutral color is black.</td>
 		</tr>
 		<tr>
 			<td>20</td>
-			<td>Photoshop互換<br />焼き込みカラー合成</td>
+			<td>Photoshop Compatible<br />Color Burn</td>
 			<td>result = blend(dest, max(0.0, 1.0 - (1.0 - dest) ÷ src), α)</td>
-			<td>Photoshop互換の「焼き込みカラー」合成を行います。<br />
-			中性色は白です。</td>
+			<td>Performs Photoshop-compatible "Color Burn" blending.<br />
+			The neutral color is white.</td>
 		</tr>
 		<tr>
 			<td>21</td>
-			<td>Photoshop互換<br />比較(明)合成</td>
+			<td>Photoshop Compatible<br />Lighten</td>
 			<td>result = blend(dest, max(dest, src), α)</td>
-			<td>Photoshop互換の「比較(明)」合成を行います。<br />
-			8.比較(明)合成と違い、αは無視されません。<br />
-			中性色は黒です。</td>
+			<td>Performs Photoshop-compatible "Lighten" blending.<br />
+			Unlike 8. Lighten Blend, alpha is not ignored.<br />
+			The neutral color is black.</td>
 		</tr>
 		<tr>
 			<td>22</td>
-			<td>Photoshop互換<br />比較(暗)合成</td>
+			<td>Photoshop Compatible<br />Darken</td>
 			<td>result = blend(dest, min(dest, src), α)</td>
-			<td>Photoshop互換の「比較(暗)」合成を行います。<br />
-			9.比較(暗)合成と違い、αは無視されません。<br />
-			中性色は白です。</td>
+			<td>Performs Photoshop-compatible "Darken" blending.<br />
+			Unlike 9. Darken Blend, alpha is not ignored.<br />
+			The neutral color is white.</td>
 		</tr>
 		<tr>
 			<td>23</td>
-			<td>Photoshop互換<br />差の絶対値合成</td>
+			<td>Photoshop Compatible<br />Difference</td>
 			<td>result = blend(dest, abs(dest - src), α)</td>
-			<td>Photoshop互換の「差の絶対値」合成を行います。<br />
-			中性色は黒です。</td>
+			<td>Performs Photoshop-compatible "Difference" blending.<br />
+			The neutral color is black.</td>
 		</tr>
 		<tr>
 			<td>24</td>
-			<td>Photoshop Ver.5.x以下互換<br />差の絶対値合成</td>
+			<td>Photoshop Ver.5.x or lower Compatible<br />Difference</td>
 			<td>result = abs(dest - src × α)</td>
-			<td>Photoshopのバージョン 5.x 以下と互換の「差の絶対値」合成を行います。<br />
-			23.Photoshop互換差の絶対値合成とは式が若干異なります。<br />
-			中性色は黒です。</td>
+			<td>Performs "Difference" blending compatible with Photoshop version 5.x or lower.<br />
+			The formula is slightly different from 23. Photoshop Compatible Difference.<br />
+			The neutral color is black.</td>
 		</tr>
 		<tr>
 			<td>25</td>
-			<td>Photoshop互換<br />除外合成</td>
+			<td>Photoshop Compatible<br />Exclusion</td>
 			<td>result = blend(dest, dest + src - 2.0 × src × dest, α)</td>
-			<td>Photoshop互換の「除外」合成を行います。<br />
-			中性色は黒です。</td>
+			<td>Performs Photoshop-compatible "Exclusion" blending.<br />
+			The neutral color is black.</td>
 		</tr>
 	</tbody>
 </table>
@@ -287,4 +288,4 @@
 
 </body>
 </html>
-
+```

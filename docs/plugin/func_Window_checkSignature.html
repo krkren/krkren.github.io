@@ -1,31 +1,31 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>checkSignature - 署名チェックの開始</title>
+<title>checkSignature - Start signature check</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">Window.checkSignature</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>署名チェックの開始</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_Window.html">Windowクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Start signature check</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Window.html">Window class</a> method</dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">checkSignature(<span class="arg">filename</span>, <span class="arg">publickey</span>, <span class="arg">info</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="checkSignatureの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="checkSignature arguments">
 <tr><td valign="top"><span class="argname">filename</span></td>
-<td>確認対象ファイル</td></tr>
+<td>File to be checked</td></tr>
 <tr><td valign="top"><span class="argname">publickey</span></td>
-<td>公開鍵</td></tr>
+<td>Public key</td></tr>
 <tr><td valign="top"><span class="argname">info</span></td>
-<td>ユーザ情報</td></tr>
+<td>User information</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>handler 識別ハンドラ</dd>
-<dt>説明</dt>
-<dd>処理中に onCheckSignatureProgress、<br />終了時に onCheckSignatureDone イベントが発生します。<br />exe や dll の場合は署名はファイルに内臓されます。xp3 などの場合は、<br />元のファイルに .sig をつけた外部ファイルを署名として処理されます。</dd>
+<dt>Return Value</dt>
+<dd>handler (Identification handler)</dd>
+<dt>Description</dt>
+<dd>The onCheckSignatureProgress event occurs during processing, and the onCheckSignatureDone event occurs upon completion.<br />For exe or dll files, the signature is embedded within the file. For files such as xp3, an external file with .sig appended to the original filename is processed as the signature.</dd>
 </dl>
 </div>
 </body>

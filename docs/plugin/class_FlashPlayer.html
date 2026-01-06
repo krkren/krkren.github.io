@@ -1,49 +1,49 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>FlashPlayer - 擬似記述マニュアル</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard Style for API Reference" />
+<title>FlashPlayer - Pseudo-description Manual</title>
 </head>
 <body>
 <h1><a name="top" id="top">FlashPlayer</a></h1>
-<div class="para">FlashPlayerクラス<br />FlashPlayerをレイヤ上で再生制御するオブジェクトです。<br /><br /><h2>ExternalInterface機能</h2><br />　<br /><h3>◇TJSメソッドのActionScriptからの呼び出し</h3><br /><br />オブジェクトの任意のメソッドが、再生中の swfの ActionScriptから ExternalInterface で呼び出し可能です<br /><pre><br />-----------------------------------------------------------<br />import flash.external.ExternalInterface;<br />trace(ExternalInterface.call("tjsFunction", 10, "test"));<br />-----------------------------------------------------------<br /></pre><br />吉里吉里側で例外が発生して呼び出しに失敗しても ActionScript 側では<br />例外になりませんので注意してください。<br />例外情報は getLastTJSError() で取得可能です。<br /><br /><h3>◇ActionScriptメソッドのTJSからの呼び出し</h3><br /><br />callFunction() で､ExternalInterface で公開されている<br />ActionScript メソッドを呼び出しできます。<br /><pre><br />ActionScriptでの関数の準備<br />-----------------------------------------------------------<br />import flash.external.ExternalInterface;<br />// 呼び出しメソッド<br />function flashFunction(a:Number, b:String):String {<br />return StringUtil.substitute("{0}:{1}", a, b);<br />}<br />// 登録<br />ExternalInterface.addCallback("flashFunction", flashFunction);<br />-----------------------------------------------------------<br /><br />TJSからの呼び出し<br />-----------------------------------------------------------<br />var flash = new FlashPlayer(100,100);<br />flash.initMovie("sample.swf");<br />Debug.message(flash.callFunction("flashFunction", 1, "test"));<br />-----------------------------------------------------------<br /></pre><br />呼び出しに失敗すると例外になります。<br /></div>
-<h1>メンバ</h1><div class="para">
+<div class="para">FlashPlayer Class<br />An object that controls the playback of FlashPlayer on a layer.<br /><br /><h2>ExternalInterface Functionality</h2><br />　<br /><h3>◇Calling TJS methods from ActionScript</h3><br /><br />Any method of the object can be called via ExternalInterface from ActionScript within the playing SWF.<br /><pre><br />-----------------------------------------------------------<br />import flash.external.ExternalInterface;<br />trace(ExternalInterface.call("tjsFunction", 10, "test"));<br />-----------------------------------------------------------<br /></pre><br />Please note that even if an exception occurs on the Kirikiri side and the call fails, an exception will not be raised on the ActionScript side.<br />Exception information can be retrieved using getLastTJSError().<br /><br /><h3>◇Calling ActionScript methods from TJS</h3><br /><br />With callFunction(), you can call ActionScript methods that have been exposed via ExternalInterface.<br /><pre><br />Preparing the function in ActionScript<br />-----------------------------------------------------------<br />import flash.external.ExternalInterface;<br />// Method to be called<br />function flashFunction(a:Number, b:String):String {<br />return StringUtil.substitute("{0}:{1}", a, b);<br />}<br />// Registration<br />ExternalInterface.addCallback("flashFunction", flashFunction);<br />-----------------------------------------------------------<br /><br />Calling from TJS<br />-----------------------------------------------------------<br />var flash = new FlashPlayer(100,100);<br />flash.initMovie("sample.swf");<br />Debug.message(flash.callFunction("flashFunction", 1, "test"));<br />-----------------------------------------------------------<br /></pre><br />An exception will occur if the call fails.<br /></div>
+<h1>Members</h1><div class="para">
 <dl>
-<dt>コンストラクタ</dt>
+<dt>Constructor</dt>
 <dd><a class="jump" href="func_FlashPlayer_FlashPlayer.html">FlashPlayer</a></dd>
-<dt>メソッド</dt>
+<dt>Methods</dt>
 <dd>
 <a class="jump" href="func_FlashPlayer_back.html">back</a> ( )<br />
-<a class="jump" href="func_FlashPlayer_callFunction.html">callFunction</a> (Flash の ExternalInterface 登録されたメソッドを呼び出します。 )<br />
-<a class="jump" href="func_FlashPlayer_clearMovie.html">clearMovie</a> (動画情報を完全にクリアする )<br />
+<a class="jump" href="func_FlashPlayer_callFunction.html">callFunction</a> (Calls a method registered with Flash's ExternalInterface. )<br />
+<a class="jump" href="func_FlashPlayer_clearMovie.html">clearMovie</a> (Completely clears the movie information )<br />
 <a class="jump" href="func_FlashPlayer_disableLocalSecurity.html">disableLocalSecurity</a> ( )<br />
-<a class="jump" href="func_FlashPlayer_doKeyDown.html">doKeyDown</a> (キーダウンの通知 )<br />
-<a class="jump" href="func_FlashPlayer_doKeyUp.html">doKeyUp</a> (キーアップの通知 )<br />
-<a class="jump" href="func_FlashPlayer_doMouseDown.html">doMouseDown</a> (マウスキーおしさげ通知 )<br />
-<a class="jump" href="func_FlashPlayer_doMouseEnter.html">doMouseEnter</a> (マウスが領域に入った通知 )<br />
-<a class="jump" href="func_FlashPlayer_doMouseLeave.html">doMouseLeave</a> (マウスが領域から出た通知 )<br />
-<a class="jump" href="func_FlashPlayer_doMouseMove.html">doMouseMove</a> (マウス移動通知 )<br />
-<a class="jump" href="func_FlashPlayer_doMouseUp.html">doMouseUp</a> (マウスキーおしあげ通知 )<br />
-<a class="jump" href="func_FlashPlayer_doMouseWheel.html">doMouseWheel</a> (マウスホイール通知 )<br />
-<a class="jump" href="func_FlashPlayer_draw.html">draw</a> (レイヤに対して現在の描画内容を出力する。レイヤのサイズが小さい場合はトリミングされます )<br />
+<a class="jump" href="func_FlashPlayer_doKeyDown.html">doKeyDown</a> (Key down notification )<br />
+<a class="jump" href="func_FlashPlayer_doKeyUp.html">doKeyUp</a> (Key up notification )<br />
+<a class="jump" href="func_FlashPlayer_doMouseDown.html">doMouseDown</a> (Mouse button press notification )<br />
+<a class="jump" href="func_FlashPlayer_doMouseEnter.html">doMouseEnter</a> (Notification that mouse entered the area )<br />
+<a class="jump" href="func_FlashPlayer_doMouseLeave.html">doMouseLeave</a> (Notification that mouse left the area )<br />
+<a class="jump" href="func_FlashPlayer_doMouseMove.html">doMouseMove</a> (Mouse move notification )<br />
+<a class="jump" href="func_FlashPlayer_doMouseUp.html">doMouseUp</a> (Mouse button release notification )<br />
+<a class="jump" href="func_FlashPlayer_doMouseWheel.html">doMouseWheel</a> (Mouse wheel notification )<br />
+<a class="jump" href="func_FlashPlayer_draw.html">draw</a> (Outputs the current drawing content to the layer. It will be cropped if the layer size is smaller )<br />
 <a class="jump" href="func_FlashPlayer_enforceLocalSecurity.html">enforceLocalSecurity</a> ( )<br />
 <a class="jump" href="func_FlashPlayer_forward.html">forward</a> ( )<br />
 <a class="jump" href="func_FlashPlayer_getFrameLoaded.html">getFrameLoaded</a> ( )<br />
-<a class="jump" href="func_FlashPlayer_getLastTJSError.html">getLastTJSError</a> (TJS呼び出しエラーの取得。 )<br />
+<a class="jump" href="func_FlashPlayer_getLastTJSError.html">getLastTJSError</a> (Retrieves TJS call errors. )<br />
 <a class="jump" href="func_FlashPlayer_getVariable.html">getVariable</a> ( )<br />
 <a class="jump" href="func_FlashPlayer_gotoFrame.html">gotoFrame</a> ( )<br />
-<a class="jump" href="func_FlashPlayer_hitTest.html">hitTest</a> (指定された座標の位置に対する入力をうけつけるかどうかを返します )<br />
-<a class="jump" href="func_FlashPlayer_initMovie.html">initMovie</a> (指定した吉里吉里のファイルを動画として初期化する )<br />
+<a class="jump" href="func_FlashPlayer_hitTest.html">hitTest</a> (Returns whether to accept input for the specified coordinates )<br />
+<a class="jump" href="func_FlashPlayer_initMovie.html">initMovie</a> (Initializes the specified Kirikiri file as a movie )<br />
 <a class="jump" href="func_FlashPlayer_isPlaying.html">isPlaying</a> ( )<br />
-<a class="jump" href="func_FlashPlayer_loadMovie.html">loadMovie</a> (ムービーをロードする )<br />
-<a class="jump" href="func_FlashPlayer_onFrameUpdate.html">onFrameUpdate</a> (描画内容が更新された場合に呼び出されるイベント )<br />
-<a class="jump" href="func_FlashPlayer_onFSCommand.html">onFSCommand</a> (FSCommandイベントの通知 )<br />
-<a class="jump" href="func_FlashPlayer_onProgress.html">onProgress</a> (Progressイベントの通知 )<br />
-<a class="jump" href="func_FlashPlayer_onReadyStateChange.html">onReadyStateChange</a> (ReadyStateChangeイベントの通知 )<br />
+<a class="jump" href="func_FlashPlayer_loadMovie.html">loadMovie</a> (Loads a movie )<br />
+<a class="jump" href="func_FlashPlayer_onFrameUpdate.html">onFrameUpdate</a> (Event called when the drawing content is updated )<br />
+<a class="jump" href="func_FlashPlayer_onFSCommand.html">onFSCommand</a> (Notification of FSCommand event )<br />
+<a class="jump" href="func_FlashPlayer_onProgress.html">onProgress</a> (Notification of Progress event )<br />
+<a class="jump" href="func_FlashPlayer_onReadyStateChange.html">onReadyStateChange</a> (Notification of ReadyStateChange event )<br />
 <a class="jump" href="func_FlashPlayer_pan.html">pan</a> ( )<br />
 <a class="jump" href="func_FlashPlayer_play.html">play</a> ( )<br />
 <a class="jump" href="func_FlashPlayer_rewind.html">rewind</a> ( )<br />
-<a class="jump" href="func_FlashPlayer_setSize.html">setSize</a> (プレイヤーサイズの変更 )<br />
+<a class="jump" href="func_FlashPlayer_setSize.html">setSize</a> (Changes player size )<br />
 <a class="jump" href="func_FlashPlayer_setVariable.html">setVariable</a> ( )<br />
 <a class="jump" href="func_FlashPlayer_setZoomRect.html">setZoomRect</a> ( )<br />
 <a class="jump" href="func_FlashPlayer_stop.html">stop</a> ( )<br />
@@ -62,7 +62,7 @@
 <a class="jump" href="func_FlashPlayer_tStopPlay.html">tStopPlay</a> ( )<br />
 <a class="jump" href="func_FlashPlayer_zoom.html">zoom</a> ( )<br />
 </dd>
-<dt>プロパティ</dt>
+<dt>Properties</dt>
 <dd>
 <a class="jump" href="prop_FlashPlayer_alighMode.html">alighMode</a> ( )<br />
 <a class="jump" href="prop_FlashPlayer_allowScriptAccess.html">allowScriptAccess</a> ( )<br />

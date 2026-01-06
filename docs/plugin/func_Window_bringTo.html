@@ -1,28 +1,28 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>bringTo - ウィンドウの Zオーダーを変更する</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard style for API reference" />
+<title>bringTo - Changes the window's Z-order</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">Window.bringTo</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>ウィンドウの Zオーダーを変更する</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_Window.html">Windowクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Changes the Z-order of the window</dd>
+<dt>Type</dt>
+<dd>Method of the <a class="jump" href="class_Window.html">Window class</a></dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">bringTo(<span class="arg">win</span>, <span class="arg">activate</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="bringToの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Arguments for bringTo">
 <tr><td valign="top"><span class="argname">win</span></td>
-<td>Windowオブジェクトまたは規定文字列または数値<br />Windowオブジェクトなら，そのウィンドウの後ろに置かれる<br />文字列の場合，"bottom" "notopmost" "top" "topmost" のいずれか（HWND_*相当）cf. SetWindowPos API<br />数値の場合，ウィンドウハンドルと見なすか，HWND_* マクロの値を直指定する<br />#define HWND_TOP        ((HWND)0)<br />#define HWND_BOTTOM     ((HWND)1)<br />#define HWND_TOPMOST    ((HWND)-1)<br />#define HWND_NOTOPMOST  ((HWND)-2)</td></tr>
+<td>Window object, specified string, or numeric value<br />If it's a Window object, this window is placed behind that window<br />If it's a string, one of "bottom", "notopmost", "top", or "topmost" (equivalent to HWND_*) cf. SetWindowPos API<br />If it's a number, it is treated as a window handle or a direct specification of an HWND_* macro value<br />#define HWND_TOP        ((HWND)0)<br />#define HWND_BOTTOM     ((HWND)1)<br />#define HWND_TOPMOST    ((HWND)-1)<br />#define HWND_NOTOPMOST  ((HWND)-2)</td></tr>
 <tr><td valign="top"><span class="argname">activate</span></td>
-<td>アクティブ状態にするかどうかのフラグ<br />trueにしてもアプリケーション自体はアクティブになりません（タスクバーの点滅などおこりません）</td></tr>
+<td>Flag for whether to activate the window<br />Even if set to true, the application itself does not become active (no taskbar flashing, etc., will occur)</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>なし (void)</dd>
-<dt>説明</dt>
+<dt>Return Value</dt>
+<dd>None (void)</dd>
+<dt>Description</dt>
 <dd></dd>
 </dl>
 </div>

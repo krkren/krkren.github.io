@@ -1,26 +1,30 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>getTime - タイムスタンプ取得</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard style for API reference" />
+<title>getTime - Get timestamp</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">Storages.getTime</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>タイムスタンプ取得</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_Storages.html">Storagesクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Get timestamp</dd>
+<dt>Type</dt>
+<dd>Method of the <a class="jump" href="class_Storages.html">Storages class</a></dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">getTime(<span class="arg">target</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="getTimeの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Arguments for getTime">
 <tr><td valign="top"><span class="argname">target</span></td>
-<td>対象ファイルまたはディレクトリ</td></tr>
+<td>Target file or directory</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>タイムスタンプ情報の入った辞書\nmtime: 更新日時 (Date オブジェクト)\natime: アクセス日時 (Date オブジェクト)\nctime: 作成日時 (Date オブジェクト)\n⇒fstatとの違いは非アーカイブファイル限定で，sizeを返さないこと</dd>
-<dt>説明</dt>
+<dt>Return Value</dt>
+<dd>A dictionary containing timestamp information
+mtime: Modification date/time (Date object)
+atime: Access date/time (Date object)
+ctime: Creation date/time (Date object)
+⇒The difference from fstat is that it is limited to non-archive files and does not return size.</dd>
+<dt>Description</dt>
 <dd></dd>
 </dl>
 </div>

@@ -1,29 +1,29 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>sendMessage - メッセージの送信を行います。</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard style for API reference" />
+<title>sendMessage - Sends a message.</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">Window.sendMessage</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>メッセージの送信を行います。</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_Window.html">Windowクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Sends a message.</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Window.html">Window class</a> method</dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">sendMessage(<span class="arg">key</span>, <span class="arg">message</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="sendMessageの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Arguments for sendMessage">
 <tr><td valign="top"><span class="argname">key</span></td>
-<td>識別キー(文字列:256文字までなので注意)</td></tr>
+<td>Identification key (string: note that it is limited to 256 characters)</td></tr>
 <tr><td valign="top"><span class="argname">message</span></td>
-<td>メッセージ(文字列)</td></tr>
+<td>Message (string)</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>なし (void)</dd>
-<dt>説明</dt>
-<dd>起動している吉里吉里すべてに WM_COPYDATA メッセージを送信します。<br />識別キーとメッセージの意味はそれぞれのアプリで適当に定めてください。</dd>
+<dt>Return Value</dt>
+<dd>None (void)</dd>
+<dt>Description</dt>
+<dd>Sends a WM_COPYDATA message to all running Kirikiri instances.<br />The meaning of the identification key and message should be defined appropriately for each application.</dd>
 </dl>
 </div>
 </body>

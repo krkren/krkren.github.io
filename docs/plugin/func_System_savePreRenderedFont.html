@@ -1,30 +1,30 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>savePreRenderedFont - レンダリング済みフォントデータをファイルに保存する</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard style for API Reference" />
+<title>savePreRenderedFont - Save pre-rendered font data to a file</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">System.savePreRenderedFont</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>レンダリング済みフォントデータをファイルに保存する</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_System.html">Systemクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Save pre-rendered font data to a file</dd>
+<dt>Type</dt>
+<dd>Method of the <a class="jump" href="class_System.html">System class</a></dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">savePreRenderedFont(<span class="arg">storage</span>, <span class="arg">characters</span>, <span class="arg">callback</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="savePreRenderedFontの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Arguments for savePreRenderedFont">
 <tr><td valign="top"><span class="argname">storage</span></td>
-<td>保存するファイル名</td></tr>
+<td>The filename to save to</td></tr>
 <tr><td valign="top"><span class="argname">characters</span></td>
-<td>保存する文字（キャラクタコード）の入った配列</td></tr>
+<td>An array containing the characters (character codes) to be saved</td></tr>
 <tr><td valign="top"><span class="argname">callback</span></td>
-<td>情報とイメージを取得するコールバック<br />キャラクタコードを引数に取り，レイヤ(PreRenderedFontImage)を返す関数であること<br />function(ch) { return layer; }</td></tr>
+<td>Callback to retrieve information and images.<br />Must be a function that takes a character code as an argument and returns a layer (PreRenderedFontImage).<br />function(ch) { return layer; }</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>なし (void)</dd>
-<dt>説明</dt>
+<dt>Return Value</dt>
+<dd>None (void)</dd>
+<dt>Description</dt>
 <dd></dd>
 </dl>
 </div>

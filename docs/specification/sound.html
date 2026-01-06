@@ -1,56 +1,57 @@
+```html
 <html>
 <head>
 <meta HTTP-EQUIV="CONTENT-TYPE" CONTENT="TEXT/HTML; CHARSET=UTF-8">
-<title>吉里吉里Z 機能仕様書 / 音声再生機能</title>
+<title>KirikiriZ Functional Specifications / Audio Playback Function</title>
 <link rel="stylesheet" href="styles-site.css" type="text/css" />
 </head>
 <body>
 <a name="top"></a>
-<div id="top_link"><a href="./index.html">Topへ</a></div>
+<div id="top_link"><a href="./index.html">To Top</a></div>
 <div id="container">
 <div id="title-banner">
-<h1>音声再生機能</h1>
+<h1>Audio Playback Function</h1>
 </div>
 
 <div class="content">
-<p>吉里吉里Z がサポートする音声再生機能ついて記載。</p>
-<h3>目次</h3>
-<p><a href="#spec">諸元</a><br />
-<a href="#loop_tuner">ループチューナ</a><br />
+<p>Describes the audio playback functions supported by KirikiriZ.</p>
+<h3>Table of Contents</h3>
+<p><a href="#spec">Specifications</a><br />
+<a href="#loop_tuner">Loop Tuner</a><br />
 
 </p>
 <br />
 
-<div class="title_bar"><a name="spec">諸元</a></div>
+<div class="title_bar"><a name="spec">Specifications</a></div>
 <br />
 <table frame="box" rules="all">
 	<tbody>
 		<tr>
-			<td rowspan="3">値</td>
-			<td>量子化ビット数</td>
-			<td>整数 : 8bit ～ 32bit<br/>浮動小数点 : 32bit</td>
+			<td rowspan="3">Value</td>
+			<td>Bit Depth</td>
+			<td>Integer: 8bit to 32bit<br/>Floating Point: 32bit</td>
 		</tr>
 		<tr>
-			<td>チャンネル数</td>
+			<td>Channels</td>
 			<td>1ch, 2ch, 4ch, 6ch(5.1ch)</td>
 		</tr>
 		<tr>
-			<td>サンプリング周波数</td>
-			<td>44.1kHz 他？</td>
+			<td>Sampling Frequency</td>
+			<td>44.1kHz others?</td>
 		</tr>
 
 		<tr>
-			<td rowspan="3">設定可能値</td>
-			<td>音量</td>
-			<td>0 ～ 100000<br/>0 : 完全ミュート<br/>100000 : 100%</td>
+			<td rowspan="3">Settable Values</td>
+			<td>Volume</td>
+			<td>0 to 100000<br/>0: Full Mute<br/>100000: 100%</td>
 		</tr>
 		<tr>
-			<td>音声バランス<br />(パニング)</td>
-			<td>-100000 ～ 0 ～ 100000<br/>-100000 : 完全に左<br/>0 : 中央<br/>100000 : 完全に右</td>
+			<td>Audio Balance<br />(Panning)</td>
+			<td>-100000 to 0 to 100000<br/>-100000: Completely Left<br/>0: Center<br/>100000: Completely Right</td>
 		</tr>
 		<tr>
-			<td>再生位置</td>
-			<td>ミリ秒、サンプル番号</td>
+			<td>Playback Position</td>
+			<td>Milliseconds, Sample Number</td>
 		</tr>
 
 	</tbody>
@@ -60,7 +61,7 @@
 <br />
 
 
-<div class="title_bar"><a name="loop_tuner">ループチューナ</a></div>
+<div class="title_bar"><a name="loop_tuner">Loop Tuner</a></div>
 <br />
 
 <br />
@@ -73,4 +74,4 @@
 
 </body>
 </html>
-
+```

@@ -1,33 +1,33 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>openProgress - プログレスダイアログを表示する</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard style for API reference" />
+<title>openProgress - Displays a progress dialog</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">WIN32Dialog.openProgress</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>プログレスダイアログを表示する</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_WIN32Dialog.html">WIN32Dialogクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Displays a progress dialog</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_WIN32Dialog.html">Method of WIN32Dialog class</a></dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">openProgress(<span class="arg">id</span>, <span class="arg">window</span>, <span class="arg">dsapp</span>, <span class="arg">breathe</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="openProgressの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="openProgress arguments">
 <tr><td valign="top"><span class="argname">id</span></td>
-<td>プログレスバーのダイアログアイテムID（progressValueプロパティで更新される対象）</td></tr>
+<td>Dialog item ID of the progress bar (the target updated by the progressValue property)</td></tr>
 <tr><td valign="top"><span class="argname">window</span></td>
-<td>[optional] オーナーwindow (void=オーナーなし,null=Application)</td></tr>
+<td>[optional] Owner window (void = no owner, null = Application)</td></tr>
 <tr><td valign="top"><span class="argname">dsapp</span></td>
-<td>[optional] プログレス表示中はアプリケーションウィンドウを無効にするか</td></tr>
+<td>[optional] Whether to disable the application window while the progress is displayed</td></tr>
 <tr><td valign="top"><span class="argname">breathe</span></td>
-<td>[optional] progressValueのsetterでbreatheするかどうか</td></tr>
+<td>[optional] Whether to "breathe" (process system messages) in the progressValue setter</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>成功したらtrue</dd>
-<dt>説明</dt>
-<dd>プログレスダイアログのstyleにはWS_VISIBLEを指定しないこと<br />閉じるときは必ず closeProgress() を使用すること<br />プログレス表示の場合，onInit以外のコールバックは来ないので注意</dd>
+<dt>Return Value</dt>
+<dd>true if successful</dd>
+<dt>Description</dt>
+<dd>Do not specify WS_VISIBLE in the progress dialog style.<br />Always use closeProgress() when closing.<br />Note that for progress displays, no callbacks other than onInit will be triggered.</dd>
 </dl>
 </div>
 </body>

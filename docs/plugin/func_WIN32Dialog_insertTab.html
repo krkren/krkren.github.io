@@ -1,25 +1,25 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>insertTab - タブコントロールを利用する.</title>
+<title>insertTab - Use tab control.</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">WIN32Dialog.insertTab</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>タブコントロールを利用する.</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_WIN32Dialog.html">WIN32Dialogクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Use tab control.</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_WIN32Dialog.html">WIN32Dialog class</a> method</dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">insertTab(<span class="arg">tab_id</span>, <span class="arg">pos</span>, <span class="arg">label</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="insertTabの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Arguments for insertTab">
 </table></dd>
-<dt>戻り値</dt>
-<dd>なし (void)</dd>
-<dt>説明</dt>
-<dd>利用手順を検討中<br />insertTab(IDC_TAB, 0, "基本"); // タブを追加<br />// deleteTab(IDC_TAB, 0); // タブを削除<br />// deleteAllTab(IDC_TAB); // タブをすべて削除<br />var dlg = new WIN32Dialog(); dlg.loadResource("resource.dll", "INNER"); // Border=None, Style=Child にしたダイアログ<br />selectTab(IDC_TAB, dlg); // 表示<br />insertTab(IDC_TAB, 1, "拡張");<br />var dlg2 = new WIN32Dialog(); dlg2.loadResource("resource.dll", "INNER2");<br />dlg.show(SW_HIDE);<br />selectTab(IDC_TAB, dlg2); // 切り替え<br />// onNotify で notify->code == TCN_SELCHANGE かつ notify->idFrom == IDC_TAB の場合にユーザーによるタブの切り替え<br />// getCurSel(tab_id) でタブの番号を取得し、対応するダイアログを SW_SHOW、それ以外を SW_HIDE する<br />// タブ番号と対応するダイアログは自分で管理すること<br />※ dlg,dlg2 の open は selectTab されたときに行われるので、show(SW_HIDE) するときは isValid で open されているか確認のこと<br /></dd>
+<dt>Return Value</dt>
+<dd>None (void)</dd>
+<dt>Description</dt>
+<dd>Usage procedure is under consideration<br />insertTab(IDC_TAB, 0, "Basic"); // Add a tab<br />// deleteTab(IDC_TAB, 0); // Delete a tab<br />// deleteAllTab(IDC_TAB); // Delete all tabs<br />var dlg = new WIN32Dialog(); dlg.loadResource("resource.dll", "INNER"); // Dialog set to Border=None, Style=Child<br />selectTab(IDC_TAB, dlg); // Display<br />insertTab(IDC_TAB, 1, "Advanced");<br />var dlg2 = new WIN32Dialog(); dlg2.loadResource("resource.dll", "INNER2");<br />dlg.show(SW_HIDE);<br />selectTab(IDC_TAB, dlg2); // Switch<br />// Tab switching by the user occurs when notify->code == TCN_SELCHANGE and notify->idFrom == IDC_TAB in onNotify<br />// Get the tab index using getCurSel(tab_id), then set the corresponding dialog to SW_SHOW and others to SW_HIDE<br />// You must manage the relationship between tab indices and corresponding dialogs yourself<br />* Since the open for dlg and dlg2 is performed when selectTab is called, check if they are open using isValid when performing show(SW_HIDE).<br /></dd>
 </dl>
 </div>
 </body>

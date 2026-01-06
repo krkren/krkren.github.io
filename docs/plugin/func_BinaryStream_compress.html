@@ -1,29 +1,29 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>compress - 別のストレージからデータを圧縮しつつコピー</title>
+<title>compress - Compresses and copies data from another storage</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">BinaryStream.compress</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>別のストレージからデータを圧縮しつつコピー</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_BinaryStream.html">BinaryStreamクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Compresses and copies data from another storage</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_BinaryStream.html">BinaryStream class</a> method</dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">compress(<span class="arg">storage</span>, <span class="arg">elm</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="compressの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Arguments for compress">
 <tr><td valign="top"><span class="argname">storage</span></td>
-<td>コピー元のストレージ（現在開いているストレージと同じ場合は例外）</td></tr>
+<td>Source storage (throws an exception if it is the same as the currently open storage)</td></tr>
 <tr><td valign="top"><span class="argname">elm</span></td>
-<td>動作指定用の辞書（in/out）内容は copy() と同じものに加えて下記：<br />comp_lv :[in] zlibによる圧縮レベル（1～9）省略時，またはelmそのものの指定がない場合は 9</td></tr>
+<td>Dictionary for specifying behavior (in/out). Contents are the same as copy(), plus the following:<br />comp_lv: [in] zlib compression level (1–9). If omitted, or if elm itself is not specified, 9 is used.</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>書き込んだバイト数</dd>
-<dt>説明</dt>
-<dd>対象ストレージを zlib/deflate で圧縮しつつ，現在のストリームのポジションから書き込みます<br />フィルタ関数は圧縮前のバイナリに対して適用されます</dd>
+<dt>Return Value</dt>
+<dd>Number of bytes written</dd>
+<dt>Description</dt>
+<dd>Compresses the target storage using zlib/deflate and writes it from the current stream position.<br />The filter function is applied to the binary data before compression.</dd>
 </dl>
 </div>
 </body>

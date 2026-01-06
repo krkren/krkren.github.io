@@ -1,26 +1,26 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>dirlistEx - 指定ディレクトリのファイル一覧と詳細情報を取得する</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard style for API reference" />
+<title>dirlistEx - Retrieves a list of files and detailed information for the specified directory</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">Storages.dirlistEx</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>指定ディレクトリのファイル一覧と詳細情報を取得する</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_Storages.html">Storagesクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Retrieves a list of files and detailed information for the specified directory</dd>
+<dt>Type</dt>
+<dd>Method of the <a class="jump" href="class_Storages.html">Storages class</a></dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">dirlistEx(<span class="arg">dir</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="dirlistExの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Arguments for dirlistEx">
 <tr><td valign="top"><span class="argname">dir</span></td>
-<td>ディレクトリ名</td></tr>
+<td>Directory name</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>ファイル情報一覧が格納された配列\n[ %[ name:ファイル名, size, attrib, mtime, atime, ctime ], ... ]\ndirlistと違いnameにおいてフォルダの場合の末尾"/"追加がないので注意(attribで判定のこと)</dd>
-<dt>説明</dt>
+<dt>Return Value</dt>
+<dd>An array containing a list of file information\n[ %[ name:File name, size, attrib, mtime, atime, ctime ], ... ]\nNote that unlike dirlist, a trailing "/" is not added to the name for folders (use 'attrib' to distinguish).</dd>
+<dt>Description</dt>
 <dd></dd>
 </dl>
 </div>

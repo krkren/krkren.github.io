@@ -1,32 +1,32 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>add - アーカイブにファイルを追加します</title>
+<title>add - Adds a file to the archive</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">Zip.add</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>アーカイブにファイルを追加します</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_Zip.html">Zipクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Adds a file to the archive</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Zip.html">Zip class</a> method</dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">add(<span class="arg">srcfile</span>, <span class="arg">destfile</span>, <span class="arg">commpressLevel</span>, <span class="arg">password</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="addの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="add arguments">
 <tr><td valign="top"><span class="argname">srcfile</span></td>
-<td>追加するファイル（吉里吉里ストレージ名）</td></tr>
+<td>File to add (Kirikiri storage name)</td></tr>
 <tr><td valign="top"><span class="argname">destfile</span></td>
-<td>アーカイブ中での名前(アーカイブ内パス名）</td></tr>
+<td>Name in the archive (Path name within the archive)</td></tr>
 <tr><td valign="top"><span class="argname">deflateLevel</span></td>
-<td>圧縮レベル 0(無圧縮) ～ 9(最大圧縮) 省略時は 6になる</td></tr>
+<td>Compression level 0 (no compression) to 9 (maximum compression). Defaults to 6 if omitted.</td></tr>
 <tr><td valign="top"><span class="argname">password</span></td>
-<td>暗号化パスワード指定</td></tr>
+<td>Encryption password specification</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>追加に成功したら true</dd>
-<dt>説明</dt>
+<dt>Return Value</dt>
+<dd>true if addition is successful</dd>
+<dt>Description</dt>
 <dd></dd>
 </dl>
 </div>

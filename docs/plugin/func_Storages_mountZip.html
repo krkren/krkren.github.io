@@ -1,29 +1,29 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>mountZip - zipファイルをファイルシステムとして mount します</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard Style for API Reference" />
+<title>mountZip - mounts a zip file as a file system</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">Storages.mountZip</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>zipファイルをファイルシステムとして mount します</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_Storages.html">Storagesクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>mounts a zip file as a file system</dd>
+<dt>Type</dt>
+<dd>Method of the <a class="jump" href="class_Storages.html">Storages class</a></dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">mountZip(<span class="arg">name</span>, <span class="arg">zipfile</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="mountZipの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="mountZip arguments">
 <tr><td valign="top"><span class="argname">name</span></td>
-<td>ドメイン名</td></tr>
+<td>Domain name</td></tr>
 <tr><td valign="top"><span class="argname">zipfile</span></td>
-<td>マウントするZIPファイル名</td></tr>
+<td>ZIP file name to mount</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>マウントに成功したら true</dd>
-<dt>説明</dt>
-<dd>zip://ドメイン名/ファイル名 でアクセス可能になります。読み込み専用になります。</dd>
+<dt>Return Value</dt>
+<dd>true if mounting is successful</dd>
+<dt>Description</dt>
+<dd>Enables access via zip://domain_name/file_name. It will be read-only.</dd>
 </dl>
 </div>
 </body>

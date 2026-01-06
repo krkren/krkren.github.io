@@ -1,31 +1,31 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>DrawDevice - 吉里吉里用 drawdevice クラス  Irrlicht の画面上に吉里吉里プライマリレイヤ(複数)を配置可能な drawDevice です Irrlicht シーン画面 → 吉里吉里プライマリレイヤ（生成順）→ Irrlicht GUI の 順で描画が行われます。マウスイベントは、Irrlicht GUI および、最初につくった プライマリレイヤに対して配信されます。  プライマリレイヤは、Irrlicht から "krkr0", "krkr1", ... という名前のテクスチャ として参照可能で、吉里吉里の描画内容が常時反映された状態になってます</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard Style for API Reference" />
+<title>DrawDevice - Kirikiri DrawDevice Class: A drawDevice that allows placing Kirikiri primary layer(s) on the Irrlicht screen. Rendering is performed in the order: Irrlicht scene screen → Kirikiri primary layers (in creation order) → Irrlicht GUI. Mouse events are delivered to the Irrlicht GUI and the first primary layer created. Primary layers can be referenced from Irrlicht as textures named "krkr0", "krkr1", ..., and Kirikiri's rendering content is constantly reflected in them.</title>
 </head>
 <body>
 <h1><a name="top" id="top">DrawDevice</a></h1>
 <div class="para"></div>
-<h1>メンバ</h1><div class="para">
+<h1>Members</h1><div class="para">
 <dl>
-<dt>コンストラクタ</dt>
+<dt>Constructor</dt>
 <dd><a class="jump" href="func_DrawDevice_DrawDevice.html">DrawDevice</a></dd>
-<dt>メソッド</dt>
+<dt>Methods</dt>
 <dd>
-<a class="jump" href="func_DrawDevice_getVisible.html">getVisible</a> (プライマリレイヤの表示状態の指定 )<br />
-<a class="jump" href="func_DrawDevice_setSize.html">setSize</a> (バックバッファのサイズ設定 )<br />
-<a class="jump" href="func_DrawDevice_setVisible.html">setVisible</a> (プライマリレイヤの表示状態の指定 )<br />
+<a class="jump" href="func_DrawDevice_getVisible.html">getVisible</a> (Specifies the visibility state of the primary layer)<br />
+<a class="jump" href="func_DrawDevice_setSize.html">setSize</a> (Sets the back buffer size)<br />
+<a class="jump" href="func_DrawDevice_setVisible.html">setVisible</a> (Specifies the visibility state of the primary layer)<br />
 </dd>
-<dt>プロパティ</dt>
+<dt>Properties</dt>
 <dd>
-<a class="jump" href="prop_DrawDevice_defaultVisible.html">defaultVisible</a> (プライマリレイヤの標準の visible プライマリレイヤを生成時に表示するかどうかを指定します。 )<br />
-<a class="jump" href="prop_DrawDevice_destHeight.html">destHeight</a> (< 実描画領域横幅(読み取り専用) )<br />
+<a class="jump" href="prop_DrawDevice_defaultVisible.html">defaultVisible</a> (The default visibility of the primary layer. Specifies whether to display the primary layer when it is created.)<br />
+<a class="jump" href="prop_DrawDevice_destHeight.html">destHeight</a> (Actual rendering area height (read-only))<br />
 <a class="jump" href="prop_DrawDevice_destWidth.html">destWidth</a> ( )<br />
-<a class="jump" href="prop_DrawDevice_height.html">height</a> (< バックバッファ横幅 )<br />
+<a class="jump" href="prop_DrawDevice_height.html">height</a> (Back buffer height)<br />
 <a class="jump" href="prop_DrawDevice_interface.html">interface</a> ( )<br />
 <a class="jump" href="prop_DrawDevice_width.html">width</a> ( )<br />
-<a class="jump" href="prop_DrawDevice_zoomMode.html">zoomMode</a> (拡大モード: 初期値は true true: バックバッファから画面への転送時に拡大縮小します false: バックバッファのサイズを実際の画面上の解像度に追従させます false にした場合、Irrlicht 側の座標系がフルスクリーン化した時や、 Window.setZoom した時に変化するので注意が必要です。 )<br />
+<a class="jump" href="prop_DrawDevice_zoomMode.html">zoomMode</a> (Zoom mode: default is true. true: Scales during transfer from the back buffer to the screen. false: Makes the back buffer size follow the actual on-screen resolution. Note that if set to false, the Irrlicht coordinate system will change when switching to fullscreen or when Window.setZoom is used.)<br />
 </dd>
 </dl>
 </div>

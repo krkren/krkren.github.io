@@ -1,25 +1,25 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>getDoubleClickTime - システムのダブルクリック許容時間を取得</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard Style for API Reference" />
+<title>getDoubleClickTime - Get the system double-click timeout</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">System.getDoubleClickTime</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>システムのダブルクリック許容時間を取得</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_System.html">Systemクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Get the system's double-click timeout period</dd>
+<dt>Type</dt>
+<dd>Method of the <a class="jump" href="class_System.html">System class</a></dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">getDoubleClickTime()</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="getDoubleClickTimeの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Arguments for getDoubleClickTime">
 </table></dd>
-<dt>戻り値</dt>
-<dd>時間(ms) 既定値は500ms</dd>
-<dt>説明</dt>
-<dd>詳細は GetDoubleClickTime() API のマニュアルを参照<br />ダブルクリックの許容移動範囲はgetSystemMetricsのCXDOUBLECLK/CYDOUBLECLKで取得可能<br />Layer.onDoubleClickを使わずにソフトウェアで擬似的にダブルクリック判定を行う場合に使用（時間決め打ちでも問題ないけど一応…）</dd>
+<dt>Return Value</dt>
+<dd>Time (ms). Default is 500ms.</dd>
+<dt>Description</dt>
+<dd>Refer to the GetDoubleClickTime() API manual for details.<br />The allowable movement range for double-clicking can be obtained via CXDOUBLECLK/CYDOUBLECLK in getSystemMetrics.<br />Used when performing pseudo-double-click detection in software without using Layer.onDoubleClick (using a hardcoded time is usually fine, but this is provided just in case...).</dd>
 </dl>
 </div>
 </body>

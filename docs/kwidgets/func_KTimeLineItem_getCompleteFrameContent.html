@@ -1,26 +1,26 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>getCompleteFrameContent - 時間に対応したフレーム情報を計算する</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard style for API Reference" />
+<title>getCompleteFrameContent - Calculates frame information corresponding to time</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">KTimeLineItem.getCompleteFrameContent</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>時間に対応したフレーム情報を計算する</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_KTimeLineItem.html">KTimeLineItemクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Calculates frame information corresponding to time</dd>
+<dt>Type</dt>
+<dd>Method of the <a class="jump" href="class_KTimeLineItem.html">KTimeLineItem class</a></dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">getCompleteFrameContent(<span class="arg">time</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="getCompleteFrameContentの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Arguments for getCompleteFrameContent">
 <tr><td valign="top"><span class="argname">time</span></td>
-<td>時間</td></tr>
+<td>time</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>フレーム情報\n\n時間に対応したフレーム情報を計算して返す。\n補完可能なトゥイーンフレームがあれば、トゥイーンを済ませたフレーム情報を返す。\n補完可能なフレームが無ければキーフレームのフレーム情報をそのまま返す。\n指定ポイントにフレームが無ければvoidを返す</dd>
-<dt>説明</dt>
+<dt>Return Value</dt>
+<dd>Frame information\n\nCalculates and returns frame information corresponding to the time.\nIf there is an interpolatable tween frame, it returns the frame information with the tween completed.\nIf there is no interpolatable frame, it returns the keyframe's frame information as is.\nReturns void if there is no frame at the specified point.</dd>
+<dt>Description</dt>
 <dd></dd>
 </dl>
 </div>

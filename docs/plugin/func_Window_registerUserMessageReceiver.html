@@ -1,33 +1,33 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>registerUserMessageReceiver - ユーザ定義のメッセージハンドラを登録します。</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard style for API reference" />
+<title>registerUserMessageReceiver - Registers a user-defined message handler.</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">Window.registerUserMessageReceiver</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>ユーザ定義のメッセージハンドラを登録します。</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_Window.html">Windowクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Registers a user-defined message handler.</dd>
+<dt>Type</dt>
+<dd>Method of the <a class="jump" href="class_Window.html">Window class</a></dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">registerUserMessageReceiver(<span class="arg">mode</span>, <span class="arg">msg</span>, <span class="arg">proc</span>, <span class="arg">userdata</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="registerUserMessageReceiverの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Arguments for registerUserMessageReceiver">
 <tr><td valign="top"><span class="argname">mode</span></td>
-<td>wrmRegister:登録 wrmUnRegister:解除</td></tr>
+<td>wrmRegister: Register, wrmUnRegister: Unregister</td></tr>
 <tr><td valign="top"><span class="argname">msg</span></td>
-<td>数値:メッセージ番号 文字列:RegisterWindowMessage して値を決定</td></tr>
+<td>Numeric: Message number. String: The value is determined by calling RegisterWindowMessage.</td></tr>
 <tr><td valign="top"><span class="argname">proc</span></td>
-<td>呼び出しファンクション</td></tr>
+<td>Callback function</td></tr>
 <tr><td valign="top"><span class="argname">userdata</span></td>
-<td>ユーザデータパラメータ</td></tr>
+<td>User data parameter</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>登録されたメッセージ番号を返す</dd>
-<dt>説明</dt>
-<dd>※TJS2 から関数を登録した場合（typeof proc == Object の場合)<br />function receiver(userdata, wparam, lparam)<br />の形式のファンクションであるとみなされます。<br />この時、userdata は渡した値そのままを、<br />wparam, lparam は元メッセージのデータから整数にキャストした値を渡します。<br /><br />※TJS2 から文字列を登録した場合 (typeof proc == String の場合)<br />該当オブジェクトの指定された文字列の関数を function name(userdata, wparam, lparam)<br />の引数で呼びだします<br /><br />※プラグイン側から関数を登録する場合 (typeof proc == Integer の場合)<br />static bool __stdcall receiver(iTJSDispatch2 *winobj, void *userdata, tTVPWindowMessage *Message)<br />であるとみなされます。設定時は整数にキャストしてください。<br />winobj は該当するウインドウのオブジェクトです<br />userdata は整数にキャストした値でひきわたされます。</dd>
+<dt>Return Value</dt>
+<dd>Returns the registered message number.</dd>
+<dt>Description</dt>
+<dd>* When a function is registered from TJS2 (if typeof proc == Object):<br />It is assumed to be a function in the form of:<br />function receiver(userdata, wparam, lparam)<br />In this case, userdata is passed as the original value, while wparam and lparam are passed as values cast to integers from the original message data.<br /><br />* When a string is registered from TJS2 (if typeof proc == String):<br />The function with the specified name on the corresponding object will be called with the arguments: function name(userdata, wparam, lparam).<br /><br />* When registering a function from the plugin side (if typeof proc == Integer):<br />It is assumed to be:<br />static bool __stdcall receiver(iTJSDispatch2 *winobj, void *userdata, tTVPWindowMessage *Message)<br />Please cast to an integer when setting. <br />winobj is the object of the corresponding window. <br />userdata is passed as a value cast to an integer.</dd>
 </dl>
 </div>
 </body>

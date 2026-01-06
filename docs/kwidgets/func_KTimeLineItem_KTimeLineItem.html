@@ -1,28 +1,28 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>KTimeLineItem - コンストラクタ</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard style for API reference" />
+<title>KTimeLineItem - Constructor</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">KTimeLineItem.KTimeLineItem</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>コンストラクタ</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_KTimeLineItem.html">KTimeLineItemクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Constructor</dd>
+<dt>Type</dt>
+<dd>Method of <a class="jump" href="class_KTimeLineItem.html">KTimeLineItem class</a></dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">KTimeLineItem(<span class="arg">label</span>, <span class="arg">name</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="KTimeLineItemの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Arguments for KTimeLineItem">
 <tr><td valign="top"><span class="argname">label</span></td>
-<td>ラベル</td></tr>
+<td>Label</td></tr>
 <tr><td valign="top"><span class="argname">name</span></td>
-<td>名前<br /><br />タイムラインアイテムを作成する。<br /><br />KTimeLineItem は KListItem を拡張したクラスで、<br />リストアイテムの全ての動作に加え、タイムラインごとのフレーム情報を<br />管理する機能を持っている。<br /><br />フレームは time, type, content の4つのフィールドを持つ<br />オブジェクトとして定義される。timeはフレームの開始時間、<br />content はユーザー定義のフレーム情報となる。<br />type はフレームの種別。以下の4種類のどれかとなる<br />- TIMELINE_FRAME_TYPE_NULL ヌルフレーム。フレームが存在しない領域として扱われる<br />- TIMELINE_FRAME_TYPE_SINGLE シングルフレーム。1単位だけ占有する連続しないフレーム<br />- TIMELINE_FRAME_TYPE_CONTINUOUS  連続フレーム。次のフレームまで連続する領域を占有するフレーム。<br />- TIMELINE_FRAME_TYPE_TWEEN 連続補完フレーム。次のフレームまで連続する領域を補完しながらつなぐフレーム。<br /><br />既存のフレームを参照するには以下の関数群を使う。<br />参照したフレームの内容を直接書き換えることでフレーム情報を上書き出来るが、<br />フレームオブジェクトはフレーム操作によって頻繁に更新されるので、<br />参照したフレームを長時間に渡って参照し続ける事は推奨しない。<br />編集する都度、参照するべきである。<br /><br />- frameCount フレーム数を参照する<br />- frameAt(index) フレームを参照する<br />- frameLengthAt(index) フレームの長さを参照する<br />- findFrame(time) 時間に対応したフレームのインデックスを得る。<br />- lastTime 末尾のフレームの時間を得る<br />- getCompleteFrameContent(time) 時間に対応したフレーム情報を計算する<br /><br />フレームを操作するには以下のフレーム操作関数群を使う。<br /><br />- insertKeyFrame(time, type) キーフレームを挿入する。<br />- deleteKeyFrame(time)       キーフレームを削除する。<br />- splitFrame(time)           フレームを分割する。<br />- deleteAllFrame()           全てのフレームを削除する。<br /><br />特定区間のフレームをコピ、ペーストするには以下の関数群を使う<br /><br />- copyFrameRange(beginTime, endTime) フレームをコピーする<br />- cutFrameRange(beginTime, endTime)  フレームをカットする<br />- pasteFrame(time, frameList)        フレームをペーストする<br /><br />フレーム操作関数を呼ぶと、必要に応じて以下の関数群が内部的に<br />呼び出される。ユーザーは、適切にこれらの関数を実装しておく必要がある。<br /><br />- tweenFrameContent(fromContent, toContent, ratio) フレーム間の補完を行う。<br /><br />フレームの補完計算を行うために以下の補完関数が用意されている。<br /><br />- tweenIntValue(fromValue, toValue, ratio) 整数をリニアに補完する<br /><br />また、フレームの見た目や挙動を設定する以下のプロパティ群が存在する。<br /><br />- singleFrameColor シングルフレームのBGカラーを設定する<br />- continuousFrameColor 連続フレームのBGカラーを設定する<br />- tweenFrameColor     補完フレームのBGカラーを設定する<br /><br />フレーム情報を変更したなどの理由でフレームの再描画が必要な時は以下の関数群を使う。<br /><br />- redrawFrameRange(fromTime, toTime) 指定範囲のフレームを再描画する。<br />- redrawAllFrame() 全てのフレームを再描画する。<br /><br />標準で、以下のシリアライズ関数を持つ。<br /><br />- serialize() アイテムの内容をオブジェクトにシリアライズする。<br />- unserialize(data) オブジェクトの内容をアンシリアライズする。<br /><br />また、特定のタイミングで以下のイベント関数が呼び出される<br /><br />- onTimeLineRightClick(time) タイムラインが右クリックされると呼び出される。<br />- onTimeLineKeyDown(key, shift) タイムライン上でキーが押されると呼び出される。<br />- onFrameDragged() フレームがドラッグされた</td></tr>
+<td>Name<br /><br />Creates a timeline item.<br /><br />KTimeLineItem is a class that extends KListItem and,<br />in addition to all behaviors of a list item, has the functionality to<br />manage frame information for each timeline.<br /><br />A frame is defined as an object with four fields: time, type, and content.<br />time is the start time of the frame,<br />and content is user-defined frame information.<br />type is the frame type. It will be one of the following four types:<br />- TIMELINE_FRAME_TYPE_NULL: Null frame. Treated as an area where no frame exists.<br />- TIMELINE_FRAME_TYPE_SINGLE: Single frame. A non-continuous frame that occupies only one unit.<br />- TIMELINE_FRAME_TYPE_CONTINUOUS: Continuous frame. A frame that occupies a continuous area until the next frame.<br />- TIMELINE_FRAME_TYPE_TWEEN: Tweening frame. A frame that connects continuous areas while interpolating until the next frame.<br /><br />Use the following functions to refer to existing frames.<br />You can overwrite frame information by directly rewriting the content of the referenced frame, but<br />since frame objects are frequently updated by frame operations,<br />it is not recommended to continue referencing a frame for a long time.<br />You should reference it every time you edit.<br /><br />- frameCount: Refers to the number of frames<br />- frameAt(index): Refers to a frame<br />- frameLengthAt(index): Refers to the length of a frame<br />- findFrame(time): Gets the index of the frame corresponding to the time.<br />- lastTime: Gets the time of the last frame<br />- getCompleteFrameContent(time): Calculates frame information corresponding to the time<br /><br />Use the following frame operation functions to manipulate frames.<br /><br />- insertKeyFrame(time, type): Inserts a keyframe.<br />- deleteKeyFrame(time): Deletes a keyframe.<br />- splitFrame(time): Splits a frame.<br />- deleteAllFrame(): Deletes all frames.<br /><br />Use the following functions to copy and paste frames within a specific range:<br /><br />- copyFrameRange(beginTime, endTime): Copies frames<br />- cutFrameRange(beginTime, endTime): Cuts frames<br />- pasteFrame(time, frameList): Pastes frames<br /><br />When a frame operation function is called, the following functions are called<br />internally as needed. Users must implement these functions appropriately.<br /><br />- tweenFrameContent(fromContent, toContent, ratio): Performs interpolation between frames.<br /><br />The following interpolation functions are provided to perform frame interpolation calculations.<br /><br />- tweenIntValue(fromValue, toValue, ratio): Linearly interpolates integers<br /><br />Additionally, the following properties exist to set the appearance and behavior of frames.<br /><br />- singleFrameColor: Sets the background color of single frames<br />- continuousFrameColor: Sets the background color of continuous frames<br />- tweenFrameColor: Sets the background color of tween frames<br /><br />Use the following functions when redrawing of frames is required due to reasons such as changing frame information.<br /><br />- redrawFrameRange(fromTime, toTime): Redraws frames in the specified range.<br />- redrawAllFrame(): Redraws all frames.<br /><br />By default, it has the following serialization functions.<br /><br />- serialize(): Serializes the contents of the item into an object.<br />- unserialize(data): Unserializes the contents of an object.<br /><br />Also, the following event functions are called at specific timings:<br /><br />- onTimeLineRightClick(time): Called when the timeline is right-clicked.<br />- onTimeLineKeyDown(key, shift): Called when a key is pressed on the timeline.<br />- onFrameDragged(): A frame was dragged.</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>なし (void)</dd>
-<dt>説明</dt>
+<dt>Return Value</dt>
+<dd>None (void)</dd>
+<dt>Description</dt>
 <dd></dd>
 </dl>
 </div>

@@ -1,26 +1,26 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>getDiffRect - レイヤの差分領域を取得します。</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard style for API reference" />
+<title>getDiffRect - Gets the differential rectangle of the layer.</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">Layer.getDiffRect</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>レイヤの差分領域を取得します。</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_Layer.html">Layerクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Gets the differential rectangle of the layer.</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layer class</a> method</dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">getDiffRect(<span class="arg">base</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="getDiffRectの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Arguments for getDiffRect">
 <tr><td valign="top"><span class="argname">base</span></td>
-<td>差分元となるベース用の画像</td></tr>
+<td>The base image to be used as the source for comparison.</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>%[ x, y, w, h ] 形式の辞書，またはvoid（完全に同じ画像のとき）\n（baseはインスタンス自身と同じサイズでないと例外を投げます）</dd>
-<dt>説明</dt>
+<dt>Return Value</dt>
+<dd>A dictionary in the format %[ x, y, w, h ], or void (if the images are completely identical).\n (An exception is thrown if "base" is not the same size as the instance itself.)</dd>
+<dt>Description</dt>
 <dd></dd>
 </dl>
 </div>

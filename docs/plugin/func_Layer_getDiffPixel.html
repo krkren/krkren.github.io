@@ -1,31 +1,31 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>getDiffPixel - レイヤのピクセル比較を行います。</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard style for API Reference" />
+<title>getDiffPixel - Performs pixel comparison of layers.</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">Layer.getDiffPixel</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>レイヤのピクセル比較を行います。</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_Layer.html">Layerクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Performs pixel comparison of layers.</dd>
+<dt>Type</dt>
+<dd>Method of <a class="jump" href="class_Layer.html">Layer class</a></dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">getDiffPixel(<span class="arg">base</span>, <span class="arg">samecol</span>, <span class="arg">diffcol</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="getDiffPixelの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Arguments of getDiffPixel">
 <tr><td valign="top"><span class="argname">base</span></td>
-<td>差分元となるベース用の画像</td></tr>
+<td>The base image used as the comparison source.</td></tr>
 <tr><td valign="top"><span class="argname">samecol</span></td>
-<td>同じ場合に塗りつぶす色(0xAARRGGBB)（voidまたは省略なら塗りつぶさない）</td></tr>
+<td>Color to fill with if the pixels are the same (0xAARRGGBB). (If void or omitted, it will not be filled.)</td></tr>
 <tr><td valign="top"><span class="argname">diffcol</span></td>
-<td>違う場合に塗りつぶす色(0xAARRGGBB)（voidまたは省略なら塗りつぶさない）</td></tr>
+<td>Color to fill with if the pixels are different (0xAARRGGBB). (If void or omitted, it will not be filled.)</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>なし (void)</dd>
-<dt>説明</dt>
-<dd>（baseはインスタンス自身と同じサイズでないと例外を投げます）</dd>
+<dt>Return Value</dt>
+<dd>None (void)</dd>
+<dt>Description</dt>
+<dd>(An exception will be thrown if base is not the same size as the instance itself.)</dd>
 </dl>
 </div>
 </body>

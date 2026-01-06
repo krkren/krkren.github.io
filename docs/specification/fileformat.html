@@ -1,148 +1,148 @@
 <html>
 <head>
 <meta HTTP-EQUIV="CONTENT-TYPE" CONTENT="TEXT/HTML; CHARSET=UTF-8">
-<title>吉里吉里Z 機能仕様書 / ファイルフォーマット</title>
+<title>Kirikiri Z functional specification / File Format</title>
 <link rel="stylesheet" href="styles-site.css" type="text/css" />
 </head>
 <body>
 <a name="top"></a>
-<div id="top_link"><a href="./index.html">Topへ</a></div>
+<div id="top_link"><a href="./index.html">To Top</a></div>
 <div id="container">
 <div id="title-banner">
-<h1>ファイルフォーマット</h1>
+<h1>File Format</h1>
 </div>
 
 <div class="content">
-<p>吉里吉里Z がサポートするファイルフォーマットついて記載。</p>
-<h3>目次</h3>
-<p><a href="#fileformat">ファイルフォーマット</a><br />
+<p>Describes the file formats supported by Kirikiri Z.</p>
+<h3>Table of Contents</h3>
+<p><a href="#fileformat">File Format</a><br />
 </p>
 <br>
-<div class="title_bar"><a name="fileformat">ファイルフォーマット</a></div>
+<div class="title_bar"><a name="fileformat">File Format</a></div>
 <br>
 <table frame="box" rules="all">
-	<thead><tr><td>種類</td><td>形式</td><td>拡張子</td><td>説明</td></tr></thead>
+	<thead><tr><td>Type</td><td>Format</td><td>Extension</td><td>Description</td></tr></thead>
 	<tbody>
 		<tr>
-			<td rowspan="7">静止画像</td>
-			<td>Windows ビットマップ (Bitmap)</td>
+			<td rowspan="7">Still Image</td>
+			<td>Windows Bitmap</td>
 			<td>.bmp</td>
-			<td>無圧縮形式のみサポート。<br />
-			32ビットビットマップの場合、αチャンネル付きと見なされる。</td>
+			<td>Only uncompressed formats are supported.<br />
+			In the case of 32-bit bitmaps, they are treated as having an alpha channel.</td>
 		</tr>
 		<tr>
 			<td>JPEG</td>
 			<td>.jpg<br />.jpeg</td>
-			<td>読み込み時精度を指定可能。<br />
-			設定可能な値は 'high' (高い), 'normal' (標準), 'low' (低い) のいずれか。<br />
-			デフォルトは'normal'。<br />
-			low はIDCTに固定小数点(整数)AAN、色差拡大補間なし。<br />
-			normal はIDCTに固定小数点(整数)LLM、色差拡大補間あり。<br />
-			high はIDCTに浮動小数点AAN、色差拡大補間あり。<br />
-			指定方法については<a href="../kirikiriz/j/contents/CommandLine.html#id47">起動オプション -jpegdec (JPEG画像デコード精度)</a>を参照のこと。<br />
+			<td>Decoding precision can be specified.<br />
+			Settable values are 'high', 'normal', or 'low'.<br />
+			The default is 'normal'.<br />
+			'low' uses fixed-point (integer) AAN for IDCT, with no chroma upsampling interpolation.<br />
+			'normal' uses fixed-point (integer) LLM for IDCT, with chroma upsampling interpolation.<br />
+			'high' uses floating-point AAN for IDCT, with chroma upsampling interpolation.<br />
+			For details on how to specify, please refer to <a href="../kirikiriz/j/contents/CommandLine.html#id47">Startup Option -jpegdec (JPEG image decoding precision)</a>.<br />
 		</tr>
 		<tr>
 			<td>Portable Network Graphic (PNG)</td>
 			<td>.png</td>
-			<td>αチャンネルや透明色指定に対応。</td>
+			<td>Supports alpha channels and transparent color specifications.</td>
 		</tr>
 		<tr>
 			<td>TLG5</td>
 			<td>.tlg</td>
-			<td>吉里吉里独自形式。<br />
-			展開速度が高速(PNGの4倍速程度)なのが特徴。<br />
-			<a href="../kirikiriz/j/contents/TPC.html">画像フォーマットコンバータ</a>で変換可能。</td>
+			<td>Kirikiri original format.<br />
+			Characterized by high expansion speed (about 4 times faster than PNG).<br />
+			Can be converted with the <a href="../kirikiriz/j/contents/TPC.html">Image Format Converter</a>.</td>
 		</tr>
 		<tr>
 			<td>TLG6</td>
 			<td>.tlg</td>
-			<td>吉里吉里独自形式。<br />
-			PNGやTLG5よりも圧縮率は高いが、TLG5の倍ほど展開に時間がかかります。<br />
-			ただ、それでもPNGの2倍速程度なので高速です。<br />
-			<a href="../kirikiriz/j/contents/TPC.html">画像フォーマットコンバータ</a>で変換可能。</td>
+			<td>Kirikiri original format.<br />
+			Higher compression ratio than PNG or TLG5, but takes about twice as long to expand as TLG5.<br />
+			However, it is still about twice as fast as PNG, so it is fast.<br />
+			Can be converted with the <a href="../kirikiriz/j/contents/TPC.html">Image Format Converter</a>.</td>
 		</tr>
 		<tr>
-			<td>その他</td>
+			<td>Others</td>
 			<td>.*</td>
-			<td>Susie-plugin による拡張が可能。</td>
+			<td>Can be extended via Susie-plugins.</td>
 		</tr>
 
 		<tr>
-			<td rowspan="5">音声</td>
+			<td rowspan="5">Audio</td>
 			<td>WAVE</td>
 			<td>.wav</td>
-			<td>無圧縮WAVE形式をサポート。</td>
+			<td>Supports uncompressed WAVE format.</td>
 		</tr>
 		<tr>
 			<td>Ogg Vorbis</td>
 			<td>.ogg</td>
-			<td>要wuvorbis.dllプラグイン</td>
+			<td>Requires wuvorbis.dll plugin</td>
 		</tr>
 		<tr>
-			<td>その他</td>
+			<td>Others</td>
 			<td>.*</td>
-			<td>プラグインにより拡張可能。</td>
+			<td>Can be extended via plugins.</td>
 		</tr>
 
 		<tr>
-			<td rowspan="4">動画</td>
+			<td rowspan="4">Video</td>
 			<td>MPEG I</td>
 			<td>.mpg<br />.mpeg<br />.mpv<br />.m1v<br />.dat</td>
-			<td>MPEG Iのみサポート。<br />
-			MPEG2などそれ以降は非サポート。<br />
-			要 krmovie.dll。<br />
-			再生機にWindows Media Player 6.4以降、<br />
-			またはDirectX 7以降がインストールされていること。</td>
+			<td>Only MPEG I is supported.<br />
+			MPEG2 and later are not supported.<br />
+			Requires krmovie.dll.<br />
+			Windows Media Player 6.4 or later,<br />
+			or DirectX 7 or later must be installed on the playback machine.</td>
 		</tr>
 		<tr>
 			<td>Windows Media Video (WMV)</td>
 			<td>.wmv</td>
-			<td>要 krmovie.dll。<br />
-			再生機にWindows Media Player 9以降がインストールされていること。</td>
+			<td>Requires krmovie.dll.<br />
+			Windows Media Player 9 or later must be installed on the playback machine.</td>
 		</tr>
 		<tr>
 			<td>AVI</td>
 			<td>.avi</td>
-			<td>非公式サポート。<br />
-			要 krmovie.dll。<br />
-			Codecなどの問題により再生出来ないことなどがあり、公式サポートは行わない。</td>
+			<td>Unofficial support.<br />
+			Requires krmovie.dll.<br />
+			Due to issues such as codecs, playback may not be possible, so official support is not provided.</td>
 		</tr>
 
 		<tr>
-			<td rowspan="1">アニメーション</td>
-			<td>ASD ファイル</td>
+			<td rowspan="1">Animation</td>
+			<td>ASD File</td>
 			<td>.asd</td>
-			<td>吉里吉里独自形式。<br />
-			KAG3 でサポートされる。<br />
-			AnimationLayer.tjsのコメント、もしくは<a href="http://homepage1.nifty.com/gutchie/KAG3Animation.html">吉里吉里2/KAG3のアニメーション</a>を参照のこと</td>
+			<td>Kirikiri original format.<br />
+			Supported by KAG3.<br />
+			Refer to comments in AnimationLayer.tjs, or <a href="http://homepage1.nifty.com/gutchie/KAG3Animation.html">Kirikiri 2/KAG3 Animation</a></td>
 		</tr>
 
 		<tr>
-			<td rowspan="3">アーカイブ</td>
+			<td rowspan="3">Archive</td>
 			<td>XP3</td>
 			<td>.xp3</td>
-			<td>吉里吉里独自形式。<br />
-			<a href="../kirikiriz/j/contents/Releaser.html">Releaser</a>にて作成する。</td>
+			<td>Kirikiri original format.<br />
+			Created using the <a href="../kirikiriz/j/contents/Releaser.html">Releaser</a>.</td>
 		</tr>
 		<tr>
-			<td>その他</td>
+			<td>Others</td>
 			<td>.*</td>
-			<td>プラグインにより拡張可能。</td>
+			<td>Can be extended via plugins.</td>
 		</tr>
 
 		<tr>
-			<td rowspan="2">フォント</td>
-			<td>レンダリング済みフォント</td>
+			<td rowspan="2">Font</td>
+			<td>Pre-rendered Font</td>
 			<td>.tft</td>
-			<td>吉里吉里独自形式。<br />
-			<a href="../kirikiriz/j/contents/FontMaker.html">レンダリング済みフォントデータ作成ツール</a>にて生成する</td>
+			<td>Kirikiri original format.<br />
+			Generated using the <a href="../kirikiriz/j/contents/FontMaker.html">Pre-rendered Font Data Creation Tool</a></td>
 		</tr>
 		<tr>
-			<td>TrueType/OpenType フォント</td>
+			<td>TrueType/OpenType Font</td>
 			<td>.ttf<br />.otf</td>
-			<td>非公式サポート。<br />
-			システムにフォントをインストールすることなく使える。<br />
-			要<a href="../../src/plugins/win32/addFont/">addFont.dll</a>。Windows2000/XP/Vista のみ対応。</td>
+			<td>Unofficial support.<br />
+			Can be used without installing the font to the system.<br />
+			Requires <a href="../../src/plugins/win32/addFont/">addFont.dll</a>. Supported on Windows 2000/XP/Vista only.</td>
 		</tr>
 
 	</tbody>
@@ -155,4 +155,3 @@
 
 </body>
 </html>
-

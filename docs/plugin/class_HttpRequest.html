@@ -1,47 +1,47 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>HttpRequest - HttpRequestクラス</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard style for API reference" />
+<title>HttpRequest - HttpRequest Class</title>
 </head>
 <body>
 <h1><a name="top" id="top">HttpRequest</a></h1>
-<div class="para">HTTP/HTTPS による非同期通信機能を提供します。<br />ファイルの送受信処理はバックグラウンド実行されます。</div>
-<h1>メンバ</h1><div class="para">
+<div class="para">Provides asynchronous communication functionality via HTTP/HTTPS.<br />File transmission and reception processes are executed in the background.</div>
+<h1>Members</h1><div class="para">
 <dl>
-<dt>コンストラクタ</dt>
+<dt>Constructor</dt>
 <dd><a class="jump" href="func_HttpRequest_HttpRequest.html">HttpRequest</a></dd>
-<dt>メソッド</dt>
+<dt>Methods</dt>
 <dd>
-<a class="jump" href="func_HttpRequest_abort.html">abort</a> (現在実行中の送受信のキャンセル )<br />
-<a class="jump" href="func_HttpRequest_getAllResponseHeaders.html">getAllResponseHeaders</a> (すべての HTTPヘッダを取得する )<br />
-<a class="jump" href="func_HttpRequest_getResponseHeader.html">getResponseHeader</a> (指定したHTTPヘッダを取得する )<br />
-<a class="jump" href="func_HttpRequest_getResponseText.html">getResponseText</a> (レスポンスをテキストの形で取得 )<br />
-<a class="jump" href="func_HttpRequest_onProgress.html">onProgress</a> (データ送受信イベント )<br />
-<a class="jump" href="func_HttpRequest_onReadyStateChange.html">onReadyStateChange</a> (readyState が変化した場合のイベント )<br />
-<a class="jump" href="func_HttpRequest_open.html">open</a> (指定したメソッドで指定URLにリクエストする )<br />
-<a class="jump" href="func_HttpRequest_send.html">send</a> (リクエストの送信。送信処理は非同期実行されます。 )<br />
-<a class="jump" href="func_HttpRequest_sendStorage.html">sendStorage</a> (リクエストの送信。送受信は非同期実行されます。 )<br />
-<a class="jump" href="func_HttpRequest_setRequestHeader.html">setRequestHeader</a> (送信時に送られるヘッダーを追加する )<br />
+<a class="jump" href="func_HttpRequest_abort.html">abort</a> (Cancels the current transmission/reception)<br />
+<a class="jump" href="func_HttpRequest_getAllResponseHeaders.html">getAllResponseHeaders</a> (Gets all HTTP headers)<br />
+<a class="jump" href="func_HttpRequest_getResponseHeader.html">getResponseHeader</a> (Gets the specified HTTP header)<br />
+<a class="jump" href="func_HttpRequest_getResponseText.html">getResponseText</a> (Gets the response in text format)<br />
+<a class="jump" href="func_HttpRequest_onProgress.html">onProgress</a> (Data transmission/reception event)<br />
+<a class="jump" href="func_HttpRequest_onReadyStateChange.html">onReadyStateChange</a> (Event fired when readyState changes)<br />
+<a class="jump" href="func_HttpRequest_open.html">open</a> (Requests the specified URL with the specified method)<br />
+<a class="jump" href="func_HttpRequest_send.html">send</a> (Sends the request. Sending is executed asynchronously.)<br />
+<a class="jump" href="func_HttpRequest_sendStorage.html">sendStorage</a> (Sends the request. Transmission/reception is executed asynchronously.)<br />
+<a class="jump" href="func_HttpRequest_setRequestHeader.html">setRequestHeader</a> (Adds a header to be sent with the request)<br />
 </dd>
-<dt>プロパティ</dt>
+<dt>Properties</dt>
 <dd>
-<a class="jump" href="prop_HttpRequest_contentLength.html">contentLength</a> (レスポンスの Content-Length )<br />
-<a class="jump" href="prop_HttpRequest_contentType.html">contentType</a> (レスポンスの Content-Type (エンコーディング指定は含まない) )<br />
-<a class="jump" href="prop_HttpRequest_contentTypeEncoding.html">contentTypeEncoding</a> (レスポンスの Content-Type のエンコード指定 )<br />
-<a class="jump" href="prop_HttpRequest_readyState.html">readyState</a> (通信状態。読み込み専用 )<br />
-<a class="jump" href="prop_HttpRequest_response.html">response</a> (レスポンス。読み込み専用。 )<br />
-<a class="jump" href="prop_HttpRequest_responseData.html">responseData</a> (レスポンス｡読み込み専用 )<br />
-<a class="jump" href="prop_HttpRequest_status.html">status</a> (レスポンスの HTTPステータスコード。読み込み専用 )<br />
-<a class="jump" href="prop_HttpRequest_statusText.html">statusText</a> (レスポンスの HTTPステータスの文字列 )<br />
+<a class="jump" href="prop_HttpRequest_contentLength.html">contentLength</a> (Response Content-Length)<br />
+<a class="jump" href="prop_HttpRequest_contentType.html">contentType</a> (Response Content-Type (does not include encoding specification))<br />
+<a class="jump" href="prop_HttpRequest_contentTypeEncoding.html">contentTypeEncoding</a> (Response Content-Type encoding specification)<br />
+<a class="jump" href="prop_HttpRequest_readyState.html">readyState</a> (Communication state. Read-only)<br />
+<a class="jump" href="prop_HttpRequest_response.html">response</a> (Response. Read-only.)<br />
+<a class="jump" href="prop_HttpRequest_responseData.html">responseData</a> (Response. Read-only)<br />
+<a class="jump" href="prop_HttpRequest_status.html">status</a> (Response HTTP status code. Read-only)<br />
+<a class="jump" href="prop_HttpRequest_statusText.html">statusText</a> (Response HTTP status text)<br />
 </dd>
-<dt>定数</dt>
+<dt>Constants</dt>
 <dd>
-LOADED (readyState 読み込み完了 )<br />
-OPEN (readyState 処理開始 )<br />
-RECEIVING (readyState 受信中 )<br />
-SENT (readyState リクエスト送信 )<br />
-UNINITIALIZED (readyState 初期状態 )<br />
+LOADED (readyState: Loading complete)<br />
+OPEN (readyState: Processing started)<br />
+RECEIVING (readyState: Receiving)<br />
+SENT (readyState: Request sent)<br />
+UNINITIALIZED (readyState: Initial state)<br />
 </dd>
 </dl>
 </div>

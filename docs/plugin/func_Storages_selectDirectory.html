@@ -1,26 +1,26 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>selectDirectory - フォルダ選択ダイアログを開く</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard Style for API Reference" />
+<title>selectDirectory - Opens the folder selection dialog</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">Storages.selectDirectory</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>フォルダ選択ダイアログを開く</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_Storages.html">Storagesクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Opens the folder selection dialog</dd>
+<dt>Type</dt>
+<dd>Method of the <a class="jump" href="class_Storages.html">Storages class</a></dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">selectDirectory(<span class="arg">params</span>, <span class="arg">title</span>, <span class="arg">window</span>, <span class="arg">rootDir</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="selectDirectoryの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="selectDirectory arguments">
 <tr><td valign="top"><span class="argname">params</span></td>
-<td>selectFile と同様のパラメータを設定する</td></tr>
+<td>Set parameters similar to selectFile</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>フォルダを選択してOKボタンを押せば真、キャンセルボタンを押せば偽\nparams.name フォルダ名を指定します。OKボタンを押した場合、選択されたフォルダがこのメンバに設定されます\nparams.title ダイアログボックスのタイトルを表示します\nparams.window ダイアログを開くWindowオブジェクトを指定します(void なら mainWindow が、未指定ならデスクトップがオーナーウィンドウとなります。デスクトップがオーナーの場合は、モードレス)\nparams.rootDir フォルダ選択のルートを指定します(このフォルダ以下のみ表示されます)</dd>
-<dt>説明</dt>
+<dt>Return Value</dt>
+<dd>Returns true if a folder is selected and the OK button is pressed, false if the Cancel button is pressed.\nparams.name: Specifies the folder name. If the OK button is pressed, the selected folder will be set to this member.\nparams.title: Displays the title of the dialog box.\nparams.window: Specifies the Window object that opens the dialog (if void, mainWindow is used; if unspecified, the desktop becomes the owner window. If the desktop is the owner, it is modeless).\nparams.rootDir: Specifies the root for folder selection (only folders under this directory will be displayed).</dd>
+<dt>Description</dt>
 <dd></dd>
 </dl>
 </div>

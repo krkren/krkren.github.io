@@ -1,29 +1,29 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>copy - 別のストレージからデータをコピー</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard style for API reference" />
+<title>copy - Copy data from another storage</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">BinaryStream.copy</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>別のストレージからデータをコピー</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_BinaryStream.html">BinaryStreamクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Copy data from another storage</dd>
+<dt>Type</dt>
+<dd>Method of the <a class="jump" href="class_BinaryStream.html">BinaryStream class</a></dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">copy(<span class="arg">storage</span>, <span class="arg">elm</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="copyの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Arguments for copy">
 <tr><td valign="top"><span class="argname">storage</span></td>
-<td>コピー元のストレージ（現在開いているストレージと同じ場合は例外）</td></tr>
+<td>Source storage (An exception occurs if it is the same as the currently open storage)</td></tr>
 <tr><td valign="top"><span class="argname">elm</span></td>
-<td>動作指定用の辞書（in/out）内容は下記：（省略時は単純コピー，[out]なし）<br />offset  :[in] コピー元ストレージの読み込み開始オフセット（省略時先頭）<br />length  :[in] コピー元ストレージの最大読み込みサイズ（省略時ファイルサイズ）<br /><br />filter  :[in] フィルタ処理を行う関数名（省略時はフィルタ処理なし）<br />fparam  :[in] フィルタに渡すパラメータ値(int)<br /><br />nocopy  :[in] trueを指定すると出力を書き込まない（省略時はfalse，hashのみ取得したい場合などに指定）<br />md5     :[in] trueを指定すると出力のMD5ダイジェストを返す<br /><br />hash    :[out]読み込んだファイルのハッシュ値（Adler32）<br />read    :[out]読み込んだバイト数<br />digest  :[out]書き込んだデータのMD5ダイジェスト（octet） ※md5がtrueの場合にのみ有効</td></tr>
+<td>Dictionary for operation specification (in/out). Contents are as follows: (When omitted, a simple copy is performed, no [out] parameters)<br />offset  :[in] Read start offset of the source storage (defaults to the beginning if omitted)<br />length  :[in] Maximum read size of the source storage (defaults to file size if omitted)<br /><br />filter  :[in] Function name to perform filtering (no filtering if omitted)<br />fparam  :[in] Parameter value to pass to the filter (int)<br /><br />nocopy  :[in] If true is specified, output will not be written (defaults to false; specify this if you only want to obtain the hash, etc.)<br />md5     :[in] If true is specified, returns the MD5 digest of the output<br /><br />hash    :[out] Hash value of the read file (Adler32)<br />read    :[out] Number of bytes read<br />digest  :[out] MD5 digest of the written data (octet) * Only valid if md5 is true</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>書き込んだバイト数</dd>
-<dt>説明</dt>
-<dd>対象ストレージのoffsetからlength分の内容が，現在のストリームのポジションから書き込まれます<br />フィルタの詳細は setFilter() の説明を参照してください</dd>
+<dt>Return Value</dt>
+<dd>Number of bytes written</dd>
+<dt>Description</dt>
+<dd>The contents of the target storage from the offset for the length are written starting from the current stream position.<br />Refer to the description of setFilter() for details on the filter.</dd>
 </dl>
 </div>
 </body>

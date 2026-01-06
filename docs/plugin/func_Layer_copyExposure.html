@@ -1,26 +1,26 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>copyExposure - 総和バッファから画像作成</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard style for API reference" />
+<title>copyExposure - Create image from summation buffer</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">Layer.copyExposure</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>総和バッファから画像作成</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_Layer.html">Layerクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Create image from summation buffer</dd>
+<dt>Type</dt>
+<dd>Method of <a class="jump" href="class_Layer.html">Layer class</a></dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">copyExposure(<span class="arg">stat</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="copyExposureの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Arguments for copyExposure">
 <tr><td valign="top"><span class="argname">stat</span></td>
-<td>: 足きり用の情報辞書／voidの場合は暗黙でstatExposureを実行してその値を使用する<br />各要素の min～max が 0～255 の画像として自分自身が書き換わる<br />各要素において min >= maxの場合は常に0xFFで返される</td></tr>
+<td>: Information dictionary for thresholding / If void, implicitly executes statExposure and uses that value.<br />The layer itself is overwritten as an image where the range from min to max for each element is mapped to 0 to 255.<br />If min >= max for an element, it is always returned as 0xFF.</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>なし (void)</dd>
-<dt>説明</dt>
+<dt>Return Value</dt>
+<dd>None (void)</dd>
+<dt>Description</dt>
 <dd></dd>
 </dl>
 </div>

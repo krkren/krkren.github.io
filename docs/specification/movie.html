@@ -1,138 +1,138 @@
 <html>
 <head>
 <meta HTTP-EQUIV="CONTENT-TYPE" CONTENT="TEXT/HTML; CHARSET=UTF-8">
-<title>吉里吉里Z 機能仕様書 / 動画再生機能</title>
+<title>Kirikiri Z Functional Specification / Video Playback Function</title>
 <link rel="stylesheet" href="styles-site.css" type="text/css" />
 </head>
 <body>
 <a name="top"></a>
-<div id="top_link"><a href="./index.html">Topへ</a></div>
+<div id="top_link"><a href="./index.html">To Top</a></div>
 <div id="container">
 <div id="title-banner">
-<h1>動画再生機能</h1>
+<h1>Video Playback Function</h1>
 </div>
 
 <div class="content">
-<p>吉里吉里Z がサポートする動画再生機能ついて記載。</p>
-<h3>目次</h3>
-<p><a href="#spec">諸元</a><br />
-<a href="#mode">モード</a><br />
-<a href="#trickplay">特殊再生機能</a><br />
-<a href="#preparevideo">動画再生準備について ( preparevideo )</a><br />
-<a href="#layermode">レイヤーモードでのレイヤー指定について</a><br />
-<a href="#end_of_video">動画終端での振る舞い</a><br />
-<a href="#layer_alpha">レイヤーモードで動画が表示されない現象について</a><br />
-<a href="#mixer_mode">ミキシング再生</a><br />
-<a href="#seek_to_keyframe">キーフレームとシーク</a><br />
+<p>Describes the video playback functions supported by Kirikiri Z.</p>
+<h3>Table of Contents</h3>
+<p><a href="#spec">Specifications</a><br />
+<a href="#mode">Modes</a><br />
+<a href="#trickplay">Special Playback Functions</a><br />
+<a href="#preparevideo">About Video Playback Preparation ( preparevideo )</a><br />
+<a href="#layermode">About Layer Specification in Layer Mode</a><br />
+<a href="#end_of_video">Behavior at the End of Video</a><br />
+<a href="#layer_alpha">Regarding the Phenomenon Where Video is Not Displayed in Layer Mode</a><br />
+<a href="#mixer_mode">Mixing Playback</a><br />
+<a href="#seek_to_keyframe">Keyframes and Seeking</a><br />
 
 </p>
 <br />
 
-<div class="title_bar"><a name="spec">諸元</a></div>
+<div class="title_bar"><a name="spec">Specifications</a></div>
 <br />
 <table frame="box" rules="all">
 	<tbody>
 		<tr>
-			<td rowspan="3">モード</td>
-			<td>オーバーレイモード</td>
-			<td>ビデオオーバーレイを使用して動画を表示するモード</td>
+			<td rowspan="3">Mode</td>
+			<td>Overlay Mode</td>
+			<td>Mode that displays video using video overlay</td>
 		</tr>
 		<tr>
-			<td>レイヤーモード</td>
-			<td>吉里吉里内のレイヤーで動画を再生するモード</td>
+			<td>Layer Mode</td>
+			<td>Mode that plays video on a layer within Kirikiri</td>
 		</tr>
 		<tr>
-			<td>ミキサーモード</td>
-			<td>VMR9 + Direct3D を使用して動画を表示するモード</td>
-		</tr>
-
-		<tr>
-			<td rowspan="4">特殊再生機能</td>
-			<td>セグメントループ</td>
-			<td>指定されたフレーム間をループする機能</td>
-		</tr>
-		<tr>
-			<td>ピリオドイベント</td>
-			<td>指定されたフレームでイベントを発生させる機能</td>
-		</tr>
-		<tr>
-			<td>再生速度指定</td>
-			<td>動画の再生速度を指定する機能</td>
-		</tr>
-		<tr>
-			<td>マルチオーディオ</td>
-			<td>多重化された音声のうち、1つを選択して再生する機能</td>
+			<td>Mixer Mode</td>
+			<td>Mode that displays video using VMR9 + Direct3D</td>
 		</tr>
 
 		<tr>
-			<td>音声バランス<br />(パニング)</td>
-			<td>-100000 ～ 0<br /> ～ 100000</td>
-			<td>-100000 が 完全に左、0 が中央、100000 が完全に右。<br />
-			ステレオのソースを再生する場合は、パンは、<br />
-			左右どちらかのチャンネルを減衰させることで実現される。</td>
+			<td rowspan="4">Special Playback Functions</td>
+			<td>Segment Loop</td>
+			<td>Function to loop between specified frames</td>
 		</tr>
 		<tr>
-			<td>音声ボリューム</td>
-			<td>0 ～ 100000</td>
-			<td>0 が完全ミュート、100000 が 100% の音量</td>
+			<td>Period Event</td>
+			<td>Function to trigger events at specified frames</td>
 		</tr>
 		<tr>
-			<td>音声ストリーム</td>
-			<td>コンテンツに依存</td>
-			<td>再生する音声ストリームを選択</td>
+			<td>Playback Speed Specification</td>
+			<td>Function to specify the playback speed of the video</td>
 		</tr>
 		<tr>
-			<td>再生速度</td>
+			<td>Multi-Audio</td>
+			<td>Function to select and play one of the multiplexed audio streams</td>
+		</tr>
+
+		<tr>
+			<td>Audio Balance<br />(Panning)</td>
+			<td>-100000 to 0<br /> to 100000</td>
+			<td>-100000 is completely left, 0 is center, 100000 is completely right.<br />
+			When playing stereo sources, panning is achieved by<br />
+			attenuating either the left or right channel.</td>
+		</tr>
+		<tr>
+			<td>Audio Volume</td>
+			<td>0 to 100000</td>
+			<td>0 is complete mute, 100000 is 100% volume</td>
+		</tr>
+		<tr>
+			<td>Audio Stream</td>
+			<td>Content dependent</td>
+			<td>Select the audio stream to play</td>
+		</tr>
+		<tr>
+			<td>Playback Speed</td>
 			<td>＞0</td>
-			<td>設定可能値はDirectShowのフィルタ依存。<br />
-			音声ありの場合、2.0≧速度＞0。<br />
-			1.0が等倍速。</td>
+			<td>The settable range depends on the DirectShow filter.<br />
+			With audio: 2.0 ≥ speed ＞ 0.<br />
+			1.0 is normal speed.</td>
 		</tr>
 
 		<tr>
-			<td rowspan="7">取得可能値</td>
-			<td>フレームレート</td>
-			<td>1秒当りのフレーム数</td>
+			<td rowspan="7">Getable Values</td>
+			<td>Frame Rate</td>
+			<td>Number of frames per second</td>
 		</tr>
 		<tr>
-			<td>現在のフレーム</td>
-			<td>現在表示しているフレーム。<br />
-			表示しているフレーム番号と完全に一致する保証はない。</td>
+			<td>Current Frame</td>
+			<td>The frame currently being displayed.<br />
+			There is no guarantee that it perfectly matches the displayed frame number.</td>
 		</tr>
 		<tr>
-			<td>現在の再生時間</td>
-			<td>動画の最初からの動画内での経過時間。</td>
+			<td>Current Playback Time</td>
+			<td>Elapsed time within the video from the beginning.</td>
 		</tr>
 		<tr>
-			<td>画像サイズ</td>
-			<td>幅と高さ</td>
+			<td>Image Size</td>
+			<td>Width and height</td>
 		</tr>
 		<tr>
-			<td>音声ストリーム数</td>
-			<td>多重化されている音声ストリームの数</td>
+			<td>Number of Audio Streams</td>
+			<td>Number of multiplexed audio streams</td>
 		</tr>
 		<tr>
-			<td>全フレーム数</td>
-			<td>動画が保持しているフレームの数</td>
+			<td>Total Frames</td>
+			<td>Total number of frames held by the video</td>
 		</tr>
 		<tr>
-			<td>合計時間</td>
-			<td>動画の合計時間</td>
+			<td>Total Time</td>
+			<td>Total duration of the video</td>
 		</tr>
 
 		<tr>
-			<td rowspan="4">イベント</td>
-			<td>フレーム更新</td>
-			<td>ビデオフレームが更新された後に発生</td>
+			<td rowspan="4">Events</td>
+			<td>Frame Update</td>
+			<td>Occurs after a video frame is updated</td>
 		</tr>
 		<tr>
-			<td>Periodイベント</td>
-			<td>通常ループ終端、セグメントループ終端、<br />
-			設定したピリオドイベント、再生準備完了時に発生。</td>
+			<td>Period Event</td>
+			<td>Occurs at normal loop ends, segment loop ends,<br />
+			set period events, and when playback preparation is complete.</td>
 		</tr>
 		<tr>
-			<td>ステータス変更</td>
-			<td>再生状態が変更された時に発生</td>
+			<td>Status Change</td>
+			<td>Occurs when the playback state changes</td>
 		</tr>
 
 	</tbody>
@@ -142,34 +142,34 @@
 <br />
 
 
-<div class="title_bar"><a name="mode">モード</a></div>
+<div class="title_bar"><a name="mode">Modes</a></div>
 <br />
 <table frame="box" rules="all">
-	<thead><tr><td>種類</td><td>説明</td></tr></thead>
+	<thead><tr><td>Type</td><td>Description</td></tr></thead>
 	<tbody>
 		<tr>
-			<td>オーバーレイモード</td>
-			<td>ビデオオーバーレイを使用して動画を表示するモードです。<br />
-			吉里吉里内の他のどのレイヤーよりも手前に表示されます。<br />
-			ほとんどの場合、ムービーの再生は最も軽くなります。<br />
-			単純に動画を再生して停止するだけであれば、オーバーレイモードを使用するのが良いです。<br />
-			しかし、Windows Vista と Windows XP で吉里吉里の描画モードがDirectDrawの時に一部の環境において、オーバーレイモード時に拡大すると綺麗に拡大されない(ジャギーが発生する)という現象が報告されています。<br />
-			このため Windows Vista ではオーバーレイモードは避けた方が良いです。</td>
+			<td>Overlay Mode</td>
+			<td>A mode that displays video using video overlay.<br />
+			It is displayed in front of any other layers within Kirikiri.<br />
+			In most cases, movie playback will be the lightest in this mode.<br />
+			If you just want to play and stop a video, using Overlay Mode is recommended.<br />
+			However, it has been reported that on some environments using Windows Vista and Windows XP when Kirikiri's drawing mode is DirectDraw, scaling in Overlay Mode does not look clean (jaggies occur).<br />
+			For this reason, it is better to avoid Overlay Mode on Windows Vista.</td>
 		</tr>
 		<tr>
-			<td>レイヤーモード</td>
-			<td>吉里吉里内の指定のレイヤーで動画を再生するモードです。<br />
-			環境依存性が低く、指定フレーム間でのループ(セグメントループ)や指定フレームでの処理(ピリオドイベント)などの機能が使用可能です。<br />
-			ただ、他のモードよりもCPU負荷が高くなるという難点があります。<br />
-			また、拡大縮小も出来ません。</td>
+			<td>Layer Mode</td>
+			<td>A mode that plays video on a specified layer within Kirikiri.<br />
+			It has low environment dependency, and functions such as looping between specified frames (Segment Loop) and processing at specified frames (Period Event) are available.<br />
+			However, it has the disadvantage of higher CPU load than other modes.<br />
+			Also, scaling is not possible.</td>
 		</tr>
 		<tr>
-			<td>ミキサーモード</td>
-			<td>オーバーレイモードの代替として追加された、VMR9 + Direct3D を使用して動画を表示するモードです。<br />
-			ビデオカードにビデオ再生支援機能があり、コーデックが対応していれば、ビデオカードのビデオ再生支援機能を使用して再生可能です。<br />
-			Windows Vista での拡大時のジャギー問題も回避されます。<br />
-			また、指定レイヤーとのミキシングや拡大縮小も可能です。<br />
-			使用するには DirectX 9 以降が必要です。</td>
+			<td>Mixer Mode</td>
+			<td>Added as an alternative to Overlay Mode, this mode displays video using VMR9 + Direct3D.<br />
+			If the video card has video playback acceleration features and the codec supports it, it can be played using the video card's hardware acceleration.<br />
+			The jaggy issue when scaling on Windows Vista is also avoided.<br />
+			Additionally, mixing with specified layers and scaling are possible.<br />
+			DirectX 9 or later is required to use this mode.</td>
 		</tr>
 	</tbody>
 </table>
@@ -177,37 +177,37 @@
 <br />
 <br />
 
-<div class="title_bar"><a name="trickplay">特殊再生機能</a></div>
+<div class="title_bar"><a name="trickplay">Special Playback Functions</a></div>
 <br />
 <table frame="box" rules="all">
-	<thead><tr><td>種類</td><td>説明</td></tr></thead>
+	<thead><tr><td>Type</td><td>Description</td></tr></thead>
 	<tbody>
 		<tr>
-			<td>セグメントループ</td>
-			<td>指定されたフレーム間をループする機能です。<br />
-			この機能を使用するためには、動画ファイル自体にループで戻る先のフレームにキーフレームを設定しておく必要があります。<br />
-			キーフレームがない場合、期待したようにループされません。</td>
+			<td>Segment Loop</td>
+			<td>A function that loops between specified frames.<br />
+			To use this function, you must set a keyframe in the video file itself at the frame where the loop returns.<br />
+			If there is no keyframe, it will not loop as expected.</td>
 		</tr>
 		<tr>
-			<td>ピリオドイベント</td>
-			<td>指定されたフレームでイベントを発生させ、何らかの処理ができる機能です。<br />
-			イベント発生時に、離れたフレームにシークすることで、間のフレームを飛ばして、あたかも動画がつながっているように見せることが可能です。<br />
-			また、動画にあわせて字幕を出したい時なども、字幕の開始フレームにピリオドイベントを設定し、イベントを待って文字を表示することで実現可能です。<br />
-			他に、この機能を使えば、動画自体には音を入れず、指定フレームでSEを使って音を鳴らすことも可能です。</td>
+			<td>Period Event</td>
+			<td>A function that can trigger an event at a specified frame to perform some processing.<br />
+			By seeking to a distant frame when an event occurs, it is possible to skip intermediate frames and make the video look as if it is continuous.<br />
+			Also, if you want to display subtitles synchronized with the video, you can achieve this by setting a period event at the starting frame of the subtitles and waiting for the event to display the text.<br />
+			Additionally, using this function, you can play sounds using SE at specified frames without including audio in the video itself.</td>
 		</tr>
 		<tr>
-			<td>再生速度コントロール</td>
-			<td>動画の再生速度が指定可能です。<br />
-			1.0 を指定すると通常の再生速度、0.5 では半分の再生速度、2では2倍の再生速度になります。<br />
-			設定可能な値は DirectShowのフィルタ (Codec) に依存します。</td>
+			<td>Playback Speed Control</td>
+			<td>The video playback speed can be specified.<br />
+			Specifying 1.0 results in normal playback speed, 0.5 results in half speed, and 2 results in double speed.<br />
+			The values that can be set depend on the DirectShow filter (Codec).</td>
 		</tr>
 		<tr>
-			<td>マルチオーディオ</td>
-			<td>MPEG I では、複数のオーディオストリームを多重化可能なため、それを利用する機能です。<br />
-			この機能では、任意のオーディオストリームを再生することが可能です。<br />
-			たとえば、BGMのみ、BGM+声などのストリームを準備しておき、ユーザーがどのモードで再生するか指定可能にすることなどが出来ます。<br />
-			ただ、オーディオストリームの切り替えには2秒程度のタイムラグがあるため、あまりインタラクティブな用途には向いていません。<br />
-			上記のユーザーによる選択やシーンによって動画音声が変わるような用途に使えます。</td>
+			<td>Multi-Audio</td>
+			<td>In MPEG I, multiple audio streams can be multiplexed, and this function utilizes that.<br />
+			With this function, any audio stream can be played.<br />
+			For example, you can prepare streams such as BGM only or BGM + Voice, allowing the user to specify which mode to play in.<br />
+			However, because there is a time lag of about 2 seconds when switching audio streams, it is not very suitable for highly interactive purposes.<br />
+			It can be used for purposes such as user selection or changing video audio depending on the scene as mentioned above.</td>
 		</tr>
 
 	</tbody>
@@ -216,79 +216,79 @@
 <br />
 <br />
 
-<div class="title_bar"><a name="preparevideo">動画再生準備について ( preparevideo )</a></div>
-<p>preparevideo は、動画の1フレーム目を指定されたレイヤーに描画します。<br />
-これは、意図しない画像(メモリ上のごみや前回の画像など)が画面上に表示されるのを防ぐ目的で利用されます。<br />
-つまり、再生対象としたレイヤーを非表示にして、動画を openvideo で開いた後、preparevideo をコールし、wp で準備完了を待ち、準備できた後に再生対象レイヤーを表示状態にするような処理を記述することで、表示した時に動画の1フレーム目を表示することが出来ます。<br />
-なお、この機能はレイヤーモードの時のみ意味を持ちます。<br />
+<div class="title_bar"><a name="preparevideo">About Video Playback Preparation ( preparevideo )</a></div>
+<p>preparevideo draws the first frame of the video onto the specified layer.<br />
+This is used to prevent unintended images (memory garbage, previous images, etc.) from being displayed on the screen.<br />
+In other words, by hiding the target layer, opening the video with openvideo, calling preparevideo, waiting for preparation with wp, and then making the target layer visible after preparation is complete, you can display the first frame of the video the moment it is shown.<br />
+Note that this function is only meaningful in Layer Mode.<br />
 </p>
 
 <br />
 <br />
 
-<div class="title_bar"><a name="layermode">レイヤーモードでのレイヤー指定について</a></div>
-<p>レイヤーモードで動画を再生する場合、videolayer を使用して、描画対象レイヤーを指定します。<br />
-videolayer では、slotとchannel, page, layer が指定できます。 <br />
-slot は、se の buf に相当するもので、異なるビデオを同時に再生する時に、どのビデオに対する操作かを特定するためにあります。<br />
-複数の動画を同時に再生することはほとんどないと思いますので、通常は記述を省略し、0 が指定されるようにしておけば問題ありません。<br />
-channel は、出力するレイヤーを指定するためにあります。<br />
-1つの動画に付き2つまで出力するレイヤーを指定できるので、そのどちらに対する指定かを特定するために利用します。<br />
-2つ指定可能になっているのは、トランジションを利用するためです。<br />
-動画再生中にトランジションを実行すると、表と裏のレイヤーが入れ替わるため、片方にしか出力していないと、動画が非表示になってしまいます。<br />
-これを避けるため、動画再生中にトランジションを行う場合は、チャンネルの1と2に表と裏のレイヤーを設定しておきます。トランジションを行わないのであれば、表面だけ指定しておけば問題ありません。<br />
+<div class="title_bar"><a name="layermode">About Layer Specification in Layer Mode</a></div>
+<p>When playing video in Layer Mode, use videolayer to specify the drawing target layer.<br />
+In videolayer, you can specify slot, channel, page, and layer. <br />
+The slot is equivalent to the buf in se, and is used to identify which video the operation is for when playing different videos simultaneously.<br />
+Since it is unlikely that multiple videos will be played at the same time, it is usually fine to omit the description and let 0 be specified.<br />
+The channel exists to specify the layer to output to.<br />
+Up to two layers can be specified per video, so it is used to identify which of those two is being specified.<br />
+The reason two can be specified is to utilize transitions.<br />
+If a transition is executed while a video is playing, the front and back layers are swapped, so if it is only outputting to one side, the video will disappear.<br />
+To avoid this, when performing a transition during video playback, set the front and back layers to channels 1 and 2. If you are not performing transitions, specifying only the front side is sufficient.<br />
 </p>
 
 <br />
 <br />
 
-<div class="title_bar"><a name="end_of_video">動画終端での振る舞い</a></div>
-<p>ループを指定せずに動画を再生すると、最後まで再生したら動画は停止します。<br />
-動画の最後のフレームを表示したままゲームを進行したい場合、この動作は好ましくありません。<br />
-これを回避する最も簡単な方法はレイヤーモードを使用することです。<br />
-レイヤーモードでは、レイヤーに対して動画が描画されるため、最後のフレームの画像がそのままレイヤーに残ります。<br />
-そのため、特に意識することなく、最後のフレームを表示したままゲームを進行出来ます。<br />
-オーバーレイやミキサーの場合は、停止すると表示が消えてしまうため、最終フレームに達する前に一時停止しなければなりません。<br />
-これは、ピリオドイベントで実現できますが、本当に最終フレームにしてしまうと、停止してしまう可能性があるため、動画の末尾に数フレームダミーフレームを入れておき、少し通り越しても大丈夫なようにしておいた方が良いです。<br />
+<div class="title_bar"><a name="end_of_video">Behavior at the End of Video</a></div>
+<p>If you play a video without specifying a loop, the video will stop once it plays to the end.<br />
+If you want to proceed with the game while displaying the last frame of the video, this behavior is not ideal.<br />
+The easiest way to avoid this is to use Layer Mode.<br />
+In Layer Mode, since the video is drawn to a layer, the image of the last frame remains on the layer as is.<br />
+Therefore, you can proceed with the game while displaying the last frame without any special consideration.<br />
+In the case of Overlay or Mixer, the display disappears when stopped, so you must pause before reaching the final frame.<br />
+This can be achieved with a period event, but since it might stop if it hits the absolute final frame, it is better to include a few dummy frames at the end of the video so that it's okay even if it overshoots slightly. <br />
 </p>
 
 <br />
 <br />
 
-<div class="title_bar"><a name="layer_alpha">レイヤーモードで動画が表示されない現象について</a></div>
-<p>動画の再生対象としたレイヤーの表示タイプがアルファなどになっていると、動画が表示されないという事態が発生します。<br />
-これは、動画がアルファチャンネルを持っていない場合、アルファチャンネルの位置に不定データが書き込まれるためです。<br />
-レイヤー表示タイプがアルファになっている場合、この不定データがアルファ値として扱われるため、完全に透明になってしまったりします。<br />
-これを回避するためには、再生対象レイヤーの表示タイプをopaqueにしてやります。<br />
-そうすると動画が表示されるようになります。<br />
-ただ、KAGではopaqueにし辛いので、代わりに freeimage を呼んでも同様の効果が得られるようです。<br />
+<div class="title_bar"><a name="layer_alpha">Regarding the Phenomenon Where Video is Not Displayed in Layer Mode</a></div>
+<p>If the display type of the layer targeted for video playback is set to alpha or similar, the video may not be displayed.<br />
+This is because if the video does not have an alpha channel, undefined data is written to the alpha channel position.<br />
+If the layer display type is set to alpha, this undefined data is treated as the alpha value, which can make it completely transparent.<br />
+To avoid this, set the display type of the target layer to opaque.<br />
+Doing so will make the video visible.<br />
+However, since it is difficult to use opaque in KAG, calling freeimage instead seems to achieve a similar effect.<br />
 </p>
 
 <br />
 <br />
 
-<div class="title_bar"><a name="mixer_mode">ミキシング再生</a></div>
-<p>ミキサーモードはその名の通り、他のレイヤーと動画をミキシングして再生することを実現できます。<br />
-ミキサーモードでミキシングに関係して指定できるのは、背景色、ブレンド率、ミキシング対象レイヤーです。<br />
-ミキシング対象レイヤーは、設定した瞬間の画像と動画がミキシングされます。<br />
-そのため、ミキシング対象レイヤーが更新されても、再度設定しない限り内容は更新されません。<br />
-ただ、毎フレームの更新時に設定をコールすると、かなりCPU負荷が高くなります。<br />
-CPU負荷を抑えるために、設定する場合は、更新された時のみに限定した方が良いです。<br />
-背景色は、ブレンド率を1.0未満にした場合にブレンドされる色です。<br />
-背景色を黒などに設定し、ブレンド率を変化させることで、フェードイン/アウトが実現できます。<br />
-当然、ミキシング対象レイヤーとのフェードイン/アウト可能です。<br />
-ミキシング対象レイヤーとのブレンド率やレイヤー位置はレイヤーの情報が使われます。<br />
-つまり、表示位置はレイヤーの位置にブレンド率はレイヤーの不透明度に依存します。<br />
-ただ、レイヤーとのブレンドは毎回指定する必要があるという仕様から、レイヤーとフェードイン/アウトをするとCPU負荷が高くなってしまいます。<br />
+<div class="title_bar"><a name="mixer_mode">Mixing Playback</a></div>
+<p>As the name suggests, Mixer Mode allows you to mix and play video with other layers.<br />
+Things that can be specified regarding mixing in Mixer Mode are background color, blend ratio, and target mixing layer.<br />
+The target mixing layer mixes the video with the image at the moment it was set.<br />
+Therefore, even if the target mixing layer is updated, the content will not be updated unless it is set again.<br />
+However, calling the setting at every frame update will result in quite high CPU load.<br />
+To keep CPU load down, it is better to limit settings to only when updates occur.<br />
+The background color is the color blended when the blend ratio is less than 1.0.<br />
+By setting the background color to black or similar and changing the blend ratio, fade-in/out can be achieved.<br />
+Naturally, fade-in/out with the target mixing layer is also possible.<br />
+The blend ratio and layer position for the target mixing layer use the layer's information.<br />
+That is, the display position depends on the layer's position and the blend ratio depends on the layer's opacity.<br />
+However, due to the specification that blending with the layer must be specified every time, performing a fade-in/out with a layer will increase CPU load.<br />
 </p>
 
 <br />
 <br />
 
-<div class="title_bar"><a name="seek_to_keyframe">キーフレームとシーク</a></div>
-<p>吉里吉里ではシークを高速に行うため、シーク可能位置をキーフレームに限定しています。<br />
-キーフレーム以外のフレームを指定した場合、指定フレームに最も近いキーフレームへシーク処理が行われます。<br />
-ただし、この動作は Codec 依存のため、しばしば意図しない動作が行われます。<br />
-そのため、シークを行うフレームへは必ずキーフレームを設定するようにした方が良いです。<br />
+<div class="title_bar"><a name="seek_to_keyframe">Keyframes and Seeking</a></div>
+<p>In Kirikiri, to perform seeking quickly, seekable positions are limited to keyframes.<br />
+If a frame other than a keyframe is specified, a seek operation to the keyframe closest to the specified frame is performed.<br />
+However, since this behavior depends on the Codec, unintended behavior often occurs.<br />
+Therefore, it is better to always set a keyframe at the frame where you intend to seek.<br />
 </p>
 
 <br />
@@ -302,4 +302,3 @@ CPU負荷を抑えるために、設定する場合は、更新された時の�
 
 </body>
 </html>
-

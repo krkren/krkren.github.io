@@ -1,35 +1,35 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>popupEx - ポップアップ表示</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard style for API reference" />
+<title>popupEx - Pop-up display</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">MenuItem.popupEx</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>ポップアップ表示</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_MenuItem.html">MenuItemクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Pop-up display</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_MenuItem.html">MenuItem class</a> method</dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">popupEx(<span class="arg">flags</span>, <span class="arg">x</span>, <span class="arg">y</span>, <span class="arg">hwnd</span>, <span class="arg">rect</span>, <span class="arg">menulist</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="popupExの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Arguments for popupEx">
 <tr><td valign="top"><span class="argname"></span></td>
 <td>flags</td></tr>
 <tr><td valign="top"><span class="argname">x,</span></td>
-<td>y  表示位置（スクリーン座標，省略時マウスカーソル位置）</td></tr>
+<td>y  Display position (screen coordinates; defaults to the mouse cursor position if omitted)</td></tr>
 <tr><td valign="top"><span class="argname">hwnd</span></td>
-<td>オーナウィンドウ（省略時インスタンス所属ウィンドウ）</td></tr>
+<td>Owner window (defaults to the window the instance belongs to if omitted)</td></tr>
 <tr><td valign="top"><span class="argname">rect</span></td>
-<td>オーバーラップ禁止範囲（%[ x, y, w, h ]，省略時禁止範囲無し）</td></tr>
+<td>Exclusion rectangle area where overlap is forbidden (%[ x, y, w, h ]; defaults to no exclusion area if omitted)</td></tr>
 <tr><td valign="top"><span class="argname">menulist</span></td>
-<td>メニュー一覧配列（MenuItemのインスタンスである必要はなく，辞書を並べても良い）</td></tr>
+<td>Menu list array (does not need to be instances of MenuItem; an array of dictionaries can also be used)</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>選択されたオブジェクト</dd>
-<dt>説明</dt>
-<dd>MenuItem.popupのようにウィンドウメニュー所属である必要はなく，また一覧も辞書の配列を渡すなどができる<br />この関数によるポップアップでのbmp*プロパティによるアイコン表示はされないので注意</dd>
+<dt>Return Value</dt>
+<dd>The selected object</dd>
+<dt>Description</dt>
+<dd>Unlike MenuItem.popup, it does not need to belong to a window menu, and you can also pass an array of dictionaries for the list.<br />Note that icons specified by the bmp* properties will not be displayed in pop-ups created by this function.</dd>
 </dl>
 </div>
 </body>

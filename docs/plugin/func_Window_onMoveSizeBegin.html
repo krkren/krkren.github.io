@@ -1,25 +1,25 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>onMoveSizeBegin - ■拡張イベント：リサイズ・移動開始通知/終了</title>
+<title>onMoveSizeBegin - ■Extended Event: Resize/Move Start Notification/End</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">Window.onMoveSizeBegin</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>■拡張イベント：リサイズ・移動開始通知/終了</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_Window.html">Windowクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>■Extended Event: Resize/Move Start Notification/End</dd>
+<dt>Type</dt>
+<dd>Method of the <a class="jump" href="class_Window.html">Window class</a></dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">onMoveSizeBegin()</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="onMoveSizeBeginの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Arguments of onMoveSizeBegin">
 </table></dd>
-<dt>戻り値</dt>
-<dd>なし (void)</dd>
-<dt>説明</dt>
-<dd>フレームやタイトルバーをドラッグ開始した時やAlt+SpaceでSやMを選んだ時（開始通知），<br />および移動やリサイズが終了した時（終了通知）にそれぞれ呼ばれる<br />onMovingやonResizing中に元のウィンドウ位置やサイズを参照したい時はここで保存しておくとよい<br />リサイズか移動かは WM_ENTERSIZEMOVE/WM_EXITSIZEMOVE の都合で判定不可</dd>
+<dt>Return Value</dt>
+<dd>None (void)</dd>
+<dt>Description</dt>
+<dd>Called when dragging of the frame or title bar starts, or when S or M is selected via Alt+Space (start notification), and when moving or resizing ends (end notification).<br />If you want to refer to the original window position or size during onMoving or onResizing, it is recommended to save them here.<br />Whether it is a resize or move cannot be determined due to the nature of WM_ENTERSIZEMOVE/WM_EXITSIZEMOVE.</dd>
 </dl>
 </div>
 </body>

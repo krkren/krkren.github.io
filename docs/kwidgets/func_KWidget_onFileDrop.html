@@ -1,32 +1,32 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>onFileDrop - 外部からファイルがドロップされた  デフォルト動作では、親のonFileDropを呼ぶ。 順ぐりに、子から親へメッセージがチェーンされ、 どこかのウィジェットが関数をオーバーライドして 処理を行うまでチェーンが続く</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard style for API reference" />
+<title>onFileDrop - File dropped from outside. The default behavior is to call the parent's onFileDrop. The message is chained sequentially from child to parent until some widget overrides the function and performs processing.</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">KWidget.onFileDrop</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>外部からファイルがドロップされた  デフォルト動作では、親のonFileDropを呼ぶ。 順ぐりに、子から親へメッセージがチェーンされ、 どこかのウィジェットが関数をオーバーライドして 処理を行うまでチェーンが続く</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_KWidget.html">KWidgetクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>File dropped from outside. The default behavior is to call the parent's onFileDrop. The message is chained sequentially from child to parent until some widget overrides the function and performs processing.</dd>
+<dt>Type</dt>
+<dd>Method of the <a class="jump" href="class_KWidget.html">KWidget class</a></dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">onFileDrop(<span class="arg">x</span>, <span class="arg">y</span>, <span class="arg">files</span>, <span class="arg">shift</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="onFileDropの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Arguments of onFileDrop">
 <tr><td valign="top"><span class="argname">x</span></td>
-<td>ファイルがドロップされた時のマウスのX座標</td></tr>
+<td>The mouse X-coordinate when the file was dropped</td></tr>
 <tr><td valign="top"><span class="argname">y</span></td>
-<td>ファイルがドロップされた時のマウスのY座標</td></tr>
+<td>The mouse Y-coordinate when the file was dropped</td></tr>
 <tr><td valign="top"><span class="argname">files</span></td>
-<td>ドロップされたファイル名が格納された配列(Array)オブジェクトです。</td></tr>
+<td>An Array object containing the names of the dropped files.</td></tr>
 <tr><td valign="top"><span class="argname">shift</span></td>
-<td>キーが押された時に同時に押されていたシフト系のキーの状態です。</td></tr>
+<td>The state of the shift-type modifier keys held down at the same time.</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>なし (void)</dd>
-<dt>説明</dt>
+<dt>Return Value</dt>
+<dd>None (void)</dd>
+<dt>Description</dt>
 <dd></dd>
 </dl>
 </div>

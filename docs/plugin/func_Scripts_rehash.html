@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>rehash - TJSDoRehash()を呼ぶ</title>
+<link href="api.css" type="text/css" rel="stylesheet" title="Standard Style for API Reference" />
+<title>rehash - Calls TJSDoRehash()</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">Scripts.rehash</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>TJSDoRehash()を呼ぶ</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_Scripts.html">Scriptsクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Calls TJSDoRehash()</dd>
+<dt>Type</dt>
+<dd>Method of the <a class="jump" href="class_Scripts.html">Scripts class</a></dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">rehash()</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="rehashの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="rehash arguments">
 </table></dd>
-<dt>戻り値</dt>
-<dd>なし (void)</dd>
-<dt>説明</dt>
-<dd>TJSCustomObjectベースのオブジェクトのハッシュテーブルサイズの再構築フラグを立てます。<br />（辞書やほとんどのクラスおよびインスタンスのオブジェクトが対象になります）<br /><br />解説：<br />ハッシュテーブルサイズはそのオブジェクトの持つ要素数により決定されます。<br />フラグが立った後，オブジェクトに何か書き込んだタイミングで再計算を行い，<br />テーブルサイズが変わった場合にのみ再構築が行われます。（サイズ＝2^(要素数のビット数+2)程度？）<br />普段，吉里吉里は定期的（アイドル時かつ前回から1.5秒以上経過している時）に<br />TJSDoRehash()が呼ばれているので特に気にする必要はありませんが，<br />アイドルを挟まずに大量に要素を追加する場合において<br />カウンタで何千～万回に1回等の間隔で呼び出すようにすると効果的かと思われます。</dd>
+<dt>Return Value</dt>
+<dd>None (void)</dd>
+<dt>Description</dt>
+<dd>Sets the hash table size reconstruction flag for objects based on TJSCustomObject.<br />(This applies to Dictionaries and most class and instance objects.)<br /><br />Explanation:<br />The hash table size is determined by the number of elements held by that object.<br />After the flag is set, a recalculation is performed the next time something is written to the object,<br />and reconstruction occurs only if the table size needs to change. (Size ≈ 2^(bits of element count + 2)?)<br />Normally, Kirikiri calls TJSDoRehash() periodically (during idle time and when at least 1.5 seconds have passed since the last call), so there is usually no need to worry about it.<br />However, when adding a large number of elements without returning to an idle state,<br />it may be effective to call this at intervals, such as once every several thousand or ten thousand additions using a counter.</dd>
 </dl>
 </div>
 </body>

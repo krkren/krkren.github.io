@@ -1,29 +1,29 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>sendStorage - リクエストの送信。送受信は非同期実行されます。</title>
+<title>sendStorage - Sends a request. Transmission and reception are executed asynchronously.</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">HttpRequest.sendStorage</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>リクエストの送信。送受信は非同期実行されます。</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_HttpRequest.html">HttpRequestクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Sends a request. Transmission and reception are executed asynchronously.</dd>
+<dt>Type</dt>
+<dd>Method of the <a class="jump" href="class_HttpRequest.html">HttpRequest class</a></dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">sendStorage(<span class="arg">storage</span>, <span class="arg">storeStorage</span>)</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="sendStorageの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Arguments of sendStorage">
 <tr><td valign="top"><span class="argname">storage</span></td>
-<td>送信するファイルデータ</td></tr>
+<td>File data to be sent</td></tr>
 <tr><td valign="top"><span class="argname">storeStrorage</span></td>
-<td>レスポンス保存先ファイル。指定された場合はプロパティ responseは 設定されません</td></tr>
+<td>Destination file to save the response. If specified, the response property will not be set.</td></tr>
 </table></dd>
-<dt>戻り値</dt>
-<dd>なし (void)</dd>
-<dt>説明</dt>
-<dd>エラー時も例外は発生しませんので、readyState と status で判定してください。</dd>
+<dt>Return Value</dt>
+<dd>None (void)</dd>
+<dt>Description</dt>
+<dd>No exception is thrown even in the event of an error, so please evaluate the result using readyState and status.</dd>
 </dl>
 </div>
 </body>

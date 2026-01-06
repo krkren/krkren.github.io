@@ -1,25 +1,25 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>registerExEvent - 拡張イベントを有効にする</title>
+<title>registerExEvent - Enable extended events</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">Window.registerExEvent</a></span></h1><div class="para">
 <dl>
-<dt>機能/意味</dt>
-<dd>拡張イベントを有効にする</dd>
-<dt>タイプ</dt>
-<dd><a class="jump" href="class_Window.html">Windowクラス</a>のメソッド</dd>
-<dt>構文</dt>
+<dt>Function/Meaning</dt>
+<dd>Enable extended events</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Window.html">Window class</a> method</dd>
+<dt>Syntax</dt>
 <dd><span class="funcdecl">registerExEvent()</span></dd>
-<dt>引数</dt>
-<dd><table rules="all" frame="box" cellpadding="3" summary="registerExEventの引数">
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Arguments of registerExEvent">
 </table></dd>
-<dt>戻り値</dt>
-<dd>なし (void)</dd>
-<dt>説明</dt>
-<dd>このウィンドウのインスタンスについて<br />説明に「■拡張イベント：」と記述されているコールバックが有効になる<br /><br />ただし、下記のコールバックについては<br />この関数を実行した時点でインスタンスに存在しない場合には発生しないので注意<br />（ない場合は後からインスタンスに関数を追加しても呼ばれない）<br />onMoving      移動中<br />onMove        移動<br />onResizing    リサイズ中<br />onNcMouseMove NonClient領域でのマウス移動</dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Description</dt>
+<dd>For this window instance, callbacks described as "■ Extended Event:" in the description will be enabled.<br /><br />However, please note that the following callbacks will not occur if they do not exist in the instance at the time this function is executed.<br />(If they are missing, they will not be called even if the function is added to the instance later.)<br />onMoving      Moving<br />onMove        Moved<br />onResizing    Resizing<br />onNcMouseMove Mouse movement in the non-client area</dd>
 </dl>
 </div>
 </body>
