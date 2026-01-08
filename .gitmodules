@@ -1,3 +1,5 @@
 [submodule "docs/kirikiriz"]
 	path = docs/kirikiriz
 	url = https://github.com/krkren/krkrz-documents.git
+[submodule "kirikiriz"]
+	branch = master
