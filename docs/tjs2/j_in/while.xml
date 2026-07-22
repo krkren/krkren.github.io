@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <doc>
-<title>while ステートメント</title>
+<title>while statement</title>
 
 <para>
-<ptitle>while ステートメント</ptitle>
-　<kw>while</kw> ステートメントは、指定された条件が真である間、ステートメントまたはブロックを繰り返し実行するものです。ループを作成することができます。<r/>
-　構文は以下の通りです。<r/>
+<ptitle>while statement</ptitle>
+　The <kw>while</kw> statement repeatedly executes a statement or block while a specified condition is true. It allows you to create a loop.<r/>
+　The syntax is as follows:<r/>
 <bq>
 while(expression)<r/>
-	ステートメントまたはブロック<r/>
+	statement or block<r/>
 </bq>
 <r/>
-　「ステートメントまたはブロック」は、条件式である expression が真である限り、繰り返し実行されます。<r/>
+　The "statement or block" is repeatedly executed as long as the conditional expression `expression` is true.<r/>
 <r/>
-　動作としては、<r/>
-(1) まず、expression を評価し、偽であれば、ステートメントまたはブロックは実行されない<r/>
-(2) ステートメントまたはブロックを実行する<r/>
-(3) expression を評価し、その結果が真ならば (2) へ、そうでなければ while ステートメント終了<r/>
+　Its operation is as follows:<r/>
+(1) First, `expression` is evaluated; if it is false, the statement or block is not executed<r/>
+(2) Execute the statement or block<r/>
+(3) Evaluate `expression`; if the result is true, go to (2); otherwise, the `while` statement ends<r/>
 <r/>
-　つまり、最初から expression が偽の場合はステートメントまたはブロックは実行されません。また、常に expression が評価されるわけではなく、ステートメントまたはブロックを一回実行するごとに expression の真偽がチェックされます。<r/>
-　また、(3) の時点で、ブロックの場合はいったんブロックから抜けます ( 変数などは消去されると言うこと )。<r/>
+　In other words, if `expression` is false from the beginning, the statement or block is not executed. Also, `expression` is not continuously evaluated; its truth value is checked once every time the statement or block is executed.<r/>
+　Also, at step (3), if it is a block, it temporarily exits the block (meaning variables and such are cleared).<r/>
 <example>
 	while(func()) ;<r/>
-	/* func() が真の間、何もしないで func() を評価し続ける */<r/>
+	/* As long as func() is true, do nothing and keep evaluating func() */<r/>
 <r/>
 	while(func()) i++;<r/>
-	/* func() が真の間、i++ を実行し続ける */<r/>
+	/* As long as func() is true, keep executing i++ */<r/>
 <r/>
-	while(i &lt; 5) // i が 5 より小さい間<r/>
+	while(i &lt; 5) // While i is less than 5<r/>
 	{<r/>
 		func(i);<r/>
 		i++;<r/>
@@ -37,28 +37,28 @@ while(expression)<r/>
 
 <para>
 <ptitle>break</ptitle>
-　break ステートメントは、while を途中で終了させたい場合に記述します。<r/>
+　The break statement is written when you want to terminate the while loop prematurely.<r/>
 <example>
-	while(true) // break が実行されない限りは無限ループ<r/>
+	while(true) // Infinite loop unless break is executed<r/>
 	{<r/>
-		if(func()) break; // func() が真ならばwhile終了<r/>
-		func2(); // ↑で break が実行されなければここにくる<r/>
+		if(func()) break; // If func() is true, end while<r/>
+		func2(); // Comes here if break is not executed above<r/>
 	}<r/>
-	// break が実行されると、ここにくる<r/>
+	// Comes here when break is executed<r/>
 </example>
 </para>
 
 <para>
 <ptitle>continue</ptitle>
-　continue ステートメントは、途中で、条件式の評価からやり直したいときに記述します。<r/>
-　continue が実行されると、(3) に実行が移ります。<r/>
+　The continue statement is written when you want to restart from the evaluation of the conditional expression mid-way.<r/>
+　When continue is executed, execution moves to (3).<r/>
 <example>
 	var i = 0;<r/>
 	while(i &lt; 5)<r/>
 	{<r/>
 		if(func1()) continue;<r/>
-		// func1() が true ならば、i &lt; 5 の条件式チェックがされ、真ならば<r/>
-		// またブロックの先頭から実行される<r/>
+		// If func1() is true, the condition i &lt; 5 is checked, and if true,<r/>
+		// execution resumes from the beginning of the block<r/>
 		func2();<r/>
 		i++;<r/>
 	}<r/>
@@ -66,17 +66,16 @@ while(expression)<r/>
 </para>
 
 <para>
-<ptitle>do縲忤hile</ptitle>
-　do縲忤hile ステートメントは、while ステートメントと同じですが、最初に条件式のチェックを行いません。<r/>
-　構文は以下の通りです。<r/>
+<ptitle>do...while</ptitle>
+　The do...while statement is the same as the while statement, but it does not check the conditional expression at the beginning.<r/>
+　The syntax is as follows:<r/>
 <bq>
 do<r/>
-	ステートメントまたはブロック<r/>
+	statement or block<r/>
 while(expression);<r/>
 </bq>
 <r/>
-　最初に条件式をチェックしないため、do の時点で条件式が偽でも「ステートメントまたはブロック」は実行されます。<r/>
-　いったん「ステートメントまたはブロック」が実行されれば条件式がチェックされ、偽ならばループを抜け、真ならば再びステートメントまたはブロックが実行され、これを繰り返します。<r/>
+　Because it does not check the conditional expression first, the "statement or block" will be executed even if the conditional expression is false at the point of `do`.<r/>
+　Once the "statement or block" is executed, the conditional expression is checked; if false, it exits the loop, and if true, the statement or block is executed again, repeating this process.<r/>
 </para>
 </doc>
-

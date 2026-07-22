@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <doc>
-<title>for ステートメント</title>
+<title>for statement</title>
 
 <para>
-<ptitle>for ステートメント</ptitle>
-　<tt>for</tt> ステートメントは、<tt>while</tt> ステートメントに似ていますが、より複雑なものです。<r/>
-　構文は以下の通りです。<r/>
+<ptitle>for statement</ptitle>
+　The <tt>for</tt> statement is similar to the <tt>while</tt> statement, but it is more complex.<r/>
+　The syntax is as follows:<r/>
 <tt>
-for(第１節;第２節;第３節)
-	ステートメントまたはブロック
+for(clause 1; clause 2; clause 3)
+	statement or block
 </tt>
 <r/>
-　ここで、第１節には、ループに入る前に実行したい式を指定します。ここには変数宣言を行うこともできて、ここで宣言した変数は、ループの間中有効なものとされます ( ループを抜けると削除されます )。省略することもできます。<r/>
+　Here, in clause 1, you specify the expression you want to execute before entering the loop. Variable declarations can also be performed here, and variables declared here remain valid throughout the loop (they are deleted once the loop is exited). This clause can also be omitted.<r/>
 <r/>
-　第２節には条件式を指定します。この条件式が <tt>true</tt> の間、ステートメントまたはブロックが繰り返し実行されます。省略すると、常に真であると見なされます。<r/>
+　In clause 2, you specify a conditional expression. As long as this conditional expression is <tt>true</tt>, the statement or block is executed repeatedly. If omitted, it is always considered to be true.<r/>
 <r/>
-　第３節には、ステートメントまたはブロックの最後で実行したい式を指定します。省略することもできます。<r/>
+　In clause 3, you specify the expression you want to execute at the end of the statement or block. This clause can also be omitted.<r/>
 <r/>
-　動作としては、<r/>
-(1) まず、第１節を実行する<r/>
-(2) 第２節を評価し、偽ならばステートメントまたはブロックは評価されずに終わる<r/>
-(3) ステートメントまたはブロックを実行する<r/>
-(4) 第３節を実行する<r/>
-(5) 第２節を評価し、偽ならばループを抜ける<r/>
-(6) (3) から繰り返す<r/>
+　The execution flow is as follows:<r/>
+(1) First, execute clause 1<r/>
+(2) Evaluate clause 2; if false, end without evaluating the statement or block<r/>
+(3) Execute the statement or block<r/>
+(4) Execute clause 3<r/>
+(5) Evaluate clause 2; if false, exit the loop<r/>
+(6) Repeat from (3)<r/>
 <r/>
-　ブロック中に <tt><kw>break</kw></tt> ステートメントがあった場合は、その時点でループから抜けます。<tt><kw>continue</kw></tt> ステートメントがあった場合は、(4) に飛びます。<r/>
+　If a <tt><kw>break</kw></tt> statement is encountered inside the block, the loop is exited at that point. If a <tt><kw>continue</kw></tt> statement is encountered, it jumps to (4).<r/>
 <r/>
 <example>
 	var i,a=1;<r/>
@@ -37,8 +37,8 @@ for(第１節;第２節;第３節)
 	var i;<r/>
 	for(i=0;i&lt;10;i++)<r/>
 	{<r/>
-		if(obj[i]==0) continue; // continue しても i++ が実行される<r/>
-		if(obj[i]==1) break; // break するとその場で抜ける<r/>
+		if(obj[i]==0) continue; // i++ is executed even when continued<r/>
+		if(obj[i]==1) break; // exits immediately on break<r/>
 		func(obj[i]);<r/>
 	}<r/>
 </example>

@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <doc>
-<title>Exception クラス</title>
+<title>Exception Class</title>
 
 <para>
-<ptitle>Exception クラス</ptitle>
-　Exception クラスは、<kw>例外オブジェクト</kw>を生成するためのクラスです。<r/>
-　コンストラクタの構文は以下の通りです。<r/>
+<ptitle>Exception Class</ptitle>
+　The Exception class is a class for generating <kw>exception objects</kw>.<r/>
+　The constructor syntax is as follows:<r/>
 <bq>
-new Exception(&lt;メッセージ>)<r/>
+new Exception(&lt;message>)<r/>
 </bq>
-　メッセージは、生成されたオブジェクトの message プロパティに設定されます。<r/>
-　また、trace プロパティには、例外が発生するまでに通過した関数などの情報が記録されています ( 人間が読むための文字列として記録されています )。<r/>
-　スクリプト以外の要因で発生する例外オブジェクトはすべて Exception クラスのオブジェクトです ( たとえば 除算エラー例外など )。<r/>
+　The message is set to the message property of the created object.<r/>
+　In addition, the trace property records information such as functions passed through up to the point where the exception occurred (recorded as a human-readable string).<r/>
+　All exception objects caused by factors other than scripts are Exception class objects (for example, division by zero exceptions, etc.).<r/>
 <r/>
-　将来、利用可能なプロパティを増やすかもしれません。<r/>
+　More available properties may be added in the future.<r/>
 </para>
 
 <para>
 <ptitle>message</ptitle>
-　message プロパティ は、例外の理由を表す文字列を表すプロパティです。<r/>
+　The message property is a property that represents a string indicating the reason for the exception.<r/>
 </para>
 
 

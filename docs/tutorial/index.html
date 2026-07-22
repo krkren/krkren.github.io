@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>吉里吉里Z / チュートリアル / STG を作る</title>
+<title>Kirikiri Z / Tutorial / Creating an STG</title>
 <link rel="stylesheet" href="styles-site.css" type="text/css" />
 
 <script type="text/javascript" src="shCore.js"></script>
@@ -15,17 +15,17 @@
 <body>
 <a name="top"></a>
 <div id="container">
-<div id="title-banner"><h1>吉里吉里Z / チュートリアル / STG を作る</h1></div>
+<div id="title-banner"><h1>Kirikiri Z / Tutorial / Creating an STG</h1></div>
 
 <div class="content">
-<div class="title_bar"><a name="download">Windowの表示</a></div>
+<div class="title_bar"><a name="download">Displaying a Window</a></div>
 <p>
-ウィンドウを表示して背景画像を読み込みます。<br />
-ここでは特に詳しい説明はしません。<br />
-徐々に説明していきます。<br />
-とりあえずは、ここでは以下のスクリプトをそのままstartup.tjsに保存してください。<br />
-左の行番号の部分は不要です。<br />
-以後このファイルを修正して、作っていきます。<br />
+Display a window and load a background image.<br />
+We won't go into detailed explanations here.<br />
+We will explain things step-by-step.<br />
+For now, please save the following script as is to startup.tjs.<br />
+The line numbers on the left are not needed.<br />
+From here on, we will modify this file as we build.<br />
 </p>
 <pre class="brush: as3; tab-size: 4; toolbar: false; class-name: 'script_border'">
 class MainWindow extends Window {
@@ -46,13 +46,13 @@ mainwin.visible = true;
 </pre>
 
 <br />
-<div class="title_bar"><a name="onlinehelp">マウス位置に画像表示</a></div>
+<div class="title_bar"><a name="onlinehelp">Displaying an Image at the Mouse Position</a></div>
 <p>
-自機としてマウスの位置に画像を表示してみます。<br />
-まず、画像を表示するレイヤーが必要です。<br />
-3行目でレイヤーを表すメンバ変数を追加しています。<br />
-14行目～18行目でレイヤーを生成して、画像を読み込んでいます。<br />
-20行目から22行目でマウスの位置に合わせて画像を動かしています。<br />
+Let's display an image at the mouse position to serve as the player's ship.<br />
+First, we need a layer to display the image.<br />
+Line 3 adds a member variable representing the layer.<br />
+Lines 14 to 18 create the layer and load the image.<br />
+Lines 20 to 22 move the image according to the mouse position.<br />
 </p>
 <pre class="brush: as3; tab-size: 4; toolbar: false; highlight: [3,13,14,15,16,17,18,20,21,22]; class-name: 'script_border'">
 class MainWindow extends Window {
@@ -83,15 +83,15 @@ mainwin.visible = true;
 </pre>
 
 <br />
-<div class="title_bar"><a name="onlinehelp">マウス中心に合わせて表示</a></div>
+<div class="title_bar"><a name="onlinehelp">Displaying Centered on the Mouse</a></div>
 <p>
-前述のスクリプトでは、マウスの位置を左上隅として画像が表示され、自機がカーソル位置の右下に表示されてしまい不格好です。<br />
-そこで、マウスの位置に合うように位置を調整します。<br />
-レイヤーは幅の半分をマウスの位置から引いてやれば中心位置に合うように表示されます。<br />
+In the previous script, the image is displayed with the mouse position as its top-left corner, making the player's ship appear awkward to the lower-right of the cursor.<br />
+Therefore, we adjust the position so that it aligns with the mouse position.<br />
+Subtracting half of the layer's width and height from the mouse position will display it centered on the cursor.<br />
 </p>
 <pre class="brush: as3; tab-size: 4; toolbar: false; highlight: [4]; class-name: 'script_border'">
 class MainWindow extends Window {
-	// 省略
+	// Omitted
 	function onMouseMove(x, y, shift) {
 		movelayer.setPos( x-movelayer.width/2, y-movelayer.height/2 );
 	}
@@ -99,16 +99,16 @@ class MainWindow extends Window {
 </pre>
 
 <br />
-<div class="title_bar"><a name="onlinehelp">クリックで弾を発射する</a></div>
+<div class="title_bar"><a name="onlinehelp">Firing Bullets on Click</a></div>
 <p>
-自機と同じようにして弾のレイヤーを追加します。<br />
-4行目と22行目～26行目です。<br />
-弾は発射されるまで表示したくないので、visible = false にして、表示しないようにします。<br />
-28行目で垂直同期待ちを有効にします。<br />
-29行目でContinuousHandlerにハンドラを追加します。<br />
-31行目～33行目でContinuousHandlerからハンドラを外します。<br />
-37行目～40行目でクリックされたら、クリックされた位置に弾を表示します。<br />
-41行目から47行目で弾の移動を行います。<br />
+Add a bullet layer in the same way as the player's ship.<br />
+This corresponds to line 4 and lines 22 to 26.<br />
+We don't want the bullet to display until it is fired, so set visible = false to keep it hidden.<br />
+Line 28 enables waiting for vertical sync (VSync).<br />
+Line 29 adds a handler to ContinuousHandler.<br />
+Lines 31 to 33 remove the handler from ContinuousHandler.<br />
+Lines 37 to 40 display the bullet at the clicked position when clicked.<br />
+Lines 41 to 47 handle moving the bullet.<br />
 </p>
 <pre class="brush: as3; tab-size: 4; toolbar: false; highlight: [4,21,22,23,24,25,26,27,28,29,31,32,33,37,38,39,40,41,42,43,44,45,46,47]; class-name: 'script_border'">
 class MainWindow extends Window {

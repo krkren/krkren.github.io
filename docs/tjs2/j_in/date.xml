@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <doc>
-<title>Date クラス</title>
+<title>Date Class</title>
 
 <para>
-<ptitle>Date クラス</ptitle>
-　文字列 から Date オブジェクトを作る機能とオブジェクトから 文字列を作る機能が未実装ですが、他は JavaScript の Date とほぼ互換です。<r/>
+<ptitle>Date Class</ptitle>
+　Although the features to create a Date object from a string and to create a string from an object are not implemented, it is otherwise mostly compatible with JavaScript's Date.<r/>
 <r/>
-　コンストラクタの構文は以下の通りです。<r/>
+　The constructor syntax is as follows:<r/>
 <bq>
 new Date();<r/>
-new Date(&lt;日付文字列>);<r/>
-new Date(&lt;年>, &lt;月(0縲鰀)=0>, &lt;日=1>, &lt;時=0>, &lt;分=0>, &lt;秒=0>);<r/>
+new Date(&lt;date string>);<r/>
+new Date(&lt;year>, &lt;month(0...)=0>, &lt;day=1>, &lt;hour=0>, &lt;minute=0>, &lt;second=0>);<r/>
 </bq>
-　１番目の構文には引数は必要ありません。この場合は、このコンストラクタが実行された時点での現在の日付時間を保持します。<r/>
-　２番目の構文は日付文字列を指定するものです。日付文字列は ANSI C の asctime() 書式のもの、RFC1123 で定義されているもの、RFC1036 で定義されているもの、"年/月/日 時:分:秒" の形式のいずれかを指定する必要があります。日付文字列の認識は自動で行われ、ある程度の書式の変形には対応しますが、あまりに想定している書式と異なる場合は認識できない場合があります。<r/>
-　３番目の構文は年月日時分秒を指定するものです。<r/>
+　The first syntax requires no arguments. In this case, it holds the current date and time at the moment the constructor is executed.<r/>
+　The second syntax specifies a date string. The date string must be specified in one of the following formats: ANSI C asctime() format, defined in RFC1123, defined in RFC1036, or "year/month/day hour:minute:second" format. Date strings are recognized automatically, and while variations in format are supported to some extent, strings that differ significantly from the expected format may not be recognized.<r/>
+　The third syntax specifies the year, month, day, hour, minute, and second.<r/>
 <r/>
-　実装されているメソッド(JavaScript互換) :<r/>
-setYear/getYear (地域時間による4桁の西暦年の設定/取得)<r/>
-setMonth/getMonth (地域時間による月の設定/取得)<r/>
-setDate/getDate (地域時間による日の設定/取得)<r/>
-setHours/getHours (地域時間による時の設定/取得)<r/>
-setMinutes/getMinutes (地域時間による分の設定/取得)<r/>
-setSeconds/getSeconds (地域時間による秒の設定/取得)<r/>
-setTime/getTime (1970年1月1日0:00からの経過ミリ秒の設定/取得)<r/>
-getDay (曜日の取得)<r/>
-parse (日付文字列の解釈)<r/>
+　Implemented methods (JavaScript compatible) :<r/>
+setYear/getYear (Set/get the 4-digit AD year in local time)<r/>
+setMonth/getMonth (Set/get the month in local time)<r/>
+setDate/getDate (Set/get the day of the month in local time)<r/>
+setHours/getHours (Set/get the hour in local time)<r/>
+setMinutes/getMinutes (Set/get the minute in local time)<r/>
+setSeconds/getSeconds (Set/get the second in local time)<r/>
+setTime/getTime (Set/get the elapsed milliseconds since January 1, 1970 0:00)<r/>
+getDay (Get the day of the week)<r/>
+parse (Parse a date string)<r/>
 </para>
 </doc>
-

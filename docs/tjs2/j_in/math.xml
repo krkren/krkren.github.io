@@ -1,40 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <doc>
-<title>Math クラス</title>
+<title>Math Class</title>
 
 <para>
-<ptitle>Math クラス</ptitle>
-　JavaScript の Math とほぼ互換です。<r/>
+<ptitle>Math Class</ptitle>
+It is almost compatible with JavaScript's Math.<r/>
 <r/>
-実装されているメソッド :<r/>
-abs (絶対値の取得)<r/>
-acos (アーク コサイン)<r/>
-asin (アーク サイン)<r/>
-atan (アーク タンジェント)<r/>
-atan2 (2変数のアーク タンジェント)<r/>
-ceil (切り上げ)<r/>
-floor (切り捨て)<r/>
-exp (<i>e</i>のn乗)<r/>
-log (自然対数)<r/>
-max (二つの値の大きい方)<r/>
-min (二つの値の小さい方)<r/>
-random (0以上1未満の乱数)<r/>
-pow (乗数)<r/>
-round(整数へのまるめ)<r/>
-sin (サイン)<r/>
-cos (コサイン)<r/>
-tan (タンジェント)<r/>
-sqrt (平方根)<r/>
+Implemented methods:<r/>
+abs (Get absolute value)<r/>
+acos (Arc cosine)<r/>
+asin (Arc sine)<r/>
+atan (Arc tangent)<r/>
+atan2 (Arc tangent of two variables)<r/>
+ceil (Round up)<r/>
+floor (Round down)<r/>
+exp (<i>e</i> to the power of n)<r/>
+log (Natural logarithm)<r/>
+max (The larger of two values)<r/>
+min (The smaller of two values)<r/>
+random (Random number greater than or equal to 0 and less than 1)<r/>
+pow (Power)<r/>
+round (Rounding to an integer)<r/>
+sin (Sine)<r/>
+cos (Cosine)<r/>
+tan (Tangent)<r/>
+sqrt (Square root)<r/>
 <r/>
-実装されているプロパティ :<r/>
+Implemented properties:<r/>
 E (<i>e</i>)<r/>
 LN10 (log(10))<r/>
 LN2 (log(2))<r/>
-LOG10E (10を底とした<i>e</i>の対数)<r/>
-LOG2E (2を底とした<i>e</i>の対数)<r/>
+LOG10E (Base-10 logarithm of <i>e</i>)<r/>
+LOG2E (Base-2 logarithm of <i>e</i>)<r/>
 PI (π)<r/>
 SQRT1_2 (sqrt(1/2))<r/>
 SQRT2 (sqrt(2))<r/>
 </para>
 </doc>
-

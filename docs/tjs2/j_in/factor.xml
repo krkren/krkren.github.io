@@ -1,88 +1,88 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <doc>
-<title>項</title>
+<title>Terms</title>
 
 <para>
-<ptitle>項</ptitle>
-　項は、式評価の中でもっとも最高の優先順位にあるものです。これらは、通常の即値、識別子 <comlink href="token"/> の他、以下のものがあります。<r/>
+<ptitle>Terms</ptitle>
+　Terms have the highest precedence in expression evaluation. In addition to ordinary immediate values and identifiers <comlink href="token"/>, these include the following:<r/>
 </para>
 
 <para>
-<ptitle>true と false</ptitle>
-　<tt>true</tt> と <tt>false</tt> ( <kw>真と偽</kw> ) は、それぞれ <tt>1</tt> と <tt>0</tt> の値を持つ整数値として扱われます。<r/>
+<ptitle>true and false</ptitle>
+　<tt>true</tt> and <tt>false</tt> ( <kw>true and false</kw> ) are treated as integer values with the values <tt>1</tt> and <tt>0</tt>, respectively.<r/>
 <r/>
-　<tt>true</tt> および <tt>false</tt> と、その他の式を比較することは避けてください。たとえば、<tt>if(true != getBoolean())</tt> のような事はせず、<tt>if(!getBoolen())</tt> のように記述してください。論理式では「0 が偽」、「0 以外が真」であって、「<tt>1</tt> が 真」では無く、また、TJS2 は 論理型(Boolean)を持っていないため、自動的な数値←→論理型の型変換が行われないためです。<r/>
+　Please avoid comparing other expressions with <tt>true</tt> or <tt>false</tt>. For example, do not do something like <tt>if(true != getBoolean())</tt>, but write <tt>if(!getBoolen())</tt> instead. This is because in logical expressions, "0 is false" and "non-zero is true", rather than "<tt>1</tt> is true", and TJS2 does not have a Boolean type, so automatic conversions between numeric and Boolean types are not performed.<r/>
 </para>
 
 <para>
 <ptitle>void</ptitle>
-　<tt>void</tt> は、「なにもない」を示します。「なにもない」ことを表す様々な場面で使用されます。<tt>null</tt> とは違います。<r/>
-　宣言したての変数 (何も代入されていない変数) は、この値です。<r/>
-　文字列として扱われた場合、空文字列 ( '' )になります。数値として扱われた場合、 0 になります。<r/>
+　<tt>void</tt> indicates "nothing". It is used in various situations to represent "nothing". It is different from <tt>null</tt>.<r/>
+　Newly declared variables (variables to which nothing has been assigned) have this value.<r/>
+　When treated as a string, it becomes an empty string ( '' ). When treated as a number, it becomes 0.<r/>
 <r/>
-　<tt>void</tt> 同士の比較には <tt>===</tt> か <tt>!==</tt> ( 識別 )  演算子を使うことをおすすめします。<r/>
+　We recommend using the <tt>===</tt> or <tt>!==</tt> (identity) operator when comparing <tt>void</tt> values with each other.<r/>
 </para>
 
 <para>
 <ptitle>null</ptitle>
-　<tt>null</tt> は、オブジェクトではあるが「なんのオブジェクトも示していない」とうことを示します。<tt>void</tt> とは違います。<r/>
-　null オブジェクトにアクセスしようとするとエラーになります。<r/>
-　incontextof 演算子を用いて コンテキストを null に変更すると、その関数は、呼び出した位置のコンテキスト上で実行されるようになります。<r/>
+　<tt>null</tt> indicates an object, but one that "points to no object". It is different from <tt>void</tt>.<r/>
+　Attempting to access a null object will result in an error.<r/>
+　If you change the context to null using the incontextof operator, the function will execute in the context of the location where it was called.<r/>
 <example>
 	var objmethod = obj.method;<r/>
-	objmethod(); // obj のコンテキスト上で実行される<r/>
-	objmethod = objmethod incontextof null; // コンテキストを null に変更<r/>
-	objmethod(); // this (つまり呼び出した位置におけるコンテキスト) 上で実行される<r/>
+	objmethod(); // Executed in the context of obj<r/>
+	objmethod = objmethod incontextof null; // Change context to null<r/>
+	objmethod(); // Executed on this (that is, the context at the calling location)<r/>
 </example>
 </para>
 
 <para>
 <ptitle>Infinity</ptitle>
-　<tt>Infinity</tt> は、無限大を表します。負の無限大を表す場合は <tt>-Infinity</tt> です。<r/>
+　<tt>Infinity</tt> represents infinity. To represent negative infinity, use <tt>-Infinity</tt>.<r/>
 </para>
 
 <para>
 <ptitle>NaN</ptitle>
-　<tt>NaN</tt> は、非数 (Not a Number) を表します。非数は計算の結果が無効な場合などに得られる数値です。<r/>
+　<tt>NaN</tt> represents NaN (Not a Number). Non-numbers are numeric values obtained when the result of a calculation is invalid, etc.<r/>
 </para>
 
 <para>
 <ptitle>super</ptitle>
-　<tt>super</tt> は、クラスのメソッド/プロパティ内で、そのクラスのスーパークラスを表します。クラスのメソッド/プロパティではないところ、あるいは多重継承を行っているクラス内で参照しようとするとエラーになります。<r/>
+　<tt>super</tt> represents the superclass of a class inside that class's methods or properties. Attempting to reference it outside of a class method/property, or within a class using multiple inheritance, will result in an error.<r/>
 </para>
 
 <para>
 <ptitle>global</ptitle>
-　<tt>global</tt> は、グローバルのオブジェクトを表します。すべてのブロックの外で宣言された変数や、クラス、クラスのメソッドでない関数などにアクセスできます。<r/>
+　<tt>global</tt> represents the global object. It allows access to variables declared outside of all blocks, classes, functions that are not class methods, etc.<r/>
 <r/>
 <example>
 	var v;<r/>
 	function test(v)<r/>
 	{<r/>
-		global.v=v;  // global の v に、引数の v を設定する<r/>
+		global.v=v;  // Set the argument v to global's v<r/>
 	}<r/>
 </example>
 </para>
 
 <para>
 <ptitle>this</ptitle>
-　<tt>this</tt> は、クラスのメソッドやプロパティ内で、通常、そのクラスのオブジェクト自身を表します。<r/>
-　呼び出し時に明示的あるいは暗黙的に指定された「コンテキスト」が <tt>this</tt> として指定されます。<r/>
+　<tt>this</tt> usually represents the object itself of a class inside that class's methods or properties.<r/>
+　The "context" specified explicitly or implicitly at the time of invocation is specified as <tt>this</tt>.<r/>
 </para>
 
 <para>
-<ptitle>式中関数</ptitle>
-　<tt>function</tt> を使って、式中に関数を書くことができます。<link href="function" /> を参照してください。<r/>
+<ptitle>In-expression Functions</ptitle>
+　You can write a function within an expression using <tt>function</tt>. Please refer to <link href="function" />.<r/>
 </para>
 
 <para>
-<ptitle>式中配列</ptitle>
-　<tt><kw>[ ]</kw></tt> を使って、式中に <tt>Array</tt> クラスのオブジェクトをその場で記述することができます。<link href="array"/> を参照してください。<r/>
+<ptitle>In-expression Arrays</ptitle>
+　You can write an object of the <tt>Array</tt> class on the spot within an expression using <tt><kw>[ ]</kw></tt>. Please refer to <link href="array"/>.<r/>
 </para>
 
 <para>
-<ptitle>式中辞書配列</ptitle>
-　<tt><kw>%[ ]</kw></tt> を使って、式中に <tt>Dictionary</tt> クラスのオブジェクトをその場で記述することができます。<link href="dictionary"/> を参照してください。<r/>
+<ptitle>In-expression Dictionary Arrays</ptitle>
+　You can write an object of the <tt>Dictionary</tt> class on the spot within an expression using <tt><kw>%[ ]</kw></tt>. Please refer to <link href="dictionary"/>.<r/>
 </para>
 </doc>

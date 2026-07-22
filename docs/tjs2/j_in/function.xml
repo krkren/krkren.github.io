@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <doc>
-<title>関数</title>
+<title>Functions</title>
 
 <para>
-<ptitle>関数</ptitle>
-　TJS2 の関数は<kw>サブルーチン</kw>とほぼ同義です。値を返すことのない場合も関数として扱います。<r/>
-　また、特にクラスやオブジェクトのメンバとなっている関数を「<kw>メソッド</kw>」と呼ぶことがあります。<r/>
+<ptitle>Functions</ptitle>
+　In TJS2, functions are almost synonymous with <kw>subroutines</kw>. Even cases that do not return a value are treated as functions.<r/>
+　Additionally, functions that are members of a class or object in particular are sometimes called "<kw>methods</kw>".<r/>
 </para>
 
 <para>
-<ptitle>関数の書き方</ptitle>
-　関数は、以下の書式で書くことができます。<r/>
+<ptitle>How to Write Functions</ptitle>
+　Functions can be written in the following format:<r/>
 <bq>
-	function 関数名 ( 引数リスト )<r/>
+	function function_name ( argument_list )<r/>
 	{<r/>
-		関数の内容<r/>
+		function content<r/>
 	}<r/>
 </bq>
 <r/>
-　まず、関数を定義するには、<kw>function</kw> を書きます。そのあとに、関数の名前を書きます。ここに書いた名前で関数が使用可能になります。<r/>
-　関数の内容には、関数内で実行したいステートメントやブロックを記述することができます。<r/>
+　First, to define a function, write <kw>function</kw>. After that, write the name of the function. The function will become usable with the name written here.<r/>
+　In the function content, you can describe statements or blocks that you want to execute inside the function.<r/>
 <r/>
 <example>
 	function test(a) { System.inform(a); }<r/>
@@ -33,163 +33,163 @@
 	}<r/>
 </example>
 <r/>
-関数に対して instanceof 演算子を "Function" を伴って使用した場合は真になります(上記の例で言うと、func instanceof "Function" は真)。<r/>
+When using the instanceof operator on a function with "Function", it evaluates to true (in the above example, func instanceof "Function" is true).<r/>
 </para>
 
 <para>
-<ptitle>関数の呼び出し</ptitle>
-　関数の呼び出しは <kw>( )</kw> 演算子を使って、以下のように記述します。<r/>
+<ptitle>Function Calls</ptitle>
+　A function call is written using the <kw>( )</kw> operator as follows:<r/>
 <tt>
-	関数名( 引数 )<r/>
+	function_name( arguments )<r/>
 </tt>
-	引数がない場合は、<tt>関数名( )</tt> になります。引数には、式を指定し、複数ある場合はカンマで区切って指定します。<r/>
+	If there are no arguments, it becomes <tt>function_name( )</tt>. For arguments, specify expressions, and if there are multiple, separate them with commas.<r/>
 <example>
 	func();<r/>
 	func(1+2, 1-2);<r/>
 	func(func2());<r/>
 </example>
 <r/>
-	また、式を指定せずに、空にしておくと、そこの部分には void が指定されたと見なされます。<r/>
+	Also, if an expression is omitted and left blank, it is considered as if void was specified for that part.<r/>
 <example>
-	func(,1); // void, 1 が指定されたとみなされる<r/>
-	func(,); // void, void が指定されたと見なされる<r/>
+	func(,1); // Treated as if void, 1 were specified<r/>
+	func(,); // Treated as if void, void were specified<r/>
 </example>
 </para>
 
 <para>
-<ptitle>引数リスト</ptitle>
-　引数リストには、渡された引数を受け取るための変数の名前を書きます。関数呼び出しの際に渡した引数のうち、前に書いたものから順番に、変数に引き渡されます。<r/>
+<ptitle>Argument List</ptitle>
+　In the argument list, write the names of variables to receive the passed arguments. Arguments passed during a function call are handed over to the variables sequentially from left to right.<r/>
 <example>
 	function test(a, b, c)<r/>
 	{<r/>
-		// この時点で、 a と b と c という変数が使用可能であり、<r/>
-		// 引数として渡された 3 つの引数が代入されています。<r/>
-		// test(1, 2, 3) と呼び出した場合は、 a に 1、<r/>
-		// b に 2, c に 3 が入っています。<r/>
+		// At this point, the variables a, b, and c are available,<r/>
+		// and the 3 passed arguments are assigned to them.<r/>
+		// If called as test(1, 2, 3), a contains 1,<r/>
+		// b contains 2, and c contains 3.<r/>
 	}<r/>
 </example>
 <r/>
-　これらの引数はローカル変数であり、関数から実行が抜けるとアクセスできなくなります。<r/>
+　These arguments are local variables and cannot be accessed once execution leaves the function.<r/>
 <r/>
-　TJS2 では、関数呼び出しの際に与えられた引数が宣言の引数の数よりも少なかったり、多かったりしてもエラーにはなりません ( 例外的に、TJS2 で記述されたのではない関数 ( 実体が C++ などで記述された関数 ) はエラーにする場合があります )。与えられた引数が宣言より多い場合は多い分が無視され、少ない場合は、足りない変数には void が渡されます。<r/>
+　In TJS2, it is not an error if the number of arguments provided during a function call is fewer or more than the declared number of arguments (as an exception, functions not written in TJS2—such as those whose body is written in C++—may throw an error). If more arguments are given than declared, the excess ones are ignored; if fewer, void is passed to the missing variables.<r/>
 <example>
 	function test(a, b)<r/>
 	{<r/>
-		// もし test(1) として呼び出すと、a には 1 、b には void が入る。<r/>
-		// もし test(1,2,3) として呼び出すと、 a には 1、 b には 2 が入り、3 は無視される<r/>
+		// If called as test(1), a gets 1 and b gets void.<r/>
+		// If called as test(1,2,3), a gets 1, b gets 2, and 3 is ignored.<r/>
 	}<r/>
 </example>
 <r/>
-　引数リストの個々の引数には、 = に続けてデフォルトの値 ( <kw>デフォルト引数</kw> ) を指定することができます。これは、void が指定されたときや、与えられた引数が宣言の引数に満たない場合に、自動的に指定された値が使用されるというものです。<r/>
+　Individual arguments in the argument list can have a default value (<kw>default argument</kw>) specified following =. This means that when void is specified, or when fewer arguments are provided than declared, the specified value is automatically used.<r/>
 <example>
 	function test(a = -1, b = 1)<r/>
 	{<r/>
-		// もし・・・<r/>
-		// test() として呼び出すと、 a=-1, b=1<r/>
-		// test(5) として呼び出すと、 a=5, b=1<r/>
-		// test(void,void) として呼び出すと、 a=-1, b=1<r/>
-		// test(,4) として呼び出すと、a=-1, b=4<r/>
+		// If...<r/>
+		// Called as test(), a=-1, b=1<r/>
+		// Called as test(5), a=5, b=1<r/>
+		// Called as test(void,void), a=-1, b=1<r/>
+		// Called as test(,4), a=-1, b=4<r/>
 	}<r/>
 </example>
 <r/>
-　引数を受け取る必要のない関数は、引数リストを省略することができます。<r/>
+　Functions that do not need to receive arguments can omit the argument list.<r/>
 <example>
 	function test<r/>
 	{<r/>
-		// 引数を受け取らない関数<r/>
+		// Function that accepts no arguments<r/>
 	}<r/>
 </example>
 </para>
 
 <para>
-<ptitle>式中関数</ptitle>
-　function キーワードを式内で使うと、名前のない関数、式中関数 ( <kw>匿名関数</kw> ) を作成することができます。<r/>
-　この場合、関数の名前は省略します。<r/>
+<ptitle>In-expression Functions</ptitle>
+　By using the function keyword within an expression, you can create unnamed functions, in-expression functions (<kw>anonymous functions</kw>).<r/>
+　In this case, the function name is omitted.<r/>
 <example>
 	var func = function(i) { return i*5; };<r/>
 	var func2 = function { System.inform("hoge"); };<r/>
-	var v = func(); // func 呼び出し<r/>
-	func2(); // func2 呼び出し<r/>
+	var v = func(); // Call func<r/>
+	func2(); // Call func2<r/>
 </example>
 </para>
 
 <para>
-<ptitle>引数の省略</ptitle>
-　関数を呼び出す際に、 <kw>...</kw> のみを引数として書くと、呼び出す式を記述した関数に引き渡された引数が、そのまま関数呼び出し先の関数に引き渡されます。これは、引数変数の内容を変更していても、あるいは受け取った引数が足りなくても、正しい元の内容、引数の数がわたります。<r/>
+<ptitle>Omitting Arguments</ptitle>
+　When calling a function, if you write only <kw>...</kw> as the argument, the arguments passed to the function containing the call expression are passed directly to the target function. Even if the contents of the argument variables have been modified, or if fewer arguments were received, the original content and correct number of arguments will be passed.<r/>
 <example>
 	function test()<r/>
 	{<r/>
 		test2(...);<r/>
-		// test2 には test に渡された引数が、渡された時点のまま<r/>
-		// の内容、個数で渡される<r/>
+		// The arguments passed to test are passed to test2<r/>
+		// with their original contents and count as when passed<r/>
 	}<r/>
 </example>
 </para>
 
 <para>
-<ptitle>引数の配列変換</ptitle>
-　引数を配列として受け取ることができます。配列として受け取るには、引数名に '<kw>*</kw>' を付けて関数を宣言します。<r/>
+<ptitle>Converting Arguments to an Array</ptitle>
+　You can receive arguments as an array. To receive arguments as an array, declare the function by appending '<kw>*</kw>' to the argument name.<r/>
 <example>
 	function func(args*)<r/>
 	{<r/>
-		// args はこの関数に渡された引数を要素として持つ配列になる<r/>
-		// たとえば func(1, 2, 3, 4) として呼び出された場合、<r/>
-		// args には 4 つの要素が入っており、先頭から 1 2 3 4 の順で<r/>
-		// 数値が入っていることになる。<r/>
+		// args becomes an array containing the arguments passed to this function as elements.<r/>
+		// For example, if called as func(1, 2, 3, 4),<r/>
+		// args contains 4 elements, holding numeric values 1 2 3 4<r/>
+		// in that order from the beginning.<r/>
 	}<r/>
 </example>
 <r/>
-　引数の途中から最後までを全て配列として受け取ることもできます。引数の数が満たなかった場合は、配列は空となります。<r/>
+　You can also receive arguments from a middle position to the end all as an array. If the required number of arguments is not met, the array will be empty.<r/>
 <example>
 	function func(x, args*)<r/>
 	{<r/>
-		// たとえば func(1, 2, 3, 4) として呼び出された場合、<r/>
-		// x には 1 が入る。また args には 3 つの要素が入っており、<r/>
-		// 先頭から 2 3 4 の順で数値が入っていることになる。<r/>
-		// func(1) として呼び出された場合、引数の数が満たないため、<r/>
-		// args は要素のない配列となる。<r/>
+		// For example, if called as func(1, 2, 3, 4),<r/>
+		// x gets 1. Also args contains 3 elements,<r/>
+		// holding numeric values 2 3 4 in order from the beginning.<r/>
+		// If called as func(1), since the number of arguments is insufficient,<r/>
+		// args becomes an array with no elements.<r/>
 	}<r/>
 </example>
-　これは、可変長の引数を処理したい場合に便利です。<r/>
+　This is convenient when you want to handle variable-length arguments.<r/>
 <r/>
-　引数名を指定しない事も可能です。この場合は、後述の配列の引数への展開の際に、名前なしの * として使用できます。<r/>
+　It is also possible not to specify an argument name. In this case, it can be used as an unnamed * during array expansion into arguments described later.<r/>
 </para>
 
 <para>
-<ptitle>配列の引数への展開</ptitle>
-　配列を展開し、引数として関数に渡すことができます。この場合は、引数の配列展開の際と同じく、展開したい式の後ろに '<kw>*</kw>' を付けて関数を呼び出します。'*' を指定して展開したい式は、配列を表して無ければなりません。<r/>
+<ptitle>Expanding an Array into Arguments</ptitle>
+　An array can be expanded and passed as arguments to a function. In this case, similar to converting arguments into an array, call the function with '<kw>*</kw>' appended to the expression you want to expand. The expression to expand with '*' must represent an array.<r/>
 <example>
 	var args = [1, 2, 3, 4];<r/>
 	func(args*);<r/>
-	// args には 1 2 3 4 の4つの要素が入っているため、<r/>
-	// func(1, 2, 3, 4); と同じ意味になる。<r/>
+	// Since args contains the 4 elements 1 2 3 4,<r/>
+	// this has the same meaning as func(1, 2, 3, 4);.<r/>
 	func(0, args*, 5);<r/>
-	// このように引数の途中に挟むことも可能。<r/>
-	// この場合は、func(0, 1, 2, 3, 4, 5); と同じ意味に<r/>
-	// なる。<r/>
+	// It can also be inserted in the middle of arguments like this.<r/>
+	// In this case, it has the same meaning as<r/>
+	// func(0, 1, 2, 3, 4, 5);.<r/>
 </example>
 <r/>
-　式を指定せずに、単に * を引数に指定すると、呼び出す式を記述した関数の宣言時に書いた名前のない '*' が表す引数を、そのまま呼び出し先に渡すことができます。
+　If you specify simply * as an argument without specifying an expression, the arguments represented by the unnamed '*' written at the declaration of the function containing the call expression can be passed directly to the target.
 <example>
 	function func(func_array, *)<r/>
 	{<r/>
-		// func_array で指定された関数に、<r/>
-		// その関数の func_array 内の位置につづき、<r/>
-		// func に渡された 2 番目以降の引数を<r/>
-		// そのまま引き渡して呼び出す<r/>
+		// Call each function specified in func_array,<r/>
+		// passing its index in func_array followed by<r/>
+		// the 2nd and subsequent arguments passed to func<r/>
+		// as they are<r/>
 		for(var i = 0; i &lt; func_array.count; i++)<r/>
 			func_array[i](i, *);<r/>
 	}<r/>
 </example>
 <r/>
-　名前の無い * による関数呼び出し処理は、名前のある配列を使うよりも効率よく処理できます。<r/>
+　Function calling processes using an unnamed * can be processed more efficiently than using a named array.<r/>
 <example>
 	function func(ar*) { func2(ar*); }<r/>
 	function func(*) { func2(*); }<r/>
-	// 上記の二つは全く同じ意味になるが、下の例の方が効率がよい<r/>
+	// The above two have the exact same meaning, but the lower example is more efficient<r/>
 </example>
 <r/>
-　名前の無い * は、「引数の省略」と同様の効果を持ちます。以下の二つの関数宣言は同じ意味になります。<r/>
+　An unnamed * has the same effect as "omitting arguments". The following two function declarations have the same meaning.<r/>
 <example>
 	function func() { func2(...); }<r/>
 	function func(*) { func2(*); }<r/>

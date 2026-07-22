@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <doc>
-<title>スタイルなど</title>
+<title>Style, etc.</title>
 
 <para>
-<ptitle>スタイルなど</ptitle>
-　TJS2 は、スタイルとしては C 言語の流れを汲む言語です。一文が改行で終わる BASIC 等と違い、書き方は基本的に「フリースタイル」です。<r/>
+<ptitle>Style, etc.</ptitle>
+　In terms of style, TJS2 is a language derived from the C language. Unlike BASIC and similar languages where a statement ends with a line break, the writing style is fundamentally "freestyle".<r/>
 <r/>
-　ただし、JavaScript のように一文を改行で終わらせることはできません。<r/>
+　However, unlike JavaScript, a statement cannot be terminated simply with a line break.<r/>
 </para>
 
 <para>
-<ptitle>フリースタイル</ptitle>
-　改行やスペース、タブ等、一般に「<kw>ホワイトスペース</kw>」と呼ばれる文字は、意味が分からならなければどこにでも入れる事ができます。また、意味が分からなくならないように適宜挿入しなければなりません。<r/>
+<ptitle>Freestyle</ptitle>
+　Characters generally called "<kw>whitespace</kw>", such as line breaks, spaces, and tabs, can be placed anywhere as long as the meaning does not become unclear. Also, they must be inserted appropriately so that the meaning does not become obscured.<r/>
 <example>
 (1)<r/>
 	function func(a,b) { a++; return a+b; }<r/>
@@ -60,27 +60,26 @@
 	}<r/>
 </example>
 <r/>
-　これらの、(1) 縲鰀 (4) はすべて同じ意味です。ただし、読みやすさの点から (2) または (3) を推奨します。<r/>
-　(5) は、スペースを入れずに書いたものですが、このようにすると文字がつながってしまい、正常に解釈されません。<r/>
-　(6) は、スペースを入れるべき所でないところにスペースが入ってしまいますのでエラーになります。<r/>
+　All of these, (1) to (4), have the exact same meaning. However, from the standpoint of readability, (2) or (3) is recommended.<r/>
+　(5) is written without inserting spaces, but doing this causes the characters to run together, so it will not be interpreted correctly.<r/>
+　(6) contains spaces where spaces should not be placed, so it results in an error.<r/>
 </para>
 
 <para>
-<ptitle>コメント</ptitle>
-　<tt>/*</tt> と <tt>*/</tt> で囲まれた部分は、コメントとして扱われ、解釈されません。コメントはネスト ( 入れ子に ) できます。<r/>
-　同様に、 一行のうち、<tt>//</tt> 以降の部分もコメントとして扱われます。<r/>
+<ptitle>Comments</ptitle>
+　Sections enclosed by <tt>/*</tt> and <tt>*/</tt> are treated as comments and are not interpreted. Comments can be nested.<r/>
+　Similarly, the portion of a line following <tt>//</tt> is also treated as a comment.<r/>
 <r/>
 <example>
 	function example(a,b,c)<r/>
 	{<r/>
-		return a*b/c; // a*b/c を返す<r/>
+		return a*b/c; // Returns a*b/c<r/>
 	}<r/>
 <r/>
 	/*<r/>
-		このようにコメントを書くこともできます<r/>
-		/* コメントのネストは可能になっています */<r/>
+		You can also write comments like this<r/>
+		/* Comment nesting is allowed */<r/>
 	*/<r/>
 </example>
 </para>
 </doc>
-

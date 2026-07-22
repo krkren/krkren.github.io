@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <doc>
-<title>ステートメントとブロック</title>
+<title>Statements and Blocks</title>
 
 <para>
-<ptitle>ステートメントとブロック</ptitle>
-　TJS2 の大きな文法の構成要素としてステートメントとブロックがあります。<r/>
+<ptitle>Statements and Blocks</ptitle>
+　Statements and blocks are major grammatical components of TJS2.<r/>
 </para>
 
 <para>
-<ptitle>ステートメント</ptitle>
-　ステートメントは、<kw>;</kw> (セミコロン) で終わるものです。式の後ろにそのままセミコロンがついたものもあれば、if 等の制御構文の後にセミコロンが付いたものもあります。<r/>
+<ptitle>Statements</ptitle>
+　A statement ends with a <kw>;</kw> (semicolon). Some statements consist of an expression followed directly by a semicolon, while others have a semicolon after a control structure such as if.<r/>
 <example>
 	a++;<r/>
 	func1();<r/>
 	return a+b;<r/>
-	などなど<r/>
+	etc.<r/>
 </example>
 </para>
 
 <para>
-<ptitle>ブロック</ptitle>
-　ブロックは、ステートメントを <kw>{ }</kw> の間に複数書き、まとめたものです。ステートメントは上から下へ実行されます。<r/>
+<ptitle>Blocks</ptitle>
+　A block groups multiple statements written between <kw>{ }</kw>. Statements are executed from top to bottom.<r/>
 <example>
 	{<r/>
 		a++;<r/>
@@ -35,28 +35,28 @@
 	}<r/>
 </example>
 <r/>
-　ブロックの次には ; (セミコロン) は必要ありません。<r/>
+　A ; (semicolon) is not required after a block.<r/>
 <r/>
-　また、すべてのブロックは、変数の<kw>スコープ</kw>を生成します。<r/>
+　In addition, every block creates a variable <kw>scope</kw>.<r/>
 </para>
 
 <para>
-<ptitle>実行順序</ptitle>
-　TJS では、関数、クラス、プロパティ以外の部分に書かれたステートメントは、スクリプトが実行されるとともに実行されます。関数、クラス、プロパティの中のステートメントは呼び出されるまで実行されません。<r/>
+<ptitle>Execution Order</ptitle>
+　In TJS, statements written outside of functions, classes, and properties are executed as the script runs. Statements inside functions, classes, and properties are not executed until they are called.<r/>
 <example>
-	var a; // すぐに実行される<r/>
+	var a; // Executed immediately<r/>
 <r/>
 	function test()<r/>
 	{<r/>
-		a+=10; // 呼び出されるまで実行されない<r/>
+		a+=10; // Not executed until called<r/>
 	}<r/>
 <r/>
-	a+=30; // すぐに実行される<r/>
+	a+=30; // Executed immediately<r/>
 </example>
 <r/>
-　より正確には、クラスの定義、関数の定義、プロパティの定義はスクリプトが実行されるとまず一番最初に登録され、そのあと、それ以外のスクリプトの要素が先頭から実行されます。そのため、関数、クラス、プロパティは、同じスクリプトブロック内では後方参照が可能です。<r/>
+　More precisely, class definitions, function definitions, and property definitions are registered first when the script runs, and then the remaining script elements are executed from the beginning. Therefore, functions, classes, and properties can be forward-referenced within the same script block.<r/>
 <example>
-	test(); // この位置よりも後ろに宣言された関数でも、同じスクリプトブロック内ならば参照される<r/>
+	test(); // Even if a function is declared after this position, it can be referenced if it is within the same script block<r/>
 <r/>
 	function test()<r/>
 	{<r/>
@@ -64,13 +64,13 @@
 	}<r/>
 </example>
 <r/>
-　違うスクリプトブロック間での関数などの呼び出しは、関数呼び出しをしようとした時点で、その対象の関数が読み込まれた状態になっていれば可能です。<r/>
-　また、変数の宣言は、読み込まれた順番に処理されていくので、後方参照はできません。<r/>
+　Calling functions across different script blocks is possible as long as the target function has already been loaded at the time the function call is attempted.<r/>
+　Also, variable declarations are processed in the order they are loaded, so forward referencing is not possible.<r/>
 </para>
 
 <para>
-<ptitle>グローバルオブジェクト</ptitle>
-　グローバルオブジェクトは特殊なオブジェクトで、グローバルな位置(広域位置)で宣言された変数や関数、プロパティなどをメンバとして持つオブジェクトです。global キーワードでアクセスできます。<r/>
+<ptitle>Global Object</ptitle>
+　The global object is a special object that holds variables, functions, properties, etc., declared at the global level as its members. It can be accessed using the global keyword.<r/>
 </para>
 
 </doc>

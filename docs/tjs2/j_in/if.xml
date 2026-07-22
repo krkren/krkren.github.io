@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <doc>
-<title>if ステートメント</title>
+<title>if Statement</title>
 
 <para>
-<ptitle>if ステートメント</ptitle>
-　if ステートメントは、「○○ならば●●をする」というような、条件判断によってスクリプトの一部を実行するかしないかを決定させる構文です。<r/>
-　構文は以下の通りです。<r/>
+<ptitle>if Statement</ptitle>
+　The if statement is a syntax structure that determines whether or not to execute a portion of a script based on a conditional judgment, such as "if XX, do YY".<r/>
+　The syntax is as follows:<r/>
 <bq>
 if(expression)<r/>
-	ステートメントまたはブロック<r/>
+	statement or block<r/>
 else<r/>
-	ステートメントまたはブロック<r/>
+	statement or block<r/>
 </bq>
-　最初の「ステートメントまたはブロック」は、expression を評価した結果が真の時に実行されるもので、２番目の「ステートメントまたはブロック」は、評価した結果が偽のときに実行されるものです。<kw>else</kw> 以降は必要ない場合は書かなくてかまいません。<r/>
+　The first "statement or block" is executed when the result of evaluating expression is true, and the second "statement or block" is executed when the evaluation result is false. You do not need to write the <kw>else</kw> clause and what follows if it is not necessary.<r/>
 <example>
 	if(a==b)<r/>
-		inform("a と b は同じです");<r/>
+		inform("a and b are the same");<r/>
 <r/>
 	if(a&lt;b)<r/>
 	{<r/>
 		var t;<r/>
-		t=a; a=b; b=t; // a と b を入れ替える <r/>
+		t=a; a=b; b=t; // Swap a and b <r/>
 	}<r/>
 <r/>
 	if(a==b)<r/>
-		inform("a と b は同じです");<r/>
+		inform("a and b are the same");<r/>
 	else<r/>
-		inform("a と b は違います");<r/>
+		inform("a and b are different");<r/>
 </example>
 </para>
 
 <para>
-<ptitle>if と else の対応</ptitle>
-　else は、「前の、まだ else と対応していない if に対応する」という規則を持っています。<r/>
+<ptitle>Correspondence between if and else</ptitle>
+　else follows the rule "corresponds to the preceding if that does not yet have a corresponding else".<r/>
 <r/>
-たとえば、<r/>
+For example, if you write:<r/>
 <bq>
 	if(expr) // ★<r/>
 		if(expr) // ●<r/>
@@ -44,8 +44,8 @@ else<r/>
 	else // ★<r/>
 		statement;<r/>
 </bq>
-　と記述した場合、★の else は ★ の if に、● の else は ● の if に対応することになります。<r/>
-　TJS2のようなフリースタイルの言語は、たとえインデントを間違って
+　the ★ else corresponds to the ★ if, and the ● else corresponds to the ● if.<r/>
+　In free-form languages like TJS2, even if you make an indentation error and write:<r/>
 <bq>
 	if(expr) // ★<r/>
 		if(expr) // ●<r/>
@@ -53,8 +53,8 @@ else<r/>
 	else // ●<r/>
 		statement;<r/>
 </bq>
-　と書いても、対応は上記の通りですので注意する必要があります。<r/>
-　対応をはっきり区切りたい場合は、<r/>
+　you must be careful because the correspondence remains as described above.<r/>
+　If you want to clearly delimit the correspondence,<r/>
 <bq>
 	if(expr) { // ★<r/>
 		if(expr) // ●<r/>
@@ -63,6 +63,6 @@ else<r/>
 	else // ★<r/>
 		statement;<r/>
 </bq>
-　のようにブロックで囲むという方法を採ってください。<r/>
+　please adopt the method of enclosing it in a block like this.<r/>
 </para>
 </doc>

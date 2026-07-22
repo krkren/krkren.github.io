@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <doc>
-<title>トークン</title>
+<title>Tokens</title>
 <para>
-<ptitle>トークン</ptitle>
-　スクリプトは、解釈中、すべてトークンと呼ばれる単位に分解されて処理されます。<r/>
-　トークンと次のトークンの境界は、トークンの種類によって異なります。
+<ptitle>Tokens</ptitle>
+　During interpretation, scripts are completely broken down into units called tokens and processed.<r/>
+　The boundary between one token and the next varies depending on the token type.
 </para>
 
 <para>
-<ptitle>裸の単語</ptitle>
-　「裸の単語」とは、<tt>""</tt> や <tt>''</tt> クオート(引用)されていない、スクリプト中に直接書かれる特定の文字の並びのことです。<r/>
-　「裸の単語」は以下の規則を持っています。<r/>
+<ptitle>Bare Words</ptitle>
+　"Bare words" refer to specific sequences of characters written directly in the script without being quoted with <tt>""</tt> or <tt>''</tt>.<r/>
+　"Bare words" follow these rules:<r/>
 　<r/>
 <ul>
-<li>アルファベットの小文字・大文字、'<tt>_</tt>'(アンダーバー)、数字、いわゆる全角文字で構成される。ただし数字は先頭にくることができない。</li>
-<li>これらの連続が終わるまでが、一つの「裸の単語」として扱われる</li>
+<li>Composed of lowercase and uppercase alphabetic characters, '<tt>_</tt>' (underscore), digits, and so-called full-width characters. However, digits cannot come at the beginning.</li>
+<li>The sequence until its end is treated as a single "bare word".</li>
 </ul>
 <r/>
 <example>
 	ampan  // OK<r/>
-	123a // 数字が先頭に来ているので NG<r/>
-	_asdf // アンダーバーは先頭にくることができるので OK<r/>
-	continue // これは予約語 OK<r/>
-	全角文字 // いわゆる全角文字は「裸の単語」として OK<r/>
+	123a // NG because a digit comes first<r/>
+	_asdf // OK because underscores can be at the beginning<r/>
+	continue // This is a reserved word OK<r/>
+	全角文字 // So-called full-width characters are OK as "bare words"<r/>
 </example>
 <r/>
-　「裸の単語」は、さらに予約語と識別子に分類されます。<r/>
+　"Bare words" are further classified into reserved words and identifiers.<r/>
 </para>
 
 <para>
-<ptitle>予約語</ptitle>
-　予約語は以下のもので、識別子ではありません。「裸の単語」のうち、予約語ではないものはすべて識別子です。<r/>
+<ptitle>Reserved Words</ptitle>
+　Reserved words are as follows and are not identifiers. Any "bare word" that is not a reserved word is an identifier.<r/>
 <r/>
 <tt>
   break  continue  const  catch  class  case<r/>
@@ -44,19 +44,19 @@
   this  true  try  void  var  while  with</tt>
 <r/>
 <r/>
-　これらの予約語は、スクリプトの文法を構成する重要な用途として特殊な意味をそれぞれ持っています。このうちのいくつかは、演算子として使用されるものです。<r/>
-　ただし、現バージョンではこれらのすべての予約語が使用されているわけではありません。<r/>
+　These reserved words each have special meanings for important uses in constructing the script syntax. Some of these are used as operators.<r/>
+　However, not all of these reserved words are used in the current version.<r/>
 </para>
 
 <para>
-<ptitle>識別子</ptitle>
-　「識別子」は、「裸の単語」のうち、予約語でないものすべてです。これらは、記述者が自由に命名することのできる変数や関数、クラス名などに用いられます。<r/>
-　識別子は予約語を含んでいても、予約語そのものでなければ、予約語ではなく識別子として認識されます。<r/>
+<ptitle>Identifiers</ptitle>
+　"Identifiers" are all "bare words" that are not reserved words. These are used for variables, functions, class names, etc., that the writer can freely name.<r/>
+　Even if an identifier contains a reserved word, as long as it is not the reserved word itself, it will be recognized as an identifier rather than a reserved word.<r/>
 </para>
 
 <para>
-<ptitle>記号</ptitle>
-　記号類もトークンとして分解されます。記号類には以下のものがあります。<r/>
+<ptitle>Symbols</ptitle>
+　Symbols are also broken down as tokens. Symbols include the following:<r/>
 <r/>
 <tt>>>>=  >>>  >>=  >>  >=  >  &lt;&lt;=  &lt;=<r/>
 &lt;->  &lt;&lt;  &lt;  ===  ==  =>  =  !==  !=  !<r/>
@@ -65,15 +65,15 @@
 *  /=  /  \=  \  %=  %  ^=  ^  [  ]  (  )  ~<r/>
 ?  :  ,  ;  {  }  #  $</tt><r/>
 <r/>
-　これらは、最長一致でトークンとして切り出されます。たとえば、 <tt>++</tt> は、 <tt>+</tt> と <tt>+</tt> ではなく、 <tt>++</tt> という一つの記号として分解されます。これらを別々の <tt>+</tt> と <tt>+</tt> として記述したいばあいは、<tt>+</tt> と <tt>+</tt> の間にスペースなどを挟む必要があります。<r/>
+　These are extracted as tokens using greedy matching (longest match). For example, <tt>++</tt> is broken down as a single symbol <tt>++</tt>, not as <tt>+</tt> and <tt>+</tt>. If you want to write them as separate <tt>+</tt> and <tt>+</tt>, you need to insert a space or similar between <tt>+</tt> and <tt>+</tt>.<r/>
 <r/>
-　記号類は、それぞれ文法を構成する要素として重要な意味を持っています。記号のうち、いくつかは演算子として使用されるものです。<r/>
+　Symbols each have an important meaning as elements constructing the syntax. Some symbols are used as operators.<r/>
 </para>
 
 <para>
-<ptitle>数値即値</ptitle>
-　数値即値は、数字、あるいは <tt>.</tt> (小数点)で始まるものです。<tt>TJS2</tt> は、以下の形式を認識します。<r/>
-　普通に数値を書けばそのまま10進の数値即値になります。<r/>
+<ptitle>Numeric Literals</ptitle>
+　Numeric literals begin with a digit or <tt>.</tt> (decimal point). <tt>TJS2</tt> recognizes the following formats:<r/>
+　Writing numbers normally yields decimal numeric literals.<r/>
 <example>
 	0<r/>
 	3.1<r/>
@@ -81,127 +81,127 @@
 	1<r/>
 </example>
 <r/>
-　また、10進については <tt>e</tt> または <tt>E</tt> を使い、10を底とする <kw>指数指定</kw>をすることもできます。<tt>e</tt> でも <tt>E</tt> でも意味は同じです。<r/>
+　Also, for decimal numbers, you can specify a base-10 <kw>exponent</kw> using <tt>e</tt> or <tt>E</tt>. Both <tt>e</tt> and <tt>E</tt> have the same meaning.<r/>
 <example>
 	1e-3   // 1×10<sup>-3</sup><r/>
 	3.4e10   // 3.4×10<sup>10</sup><r/>
 	9.3E-2  // 9.3×10<sup>-2</sup><r/>
 </example>
 <r/>
-　先頭に <tt>0x</tt> または <tt>0X</tt> をつけると <kw>16進数</kw>での指定となります。<tt>0x</tt> でも <tt>0X</tt> でも意味は同じです。<r/>
+　Prefixing with <tt>0x</tt> or <tt>0X</tt> specifies a <kw>hexadecimal number</kw>. Both <tt>0x</tt> and <tt>0X</tt> have the same meaning.<r/>
 <example>
 	0x1234<r/>
 	0Xff<r/>
 	0x3f33<r/>
 </example>
 <r/>
-　先頭に <tt>0b</tt> または <tt>0B</tt> をつけると <kw>2進数</kw>での指定となります。<r/>
+　Prefixing with <tt>0b</tt> or <tt>0B</tt> specifies a <kw>binary number</kw>.<r/>
 <example>
 	0b0100<r/>
 	0B0010100010100001<r/>
 </example>
 <r/>
-　先頭に <tt>0</tt> がつくと <kw>8進数</kw>として扱われます。<r/>
+　Prefixing with <tt>0</tt> treats it as an <kw>octal number</kw>.<r/>
 <example>
 	01234<r/>
 	033<r/>
 </example>
 <r/>
-　16進、8進、2進についても、小数点形式や p による指数指定が可能です。p は 2 を底とする指数指定です。<r/>
+　Decimal point formats and base-2 exponent specification using p are also possible for hexadecimal, octal, and binary. p specifies an exponent with base 2.<r/>
 <example>
-	0b1.1    // 1 + 1/2 で 1.5 を表す<r/>
-	0x2.f    // 2 + 15/16 で 2.9375 を表す<r/>
-	0x1p8    // 1 × 2<sup>8</sup> で 256.0 を表す<r/>
+	0b1.1    // Represents 1.5 as 1 + 1/2<r/>
+	0x2.f    // Represents 2.9375 as 2 + 15/16<r/>
+	0x1p8    // Represents 256.0 as 1 × 2<sup>8</sup><r/>
 </example>
 <r/>
 <r/>
-　数値即値は、それが数値即値の構成文字である限り一つの数値即値としてあつかわれます。<r/>
+　Numeric literals are treated as a single numeric literal as long as the characters are valid components of a numeric literal.<r/>
 </para>
 
 <para>
-<ptitle>文字列即値</ptitle>
-　文字列即値(文字列リテラル)は、<tt>""</tt> (ダブルクオーテーション) または <tt>''</tt>(シングルクオーテーション)で囲まれるものです。ダブルクオーテーションをつかってもシングルクオーテーションを使ってもかまいません。<r/>
-　ただし、<tt>""</tt> (ダブルクオーテーション) 中では '(シングルクオーテーション) を、<tt>''</tt>(シングルクオーテーション)中では <tt>"</tt> (ダブルクオーテーション) を、<tt>\</tt> でエスケープする必要が無くなります。<r/><!--'-->
+<ptitle>String Literals</ptitle>
+　String literals are enclosed in <tt>""</tt> (double quotation marks) or <tt>''</tt> (single quotation marks). You may use either double quotation marks or single quotation marks.<r/>
+　However, inside <tt>""</tt> (double quotation marks), you do not need to escape ' (single quotation mark) with <tt>\</tt>, and inside <tt>''</tt> (single quotation marks), you do not need to escape <tt>"</tt> (double quotation mark).<r/><!--'-->
 <example>
 	"this is a string."<r/>
 	'this is also a string.'<r/>
 	"Can't use without a quotation."<r/>
 </example>
 <r/>
-　文字列中で <tt><kw>\</kw></tt> (円記号) は特別な意味を持ちます。 \ の後に続く文字で意味が変わります。\ に続けて特殊な指定をすることを<kw>エスケープ</kw>するといいます。<r/>
+　Inside a string, <tt><kw>\</kw></tt> (backslash / yen sign) has a special meaning. The meaning changes depending on the character that follows \. Making a special specification after \ is called <kw>escaping</kw>.<r/>
 <r/>
 <bq>
-\\    : \ マーク自体<r/>
-\'    : ' (シングルクオーテーション)<r/>
-\"    : " (ダブルクオーテーション)<r/>
-\a    : BEL (可聴ベル)<r/>
-\b    : BS (後退)<r/>
-\f    : FF (フォームフィード)<r/>
-\n    : LF (改行)<r/>
-\r    : CR (復帰)<r/>
+\\    : The \ mark itself<r/>
+\'    : ' (single quotation mark)<r/>
+\"    : " (double quotation mark)<r/>
+\a    : BEL (audible bell)<r/>
+\b    : BS (backspace)<r/>
+\f    : FF (form feed)<r/>
+\n    : LF (line feed)<r/>
+\r    : CR (carriage return)<r/>
 <r/>
-\t    : HT (水平タブ)<r/>
-\v    : VT (垂直タブ)<r/>
-\xH   : H=16 進数 ( H が文字コードを表します )<r/>
-\XH   : 上に同じ<r/>
+\t    : HT (horizontal tab)<r/>
+\v    : VT (vertical tab)<r/>
+\xH   : H=hexadecimal number (H represents the character code)<r/>
+\XH   : Same as above<r/>
 </bq>
 <r/>
-　<tt>\xH</tt> の形式で、H の部分には 16 進数を指定します。すると、その 16 進数は文字コードとして扱われ、その一文字に置き換わります。
+　In the <tt>\xH</tt> format, specify a hexadecimal number for the H portion. That hexadecimal number will then be treated as a character code and replaced with that single character.
 <r/>
 <r/>
 <example>
-	'Can\'t help'  ( \' を用いている )<r/>
-	"\x1234"     ( ワイド文字としての 0x1234 という文字コードの文字 )<r/>
+	'Can\'t help'  ( using \' )<r/>
+	"\x1234"     ( character with character code 0x1234 as a wide character )<r/>
 </example>
 <r/>
-また、<tt>\xH</tt> の形式では、 \x の次に　16 進数を構成する文字 ( 0縲鰀9 、A縲廡、a縲彷 ) が続く限り、それは H の部分であるとみなされます。ただし、ワイド文字のサイズが 16bit の環境では最大 4 桁、32bit のマシンでは最大 8 桁までが認識されます ( Windowsの場合は 16bit、Linux や Solaris では 32bit です )。<r/>
-<tt>"<em>\x22A</em>n Apple"</tt> とかくと、先頭は \x22A であるとみなされてしまいます。これを避けるには、<tt>"\x22" "An Apple"</tt> として、文字列をわけ、続けて書いてください。TJS では、このように文字列即値が連続する場合、ひとつの文字列だとみなします。<r/>
+Also, in the <tt>\xH</tt> format, as long as valid hexadecimal characters (0–9, A–F, a–f) follow \x, they are considered part of H. However, up to 4 digits are recognized in environments where the wide character size is 16-bit, and up to 8 digits on 32-bit machines (16-bit for Windows, 32-bit for Linux or Solaris).<r/>
+Writing <tt>"<em>\x22A</em>n Apple"</tt> causes the beginning to be treated as \x22A. To avoid this, separate the strings and write them consecutively as <tt>"\x22" "An Apple"</tt>. In TJS, when string literals are consecutive like this, they are treated as a single string.<r/>
 <r/>
-　文字列については <link href="string"/> も参照してください。<r/>
+　Please also refer to <link href="string"/> regarding strings.<r/>
 </para>
 
 
 <para>
-<ptitle>@ つき文字列即値</ptitle>
-　文字列即値の前に @ を置くと、その文字列即値中の &amp; から ; までの間、または ${ から } までの間を式とみなし、それを評価した結果をそこに展開するようになります (式を &amp; と ; の間や ${ と } に書けば、その結果がそこに埋め込まれます)。<r/>
-　&amp; や $ を展開したくない場合は、&amp; や $ の前に \ を置くことで &amp; や $ を展開しないようにすることができます。<r/>
+<ptitle>String Literals with @</ptitle>
+　Placing @ before a string literal causes the content between &amp; and ; or between ${ and } in that string literal to be treated as an expression, and the result of evaluating it will be expanded there (writing an expression between &amp; and ; or between ${ and } embeds its result there).<r/>
+　If you do not want to expand &amp; or $, you can prevent expansion by placing \ before &amp; or $.<r/>
 <r/>
 <example>
-	@"1+2=&amp;1+2;"  ( "1+2=3" という文字列になる )<r/>
-	@"変数 f の内容は &amp;f; です"  ( 変数 f の内容を &amp;f; の場所に展開する )<r/>
-	@"関数 func を呼び出した結果は &amp;func(); です"  ( 式として有効なものならば &amp; と ; の間に記述可 )<r/>
-	@"関数 func を呼び出した結果は ${func()} です"  ( 上と同じ )<r/>
-	@"true \&amp;\&amp; false は &amp;true &amp;&amp; false;"  ( &amp; の前に \ を書けば &amp; は展開されない )<r/>
+	@"1+2=&amp;1+2;"  ( becomes the string "1+2=3" )<r/>
+	@"The content of variable f is &amp;f;"  ( expands the content of variable f at the position of &amp;f; )<r/>
+	@"The result of calling function func is &amp;func();"  ( any valid expression can be written between &amp; and ; )<r/>
+	@"The result of calling function func is ${func()}"  ( same as above )<r/>
+	@"true \&amp;\&amp; false is &amp;true &amp;&amp; false;"  ( writing \ before &amp; prevents &amp; from being expanded )<r/>
 </example>
 <r/>
-　ここに記述する式は、この文字列の書かれている場所からアクセス可能な範囲にある変数など (ローカル変数を含む) にアクセスできます。<r/>
+　Expressions written here can access variables and other entities (including local variables) that are accessible from where this string is written.<r/>
 </para>
 
 
 <para>
-<ptitle>オクテット列即値</ptitle>
-　オクテット列即値は、<tt>&lt;%</tt> と <tt>%></tt> で囲まれるもので、中にオクテットデータ ( バイナリデータ ) を書くことができます。<r/>
-　データは二桁の16進数をスペースなどで区切り、複数指定します。<r/>
+<ptitle>Octet Sequence Literals</ptitle>
+　Octet sequence literals are enclosed in <tt>&lt;%</tt> and <tt>%></tt>, inside of which octet data (binary data) can be written.<r/>
+　Multiple data entries are specified as two-digit hexadecimal numbers separated by spaces or other whitespace.<r/>
 <example>
 	&lt;% 00 01 02 03 %><r/>
 	&lt;% ff ff ff 00 04 0f ff 30 %><r/>
 </example>
 <r/>
-　オクテット列については <link href="octet"/> も参照してください。<r/>
+　Please also refer to <link href="octet"/> regarding octet sequences.<r/>
 </para>
 
 <para>
-<ptitle>正規表現パターン</ptitle>
-　正規表現パターンは、<tt>/</tt> と <tt>/</tt> で囲まれるもので、なかに正規表現パターンを書くことができます。<r/>
-　正規表現パターンの後に続けてフラグ文字を書くことができ、g は グローバルサーチフラグ ( 見つかったものをすべてにマッチ;このフラグがないと最初のものだけにマッチ )、i は英字大文字小文字を区別しないフラグ、l はローカライズされたコレーションを行うようにするフラグです。<r/>
-　このようにして書かれた正規表現パターンは、RegExp クラスのオブジェクトとして扱われます。<r/>
+<ptitle>Regular Expression Patterns</ptitle>
+　Regular expression patterns are enclosed in <tt>/</tt> and <tt>/</tt>, inside of which regular expression patterns can be written.<r/>
+　Flag characters can be written following the regular expression pattern: g is the global search flag (matches all occurrences; without this flag, it matches only the first one), i is the case-insensitive flag for alphabetic characters, and l is the flag to perform localized collation.<r/>
+　Regular expression patterns written in this manner are treated as objects of the RegExp class.<r/>
 <example>
 	/[0-9]-[0-9]-[0-9]/<r/>
 	/^;\s*(.*?)\s*=(.*)$/<r/>
 	/start(.*?)end/gi<r/>
 </example>
 <r/>
-　正規表現パターンについては <link href="regexp"/> も参照してください。<r/>
+　Please also refer to <link href="regexp"/> regarding regular expression patterns.<r/>
 </para>
 
 

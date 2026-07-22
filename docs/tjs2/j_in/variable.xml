@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <doc>
-<title>変数</title>
+<title>Variables</title>
 
 <para>
-<ptitle>変数</ptitle>
-　TJS2 の変数は <kw>var</kw> キーワードで指定します。TJS2 では変数を宣言しなければ使うことができません。<r/>
-　var キーワードの書式は以下の通りです。<r/>
+<ptitle>Variables</ptitle>
+　TJS2 variables are specified with the <kw>var</kw> keyword. In TJS2, variables cannot be used unless they are declared.<r/>
+　The format of the var keyword is as follows:<r/>
 <bq>
-　var 変数名;<r/>
+　var VariableName;<r/>
 </bq>
-　変数名は <kw>,</kw> (カンマ)で区切って複数個指定することもできます。変数に初期値が必要な場合は、<r/>
+　Multiple variable names can also be specified by separating them with <kw>,</kw> (comma). If an initial value is required for a variable,<r/>
 <bq>
-　var 変数名 = 初期値;<r/>
+　var VariableName = InitialValue;<r/>
 </bq>
-　の書式で変数に初期値を代入することができます。<r/>
+　you can assign an initial value to the variable using this format.<r/>
 <example>
 	var variable=0;<r/>
 	var var2=variable+2;<r/>
@@ -22,64 +22,63 @@
 	var a=0,b=1,c=3;<r/>
 </example>
 <r/>
-　変数は宣言時に型を指定する必要はありません。代入されたものの型になります。また、計算途中や文脈では、自動的に型が変換されます。<r/>
+　Variables do not need to have a type specified when declared. They take the type of the value assigned to them. Also, types are automatically converted during calculations or depending on the context.<r/>
 </para>
 
 <para>
-<ptitle>変数名</ptitle>
-　変数名として有効なのはすべての識別子です。<r/>
+<ptitle>Variable Names</ptitle>
+　All identifiers are valid as variable names.<r/>
 <example>
 	var ampan;<r/>
-	var 123a;  // 数字が先頭にきているので NG<r/>
-	var function; // function は予約語なので NG<r/>
-	var function1; // 予約語を含むが予約語そのものではないので OK<r/>
-	var 変数その一; // いわゆる全角文字も使用可能<r/>
+	var 123a;  // NG because it starts with a number<r/>
+	var function; // NG because function is a reserved word<r/>
+	var function1; // OK because although it contains a reserved word, it is not the reserved word itself<r/>
+	var 変数その一; // So-called full-width characters can also be used<r/>
 </example>
 </para>
 
 <para>
-<ptitle>変数の２重宣言</ptitle>
-　同じ名前の変数を二回以上宣言してもエラーになりません。ただし、二回目以降の宣言で初期値が指定された場合、その初期値が変数に代入されます。２回目以降の宣言で初期値が与えられなかった場合は、void になります。<r/>
+<ptitle>Redeclaration of Variables</ptitle>
+　Declaring a variable with the same name two or more times will not cause an error. However, if an initial value is specified in the second or subsequent declaration, that initial value will be assigned to the variable. If no initial value is given in the second or subsequent declaration, it becomes void.<r/>
 <example>
 	var a=0;<r/>
-	var a; // 二回目の宣言 (エラーにならなく、a は void になる)<r/>
-	var a=-1; // 三回目の宣言 (エラーにならないが a には -1 が代入される)<r/>
+	var a; // Second declaration (does not cause an error, and a becomes void)<r/>
+	var a=-1; // Third declaration (does not cause an error, but -1 is assigned to a)<r/>
 </example>
 </para>
 
 <para>
-<ptitle>変数のスコープ</ptitle>
-　{  }  (ブロック) で囲まれた部分で宣言された変数は、そのブロック内のみで有効な変数、つまり<kw>ローカル変数</kw>になります。<r/>
-　また、C 言語と異なり、変数が宣言できる位置に制限はありません。<r/>
+<ptitle>Scope of Variables</ptitle>
+　Variables declared in a section enclosed by { } (blocks) are variables valid only within that block, that is, <kw>local variables</kw>.<r/>
+　Also, unlike C language, there are no restrictions on the positions where variables can be declared.<r/>
 <example>
 	while(t--)<r/>
 	{<r/>
-		var ratio=t/all; // 変数 'ratio' を宣言<r/>
+		var ratio=t/all; // Declare variable 'ratio'<r/>
 		setRatio(ratio);<r/>
 	}<r/>
 <r/>
-	// ここに制御が移ったとき、'ratio' は削除されている<r/>
+	// When control moves here, 'ratio' has been deleted<r/>
 <r/>
-	var test; // ここでも変数を宣言することができる<r/>
+	var test; // Variables can also be declared here<r/>
 </example>
 <r/>
-　また、ブロック外の変数と同じ名前の変数がブロック内で宣言された場合、そのブロック内では、新しく宣言された変数のみにアクセスできます。<r/>
+　Furthermore, if a variable with the same name as a variable outside the block is declared inside the block, only the newly declared variable can be accessed within that block.<r/>
 <example>
 	var ratio=0;<r/>
 	if(flag)<r/>
 	{<r/>
-		var ratio; // ブロック外で宣言されている変数と同名の変数<r/>
+		var ratio; // Variable with the same name as the variable declared outside the block<r/>
 <r/>
-		ratio=buf.position / buf.totalTime; // ブロック内の ratio にのみアクセスできる<r/>
+		ratio=buf.position / buf.totalTime; // Only ratio inside the block can be accessed<r/>
 		setRatio(ratio);<r/>
 	}<r/>
 <r/>
-	// ブロックを抜けるとブロック内の ratio は削除されるが、ブロック外の ratio はそのまま<r/>
+	// When leaving the block, ratio inside the block is deleted, but ratio outside the block remains as is<r/>
 	ratio=-1;<r/>
 </example>
 <note>
-　すべてのスコープの外側 (これをグローバルスコープと呼びます) で var で変数を宣言すると、その変数はグローバルオブジェクトのメンバとなります。<r/>
+　If a variable is declared with var outside all scopes (this is called the global scope), that variable becomes a member of the global object.<r/>
 </note>
 </para>
 </doc>
-

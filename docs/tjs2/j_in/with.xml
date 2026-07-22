@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <doc>
-<title>with ステートメント</title>
+<title>with Statement</title>
 
 <para>
-<ptitle>with ステートメント</ptitle>
-　<kw>with</kw> ステートメントは、<tt>.</tt> (ドット) 演算子における左側 (オブジェクト) を省略した場合に参照するオブジェクトを指定するものです。<r/>
+<ptitle>with Statement</ptitle>
+　The <kw>with</kw> statement specifies the object to reference when the left side (object) of the <tt>.</tt> (dot) operator is omitted.<r/>
 <r/>
-　構文は以下の通りです。<r/>
+　The syntax is as follows:<r/>
 <bq>
 with(expression)<r/>
-	ステートメントまたはブロック<r/>
+	statement or block<r/>
 </bq>
 <r/>
-　「ステートメントまたはブロック」内で、左側が省略された <tt>.</tt> (ドット)演算子が使用された場合、その <tt>.</tt> (ドット)演算子が参照するオブジェクトは、with ステートメントの expression で指定したオブジェクトになります。<r/>
+　When a <tt>.</tt> (dot) operator with its left side omitted is used within "statement or block", the object referenced by that <tt>.</tt> (dot) operator will be the object specified by expression in the with statement.<r/>
 <r/>
 <example>
-	with(obj) .member = 1; // obj.member = 1; と同じ<r/>
+	with(obj) .member = 1; // Same as obj.member = 1;<r/>
 <r/>
 	with(obj)<r/>
 	{<r/>
-		.member1 = 1; // obj.member1 に 1 を代入<r/>
-		.member2 = 2; // obj.member2 に 2 を代入<r/>
-		.member3++; // obj.member3 をインクリメント<r/>
-		.method(); // obj.method を呼び出す<r/>
+		.member1 = 1; // Assign 1 to obj.member1<r/>
+		.member2 = 2; // Assign 2 to obj.member2<r/>
+		.member3++; // Increment obj.member3<r/>
+		.method(); // Call obj.method<r/>
 	}<r/>
 </example>
 <r/>
-　このステートメントは特に、オブジェクトに大量のプロパティを設定したり、連続してメソッドを呼ぶ際に、タイピングを減らすことができます。<r/>
+　This statement can reduce typing, especially when setting a large number of properties on an object or calling methods consecutively.<r/>
 <r/>
-　たとえば<r/>
+　For example,<r/>
 <r/>
 <bq>
 	var object = new Foo();<r/>
 	object.setPos(0, 0);<r/>
 	object.setSize(100, 100);<r/>
-	object.name = "名前無し";<r/>
+	object.name = "Unnamed";<r/>
 	object.color = 0xffffffff;<r/>
 </bq>
 <r/>
-　のようなスクリプトを以下のように書くことができます。<r/>
+　A script like this can be written as follows:<r/>
 <r/>
 <bq>
 	var object = new Foo();<r/>
@@ -46,7 +46,7 @@ with(expression)<r/>
 	{<r/>
 		.setPos(0, 0);<r/>
 		.setSize(100, 100);<r/>
-		.name = "名前無し";<r/>
+		.name = "Unnamed";<r/>
 		.color = 0xffffffff;<r/>
 	}<r/>
 </bq>
@@ -54,55 +54,54 @@ with(expression)<r/>
 </para>
 
 <para>
-<ptitle>with ステートメントとオブジェクト</ptitle>
-　with ステートメントで指定した expression は、with が実行される最初に１回だけ評価され、あとはそれを参照するだけになります。<r/>
+<ptitle>with Statement and Objects</ptitle>
+　The expression specified in the with statement is evaluated only once at the beginning when with is executed, and thereafter it is merely referenced.<r/>
 <r/>
-　たとえば、<r/>
+　For example,<r/>
 <r/>
 <bq>
 this.dic = %[];<r/>
 with(this.dic)<r/>
 {<r/>
-	.member = 1; // this.dic.member に 1 を代入<r/>
-	this.dic = 0; // dic に何か別の物を代入<r/>
-	.member = 2; // this.dic.member に 2 を代入<r/>
+	.member = 1; // Assign 1 to this.dic.member<r/>
+	this.dic = 0; // Assign something else to dic<r/>
+	.member = 2; // Assign 2 to this.dic.member<r/>
 }<r/>
 </bq>
 <r/>
-　と書いても、２回目の .member への代入は成功するでしょう。with が実行される最初の状態で this.dic が評価され、あとはその評価された結果を用いているからです。毎回 this.dic を評価する訳ではありません。<r/>
+　Even if you write it like this, the second assignment to .member will succeed. This is because this.dic is evaluated in the initial state when with is executed, and that evaluated result is used from then on. It does not evaluate this.dic every time.<r/>
 <r/>
-　評価は最初の１回だけのため、何回もオブジェクトを参照するような用途では、オブジェクトを参照するためのコードが毎回生成されるようなことがなくなり、高速になる場合があります。<r/>
+　Since evaluation occurs only the first time, in use cases where an object is referenced multiple times, code to reference the object is not generated every time, which may improve performance.<r/>
 <r/>
-　上記の例は以下と等価のコードが生成されると考えることが出来ます。<r/>
+　The above example can be thought of as generating code equivalent to the following:<r/>
 <r/>
 <bq>
 this.dic = %[];<r/>
 {<r/>
-	var 無名の特別なローカル変数 = this.dic;<r/>
-	無名の特別なローカル変数.member = 1;<r/>
+	var anonymous_special_local_variable = this.dic;<r/>
+	anonymous_special_local_variable.member = 1;<r/>
 	this.dic = 0;<r/>
-	無名の特別なローカル変数.member = 2;<r/>
+	anonymous_special_local_variable.member = 2;<r/>
 }<r/>
 </bq>
 <r/>
-　with ステートメントでは、左側が省略された . (ドット) 演算子でしかアクセスできない、無名の特別なローカル変数に expression の評価の結果が代入され、以降、左側が省略された . (ドット) 演算子では、その「無名の特別なローカル変数」が参照されるようになります。<r/>
-　expression を評価した結果が保持されるスコープも、上記の「無名の特別なローカル変数」のローカル変数スコープと同じとみなすことができます ( with ステートメントが影響を与える範囲もその通りとなります )。<r/>
+　In the with statement, the result of evaluating expression is assigned to an anonymous special local variable that can only be accessed by the . (dot) operator with its left side omitted. Thereafter, that "anonymous special local variable" will be referenced by the . (dot) operator with its left side omitted.<r/>
+　The scope in which the result of evaluating expression is held can also be considered the same as the local variable scope of the above "anonymous special local variable" (and the scope affected by the with statement corresponds to this as well).<r/>
 </para>
 
 
 <para>
-<ptitle>with ステートメント外での . 演算子</ptitle>
-　with ステートメント外で <tt>.</tt> (ドット) 演算子の左側が省略された場合、グローバルオブジェクトを参照することになります。<r/>
-　たとえば、with ステートメント外で<r/>
+<ptitle>The . Operator Outside the with Statement</ptitle>
+　When the left side of the <tt>.</tt> (dot) operator is omitted outside a with statement, it references the global object.<r/>
+　For example, if you write<r/>
 <r/>
 <tt>.foo = 1;</tt><r/>
 <r/>
-　と記述すると<r/>
+　outside a with statement, it<r/>
 <r/>
 <tt>global.foo = 1;</tt><r/>
 <r/>
-　と同じ意味になります。<r/>
+　has the same meaning as.<r/>
 </para>
 
 </doc>
-

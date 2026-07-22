@@ -1,58 +1,58 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <doc>
-<title>プリプロセッサ</title>
+<title>Preprocessor</title>
 
 <para>
-<ptitle>プリプロセッサ</ptitle>
-　TJS2 は、<kw>条件コンパイル式</kw> ( C の #if や #endif に対応するもの ) の処理を行うことができます。これは、スクリプトが実際に解釈される前に処理され、条件によってスクリプトの部分を解釈させないようにしたり、解釈させるようにしたりする事ができます。<r/>
-　条件コンパイル式のスタイルは C のプリプロセッサ指令とは違い、フリースタイルとなり、どこにでも書くことができます。C の指令のように、一行に１指令のみを書かなければならないと言うことはありません。<r/>
+<ptitle>Preprocessor</ptitle>
+　TJS2 can process <kw>conditional compilation expressions</kw> (corresponding to C's #if and #endif). These are processed before the script is actually interpreted, allowing parts of the script to be excluded from or included in interpretation depending on conditions.<r/>
+　Unlike C preprocessor directives, the style of conditional compilation expressions is free-form and can be written anywhere. There is no requirement to write only one directive per line as in C.<r/>
 </para>
 
 <para>
-<ptitle>@set 指令</ptitle>
-　@set 指令は、条件コンパイル式を評価し、結果を捨てます。構文は以下の通りです。
+<ptitle>@set directive</ptitle>
+　The @set directive evaluates a conditional compilation expression and discards the result. The syntax is as follows:
 <bq>
-	@set(式)<r/>
+	@set(expression)<r/>
 </bq>
-　「式」には条件コンパイル式を書きます。ここには、以下の演算子を使うことができます。<r/>
+　In "expression", you write a conditional compilation expression. The following operators can be used here:<r/>
 <bq>
 	,  =  !=  ==  ||  &amp;&amp;  |  ^  &amp;  &lt;  &gt;  &lt;=  &gt;=  +  -  %  *  /  !  +  -  ( )<r/>
 </bq>
-　これらの演算子の意味については <link href="expr_and_op"/> をご覧ください。ただし、扱えるデータ型は整数のみです。<r/>
-　また、任意の変数、即値を使用することができます。変数名の命名規則については、 <link href="token"/> の変数の命名規則や即値と同じ規則が適用されます。<r/>
-　ただし、プリプロセッサ中で使用する変数と、TJS2 スクリプト中で使用する変数は干渉しません ( 同じ名前空間を共有しません )。<r/>
+　Please see <link href="expr_and_op"/> for the meanings of these operators. However, the only supported data type is integers.<r/>
+　In addition, arbitrary variables and literal values can be used. For variable naming rules, the same rules as for variable names and literals in <link href="token"/> apply.<r/>
+　However, variables used in the preprocessor and variables used in the TJS2 script do not interfere with each other (they do not share the same namespace).<r/>
 </para>
 
 <para>
-<ptitle>@if 指令, @endif 指令</ptitle>
-　@if 指令は、条件コンパイル式を評価し、結果が 0 であれば、次に @endif が来るまで、その間を解釈しないようにします。結果が 0 以外の場合は解釈されます。<r/>
-　構文は以下の通りです。<r/>
+<ptitle>@if directive, @endif directive</ptitle>
+　The @if directive evaluates a conditional compilation expression, and if the result is 0, it skips interpretation of the script until the next @endif. If the result is non-zero, it is interpreted.<r/>
+　The syntax is as follows:<r/>
 <bq>
-	@if(式)              ...         @endif<r/>
+	@if(expression)              ...         @endif<r/>
 </bq>
-	「式」には条件コンパイル式を指定します。 @if 縲鰀 @endif は入れ子にできます。<r/>
+	Specify a conditional compilation expression in "expression". @if ... @endif blocks can be nested.<r/>
 <r/>
 <example>
-	@if(flag==0)  // まだ何も代入されていない変数は 0 であると見なされる<r/>
+	@if(flag==0)  // Variables that have not been assigned anything yet are considered to be 0<r/>
 		@set(flag=1)<r/>
 		****<r/>
 	@endif<r/>
-	// ↑  **** の部分に書かれたスクリプトのコンパイルを一度きりのものとする<r/>
+	// ↑ Makes the compilation of the script written in the **** portion happen only once<r/>
 <r/>
 	@if(version>=0x02040009)<r/>
 		@if(flag)<r/>
 			****<r/>
 		@endif<r/>
 	@endif <r/>
-	// ↑ version が 0x02040009 (2.4.9) 以上で flag が 0 以外の時のみ **** の部分をコンパイルする<r/>
+	// ↑ Compiles the **** portion only when version is 0x02040009 (2.4.9) or higher and flag is non-zero<r/>
 </example>
 </para>
 
 <para>
-<ptitle>定義済み変数</ptitle>
-　<kw>version</kw> 変数が、現在の TJS2 のバージョンを表しています。<r/>
+<ptitle>Predefined Variables</ptitle>
+　The <kw>version</kw> variable represents the current version of TJS2.<r/>
 <r/>
-　数値として、16進数で 0x0XYYZZZZ の形式であり、 X の部分はメジャーバージョン、YY の部分はマイナーバージョン、ZZZZ はリリース番号を表します。たとえば 0x02040009 であれば、バージョンは 2.4.9 です。
+　As a numeric value, it is in hexadecimal 0x0XYYZZZZ format, where the X portion represents the major version, the YY portion represents the minor version, and ZZZZ represents the release number. For example, 0x02040009 represents version 2.4.9.
 </para>
 </doc>

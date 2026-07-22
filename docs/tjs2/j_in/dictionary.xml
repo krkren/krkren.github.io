@@ -1,90 +1,89 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <doc>
 
-<title>Dictionary クラス</title>
+<title>Dictionary Class</title>
 
 <para>
-<ptitle>Dictionary クラス</ptitle>
-　Dictionary クラスは<kw>辞書配列</kw>を扱うクラスです。<r/>
+<ptitle>Dictionary Class</ptitle>
+　The Dictionary class is a class for handling <kw>dictionary arrays</kw>.<r/>
 <r/>
-　辞書配列は<kw>連想配列</kw>とも呼ばれ、名前と、それに結びつけられた値を一つのペアとして、それを複数保持するオブジェクトです。<r/>
-　配列と同じように <kw>[ ]</kw> (間接参照) 演算子でアクセスしますが、添え字の代わりに文字列を使い、それが名前となります。名前が識別子として有効なものであれば、 <kw>.</kw> (直接参照) 演算子も使うことができます。<r/>
-　また、存在しない名前を参照すると void になります。<r/>
-　要素を削除するには delete 演算子を使います。<r/>
+　A dictionary array is also called an <kw>associative array</kw>, and is an object that holds multiple pairs of a name and a value linked to it.<r/>
+　Like standard arrays, it is accessed using the <kw>[ ]</kw> (indirect reference) operator, but instead of an index, a string is used, which becomes the name. If the name is a valid identifier, the <kw>.</kw> (direct reference) operator can also be used.<r/>
+　Also, referencing a name that does not exist returns void.<r/>
+　To delete an element, use the delete operator.<r/>
 <example>
 	var d=new Dictionary();<r/>
-	d["sat"] = 1; // d.sat = 1 と同じ<r/>
-	d["sun"] = 2; // d.sun = 2 と同じ<r/>
-	d["mon"] = 3; // d.mon = 3 と同じ<r/>
-	d["name"] ="value!"; // d.name = "value!" と同じ<r/>
-	d["continue"] = 4; // continue は識別子ではないが OK<r/>
-	d.continue = 4; // continue は識別子ではないのでエラー<r/>
+	d["sat"] = 1; // Same as d.sat = 1<r/>
+	d["sun"] = 2; // Same as d.sun = 2<r/>
+	d["mon"] = 3; // Same as d.mon = 3<r/>
+	d["name"] ="value!"; // Same as d.name = "value!"<r/>
+	d["continue"] = 4; // continue is not an identifier, but OK<r/>
+	d.continue = 4; // Error because continue is not an identifier<r/>
 <r/>
-	var sat = d["sat"]; // 1 が代入される<r/>
-	var none = d["none"]; // void が代入される<r/>
+	var sat = d["sat"]; // 1 is assigned<r/>
+	var none = d["none"]; // void is assigned<r/>
 <r/>
-	delete d.sat; // sat を削除<r/>
-	delete d["continue"]; // continue を削除<r/>
+	delete d.sat; // Delete sat<r/>
+	delete d["continue"]; // Delete continue<r/>
 </example>
 <r/>
 </para>
 
 
 <para>
-<ptitle>式中辞書配列</ptitle>
-　<tt><kw>%[ ]</kw></tt> を使って、式中に <tt>Dictionary</tt> クラスのオブジェクトをその場で記述することができます。要素名 => 要素の値、をカンマで区切り、初期要素となる式を列挙します。たとえば、<r/>
+<ptitle>In-Expression Dictionary Arrays</ptitle>
+　By using <tt><kw>%[ ]</kw></tt>, you can write an object of the <tt>Dictionary</tt> class inline within an expression. List expressions for initial elements, separating element name => element value with commas. For example, if you write:<r/>
 <tt>
 	var dic = %["a" => 1, "b" => 2, "c" => 3];<r/>
 </tt>
-　と記述すれば、<tt>dic</tt> に、要素名と要素の組がそれぞれ <tt>"a":1</tt>、 <tt>"b":2</tt>、 <tt>"c":3</tt>  となる <tt>Dictionary</tt> クラスのオブジェクトへの参照が代入されます。<r/>
-　内部的には、<tt>=></tt> はカンマと全く同じものですが、読みやすさを考え、<tt>=></tt> を使用できるようになっています ( perl と同じです )。<r/>
+　a reference to a <tt>Dictionary</tt> class object whose element name and value pairs are <tt>"a":1</tt>, <tt>"b":2</tt>, and <tt>"c":3</tt> will be assigned to <tt>dic</tt>.<r/>
+　Internally, <tt>=></tt> is exactly the same as a comma, but <tt>=></tt> is allowed for readability (same as in Perl).<r/>
 </para>
 
 <para>
-<ptitle>Dictionary クラスのメソッドへのアクセス</ptitle>
-　Dictionary クラスのオブジェクトは、作成された状態ではメンバを何一つ持っていません。<r/>
-　たとえば、assign メソッドを使おうと思って、Dictionary クラスのオブジェクト dict に対して<tt>dict.assign(src)</tt> のように記述しても、dict が assign というメソッドを持っていないためにエラーになります。<r/>
-　したがって、<kw>incontextof</kw> 演算子を使って、Dictionary クラスに直接属しているメソッドを、対象となる Dictionary クラスのオブジェクトをコンテキストとして実行させます。<r/>
+<ptitle>Accessing Methods of the Dictionary Class</ptitle>
+　Objects of the Dictionary class do not have any members when newly created.<r/>
+　For example, if you want to use the assign method and write <tt>dict.assign(src)</tt> for a Dictionary class object dict, an error will occur because dict does not possess a method called assign.<r/>
+　Therefore, use the <kw>incontextof</kw> operator to execute methods belonging directly to the Dictionary class using the target Dictionary class object as the context.<r/>
 <example>
 	var a = %[];<r/>
 	var b = %[];<r/>
-	(Dictionary.assign incontextof a)(b); // b を a にコピー<r/>
-	(Dictionary.clear incontextof b)(); // b の内容をクリア<r/>
+	(Dictionary.assign incontextof a)(b); // Copy b to a<r/>
+	(Dictionary.clear incontextof b)(); // Clear the contents of b<r/>
 </example>
 </para>
 
 <para>
 <ptitle>saveStruct</ptitle>
-　saveStruct はファイルへ構造化されたデータの出力を行います。<r/>
-　<link href="array"/> の同メソッド参照してください。<r/>
+　saveStruct outputs structured data to a file.<r/>
+　Please refer to the method of the same name in <link href="array"/>.<r/>
 </para>
 
 <para>
 <ptitle>assign</ptitle>
-　assign メソッドは、辞書配列をコピーします。<r/>
+　The assign method copies a dictionary array.<r/>
 <bq>
-構文 : assign(&lt;コピー元辞書配列>, &lt;内容をクリアするか=true>)<r/>
+Syntax : assign(&lt;source dictionary array>, &lt;whether to clear contents=true>)<r/>
 </bq>
-　引数で指定された他の辞書配列の内容を、そっくりコピーします。<r/>
-　「内容をクリアするか」が偽の場合は、コピー先 (メソッドを実行するオブジェクト) の内容をクリアせず、コピー元辞書配列の内容を上書きします。コピー元辞書配列と同じ名前のメンバがコピー先辞書配列にあった場合は、コピー元の内容でコピー先が上書きされます。<r/>
+　Copies the contents of another dictionary array specified by the argument entirely.<r/>
+　If "whether to clear contents" is false, the contents of the copy destination (the object executing the method) will not be cleared, and the contents of the source dictionary array will overwrite it. If a member with the same name as in the source dictionary array exists in the destination dictionary array, the destination will be overwritten with the content from the source.<r/>
 <r/>
-　配列 (Arrayクラスのオブジェクト) をコピー元配列に指定した場合は、その配列には、この辞書配列のメンバとなるべき要素が名前、値の順に並んでいるとみなし、その配列の内容をこの辞書配列にコピーします。<r/>
+　If an array (object of the Array class) is specified as the source array, it assumes that the array contains elements that should become members of this dictionary array listed in order of name and value, and copies the contents of that array into this dictionary array.<r/>
 </para>
 
 <para>
 <ptitle>assignStruct</ptitle>
-　assignStruct メソッドは、辞書配列をコピーします。<r/>
+　The assignStruct method copies a dictionary array.<r/>
 <bq>
-構文 : assignStruct(&lt;コピー元辞書配列>)<r/>
+Syntax : assignStruct(&lt;source dictionary array>)<r/>
 </bq>
-　引数で指定された他の辞書配列の内容を、そっくりコピーします。<r/>
-　assign メソッドと違い、メンバに配列あるいは辞書配列があった場合は、再帰的にその内容も
-コピーします ( assign メソッドの場合は参照がコピーされるだけです )。<r/>
+　Copies the contents of another dictionary array specified by the argument entirely.<r/>
+　Unlike the assign method, if members contain an array or a dictionary array, its contents are also copied recursively (in the case of the assign method, only references are copied).<r/>
 </para>
 
 <para>
 <ptitle>clear</ptitle>
-　clear メソッドは、辞書配列の内容をすべて消去します。<r/>
+　The clear method erases all contents of the dictionary array.<r/>
 </para>
 
 

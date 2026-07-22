@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <doc>
-<title>TJS2 について</title>
+<title>About TJS2</title>
 
 <para>
-<ptitle>TJS2 について</ptitle>
-　TJS2 は、アプリケーションへの組み込みを目的に開発された、オブジェクト指向のスクリプト言語です。また、非オブジェクト指向言語の特徴も持ち合わせ、記述者の記述のしやすい方法で記述することができます。<r/>
-　文法はJavaScript<sup>TM</sup> と Java<sup>TM</sup> に似て、習得しやすいと思います。<r/>
+<ptitle>About TJS2</ptitle>
+　TJS2 is an object-oriented scripting language developed for the purpose of being embedded into applications. It also possesses characteristics of non-object-oriented languages, allowing authors to write in whatever way is easiest for them.<r/>
+　The syntax is similar to JavaScript<sup>TM</sup> and Java<sup>TM</sup>, making it easy to learn.<r/>
 </para>
 
 
 <para>
-<ptitle>このマニュアルについて</ptitle>
-　TJS2 を文法面から説明します。<r/>
-　TJS2 にあらかじめ用意されているクラスやそのメソッドの説明もします。<r/>
+<ptitle>About this manual</ptitle>
+　This manual explains TJS2 from a syntax perspective.<r/>
+　It also provides explanations of the classes and methods built into TJS2.<r/>
 </para>
 </doc>

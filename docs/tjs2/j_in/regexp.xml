@@ -1,145 +1,145 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <doc>
 
-<title>RegExp クラス</title>
+<title>RegExp Class</title>
 
 <para>
-<ptitle>RegExp クラス</ptitle>
-　RegExp クラスは<kw>正規表現パターン</kw>を扱うクラスです。<r/>
-　正規表現パターンには perl 互換のパターンを指定することができます。<r/>
-　JavaScript の RegExp クラスににていますが、互換性は低いです。<r/>
+<ptitle>RegExp Class</ptitle>
+　The RegExp class is a class for handling <kw>regular expression patterns</kw>.<r/>
+　Perl-compatible patterns can be specified for regular expression patterns.<r/>
+　It is similar to JavaScript's RegExp class, but compatibility is low.<r/>
 <r/>
-コンストラクタの構文は以下の通りです。
+The constructor syntax is as follows:
 <bq>
-new RegExp(&lt;パターン文字列>, &lt;フラグ文字列=''>);<r/>
+new RegExp(&lt;pattern string>, &lt;flag string=''>);<r/>
 </bq>
-　パターン文字列は正規表現パターンです。パターン中に指定する \ は、文字列即値中で書くときは \\ と書くことに注意してください。<r/>
-　フラグ文字列は g i の文字の組み合わせです。<r/>
-　g はグローバルサーチフラグです。このフラグをつけると、match、exec、replace の各メソッドで、パターンにマッチした文字列の部分すべてに対して処理が行われます。<r/>
-　i フラグは英字の大文字/小文字の区別を行いません。<r/>
+　The pattern string is a regular expression pattern. Note that when writing a \ in the pattern inside a string literal, it must be written as \\.<r/>
+　The flag string is a combination of the characters g and i.<r/>
+　g is the global search flag. When this flag is enabled, processing is performed for all parts of the string that match the pattern in each of the match, exec, and replace methods.<r/>
+　The i flag makes searches case-insensitive for alphabetic characters.<r/>
 <r/>
 <example>
 	var re = new RegExp("[a-z]+[0-9]*", "gi");<r/>
-	var re = new RegExp("\\.\\.\\."); // /\.\.\./ ( ... にマッチさせたい )<r/>
+	var re = new RegExp("\\.\\.\\."); // /\.\.\./ ( to match ... )<r/>
 </example>
 </para>
 
 
 <para>
-<ptitle>正規表現パターン</ptitle>
-　/ と / で囲まれた部分に正規表現パターンを指定することができます。<r/>
-　<link href="token"/> を参照してください。<r/>
+<ptitle>Regular Expression Patterns</ptitle>
+　Regular expression patterns can be specified enclosed between / and /.<r/>
+　Please refer to <link href="token"/>.<r/>
 </para>
 
 <para>
 <ptitle>compile</ptitle>
-　compile メソッドは、正規表現オブジェクトに新しい正規表現パターンを設定します。<r/>
-　引数は RegExp クラスのコンストラクタに指定するものと同一です。<r/>
+　The compile method sets a new regular expression pattern for the regular expression object.<r/>
+　The arguments are identical to those specified for the RegExp class constructor.<r/>
 </para>
 
 <para>
 <ptitle>test</ptitle>
-　test メソッドは、引数に指定した文字列がパターンにマッチするかどうかを返します。<r/>
+　The test method returns whether the string specified in the argument matches the pattern.<r/>
 <bq>
-構文 : test(&lt;文字列>)<r/>
+Syntax: test(&lt;string>)<r/>
 </bq>
-　パターンにマッチすれば真、マッチしなければ偽が返ります。<r/>
-　このメソッドはこのオブジェクトの各プロパティの値を更新します。<r/>
+　Returns true if it matches the pattern, and false if it does not.<r/>
+　This method updates the values of each property of this object.<r/>
 </para>
 
 <para>
 <ptitle>exec</ptitle>
-　exec メソッドは、引数に指定した文字列に正規表現パターンマッチングを行い、マッチした結果を含む配列を返します。<r/>
+　The exec method performs regular expression pattern matching on the string specified in the argument and returns an array containing the match results.<r/>
 <bq>
-構文 : exec(&lt;文字列>)<r/>
+Syntax: exec(&lt;string>)<r/>
 </bq>
-　パターンにマッチしない場合、配列の要素数は 0 になります。<r/>
-　マッチした場合、要素 0 (最初の要素) はマッチした部分全体、それ以降の要素は各マッチ部分 ( 正規表現パターン中の (  ) で指定した部分 ) が入っています。<r/>
-　このメソッドはこのオブジェクトの各プロパティの値を更新します。<r/>
+　If it does not match the pattern, the number of elements in the array will be 0.<r/>
+　If it matches, element 0 (the first element) contains the entire matched portion, and subsequent elements contain each captured group (the parts specified by (  ) in the regular expression pattern).<r/>
+　This method updates the values of each property of this object.<r/>
 </para>
 
 <para>
 <ptitle>match</ptitle>
-　match メソッドは、このオブジェクトのプロパティの値を更新しない以外は、exec メソッドと同一です。<r/>
+　The match method is identical to the exec method, except that it does not update the property values of this object.<r/>
 <bq>
-構文 : match(&lt;文字列>)<r/>
+Syntax: match(&lt;string>)<r/>
 </bq>
 </para>
 
 
 <para>
 <ptitle>replace</ptitle>
-　replace メソッドは、文字列の置き換えを行い、置き換えが行われた後の文字列を返します。<r/>
+　The replace method performs string replacement and returns the string after replacement.<r/>
 <bq>
-構文 : replace(&lt;対象文字列>, &lt;置き換え文字列>)<r/>
+Syntax: replace(&lt;target string>, &lt;replacement string>)<r/>
 </bq>
-　対象文字列に対してマッチングを行い、マッチした部分を置き換え文字列で置き換え、置き換えが行われた後の文字列を返します。<r/>
-　置き換え文字列として、文字列ではなく関数を渡すと、置き換え動作のためにその関数が呼ばれるようになります。関数は引数をひとつとり、対象文字列の中のマッチした部分をあらわす配列オブジェクトが渡されます ( この配列については exec メソッドを参照してください )。対象文字列中のマッチした部分は、関数の戻した文字列に置き換わります。<r/>
-　このメソッドは start プロパティを無視します。<r/>
+　It performs matching on the target string, replaces the matched portion with the replacement string, and returns the string after replacement.<r/>
+　If a function is passed instead of a string as the replacement string, that function will be called to perform the replacement. The function takes one argument, which is an array object representing the matched portion in the target string (see the exec method for details on this array). The matched portion in the target string is replaced with the string returned by the function.<r/>
+　This method ignores the start property.<r/>
 </para>
 
 <para>
 <ptitle>split</ptitle>
-　split メソッドは、文字列を分割します。<r/>
+　The split method splits a string.<r/>
 <bq>
-構文 : split(&lt;対象文字列>, &lt;(予約)>, &lt;空の要素を無視するか=false>)<r/>
+Syntax: split(&lt;target string>, &lt;(reserved)>, &lt;ignore empty elements=false>)<r/>
 </bq>
-　文字列を分割した結果が格納された配列オブジェクトを返します。<r/>
-　<link href="array"/> の split メソッドも参照してください。<r/>
+　Returns an array object storing the results of splitting the string.<r/>
+　Please also refer to the split method in <link href="array"/>.<r/>
 </para>
 
 <para>
 <ptitle>matches</ptitle>
-　matches プロパティは、マッチした各部分を含む配列を表す読み出し専用のプロパティです。<r/>
-　パターンにマッチしない場合、配列の要素数は 0 になります。<r/>
-　マッチした場合、要素 0 (最初の要素) はマッチした部分全体、それ以降の要素は各マッチ部分 ( 正規表現パターン中の (  ) で指定した部分 ) が入っています。<r/>
+　The matches property is a read-only property representing an array containing each matched portion.<r/>
+　If it does not match the pattern, the number of elements in the array will be 0.<r/>
+　If it matches, element 0 (the first element) contains the entire matched portion, and subsequent elements contain each captured group (the parts specified by (  ) in the regular expression pattern).<r/>
 </para>
 
 <para>
 <ptitle>start</ptitle>
-　文字列の検索開始位置を表すプロパティです。値を設定することもできます。<r/>
+　A property representing the search start position in the string. A value can also be set.<r/>
 </para>
 
 <para>
 <ptitle>index</ptitle>
-　マッチした部分の先頭文字の位置を表す、読み出し専用のプロパティです。0 が先頭を表すので、それがマッチング対象文字列の先頭の文字ならば 0 になります。<r/>
+　A read-only property representing the position of the first character in the matched portion. 0 represents the beginning, so if it is the first character of the target string, it will be 0.<r/>
 </para>
 
 <para>
 <ptitle>lastIndex</ptitle>
-　マッチした部分の最終文字の次の文字の位置を表す、読み出し専用のプロパティです。0 が先頭を表します。<r/>
+　A read-only property representing the position of the character following the last character of the matched portion. 0 represents the beginning.<r/>
 </para>
 
 <para>
 <ptitle>input</ptitle>
-　マッチング対象の文字列をあらわす、読み出し専用のプロパティです。<r/>
+　A read-only property representing the target string to be matched.<r/>
 </para>
 
 <para>
 <ptitle>leftContext</ptitle>
-　マッチング対象文字列のうち、マッチした部分よりも左側の文字列をあらわす、読み出し専用のプロパティです。<r/>
+　A read-only property representing the portion of the target string to the left of the matched part.<r/>
 </para>
 
 <para>
 <ptitle>rightContext</ptitle>
-　マッチング対象文字列のうち、マッチした部分よりも右側の文字列をあらわす、読み出し専用のプロパティです。<r/>
+　A read-only property representing the portion of the target string to the right of the matched part.<r/>
 </para>
 
 <para>
 <ptitle>lastMatch</ptitle>
-　マッチング対象文字列を表します。matches[0] と同じです。
+　Represents the matched string. Same as matches[0].
 </para>
 
 <para>
 <ptitle>lastParen</ptitle>
-　マッチした各部分のうち、最後の部分を返します。matches[matches.count-1] と同じです。
+　Returns the last captured part among each matched portion. Same as matches[matches.count-1].
 </para>
 
 <para>
 <ptitle>RegExp.last</ptitle>
-　最後に test あるいは exec メソッドが実行された RegExp クラスのインスタンスです。
+　The instance of the RegExp class on which the test or exec method was last executed.
 <bq>
-例 : if(/pat(\d+)/.test(target)) { return RegExp.last.matches[1]; }<r/>
+Example: if(/pat(\d+)/.test(target)) { return RegExp.last.matches[1]; }<r/>
 </bq>
 
 </para>
@@ -148,7 +148,7 @@ new RegExp(&lt;パターン文字列>, &lt;フラグ文字列=''>);<r/>
 
 <para>
 <ptitle>Copyright notice</ptitle>
-　正規表現機能の実装には K.Kosako 氏の鬼車を用いています。有用なライブラリを公開なさっている氏に感謝します。<r />
+　Mr. K.Kosako's Oniguruma is used for the implementation of the regular expression functionality. We express our gratitude to him for making such a useful library publicly available.<r />
 </para>
 
 </doc>

@@ -1,102 +1,102 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <doc>
-<title>プロパティ</title>
+<title>Properties</title>
 
 <para>
-<ptitle>プロパティ</ptitle>
-　プロパティとは、変数と同じように扱うことができるが、実際はメソッド呼び出しと同様に、<kw>セッター</kw> ( <kw>setter</kw> ) と<kw>ゲッター</kw> ( <kw>getter</kw> ) の呼び出しを伴うものです。セッターやゲッターを、プロパティハンドラと呼ぶ場合があります。<r/>
+<ptitle>Properties</ptitle>
+　Properties can be treated in the same way as variables, but in reality, like method calls, they involve calling a <kw>setter</kw> and a <kw>getter</kw>. Setters and getters are sometimes called property handlers.<r/>
 <r/>
-　構文は以下の通りです。<r/>
+　The syntax is as follows:<r/>
 <bq>
-<kw>property</kw> 識別子<r/>
+<kw>property</kw> identifier<r/>
 {<r/>
-	setter(引数)<r/>
+	setter(argument)<r/>
 	{<r/>
-		// ここにセッターの内容<r/>
+		// Setter content here<r/>
 	}<r/>
 <r/>
 	getter()<r/>
 	{<r/>
-		// ここにゲッターの内容<r/>
-		return 式; // ゲッターとして返す値<r/>
+		// Getter content here<r/>
+		return expression; // Value returned as the getter<r/>
 	}<r/>
 }<r/>
 </bq>
-　setter と getter は、逆の順番で書かれていてもかまいません。 <r/>
-　この property を記述したクラスや、グローバルのメンバとしてこのプロパティは登録されますが、この識別子からの値の取得はゲッター、値の設定はセッターを通して行われます。これらのセッターとゲッターは、メソッド同様に様々な内容を書くことができます。セッターは setter に続く ( ) 内に、値を受け取る変数を引数として書きます。ゲッターは <kw>return</kw> ステートメントにて値を返します。<r/>
+　The setter and getter can also be written in the reverse order. <r/>
+　This property is registered as a member of the class in which this property is written, or as a global member, but getting a value from this identifier is done via the getter, and setting a value is done via the setter. These setters and getters can contain various contents just like methods. The setter takes a variable that receives the value as an argument inside the ( ) following setter. The getter returns a value using the <kw>return</kw> statement.<r/>
 <r/>
-　getterのあとの () は省略できます。 <r/>
+　The () after getter can be omitted. <r/>
 <r/>
-　一つの識別子に対し、セッターとゲッターの両方を書けば、読み書きの両方が可能なプロパティになります。一方しか書かない場合、たとえばゲッターしか書かない場合は、読み出し専用のプロパティとなり、書き込みはエラーになります。<r/>
+　If you write both a setter and a getter for a single identifier, it becomes a property that allows both reading and writing. If you write only one, for example if you write only a getter, it becomes a read-only property, and writing to it will result in an error.<r/>
 <example>
 	var value;<r/>
 <r/>
-	property property1 // プロパティ 'property1' を宣言<r/>
+	property property1 // Declare property 'property1'<r/>
 	{<r/>
 		setter(v)<r/>
 		{<r/>
-			// セッターはただ一つだけの引数をとる<r/>
-			value=v; // 引数 v を処理する<r/>
+			// Setter takes only one argument<r/>
+			value=v; // Process argument v<r/>
 <r/>
 			inform("value set.");<r/>
 		}<r/>
 <r/>
 		getter<r/>
 		{<r/>
-			// propset と同じ識別子 'property1' のゲッターを宣言<r/>
-			// ゲッターに引数はない<r/>
+			// Declare getter for identifier 'property1', same as propset<r/>
+			// Getter has no arguments<r/>
 			inform("value get.");<r/>
-			return value; // 戻り値として返す<r/>
+			return value; // Return as return value<r/>
 		}<r/>
 	}<r/>
 <r/>
-	property1=5; // property1 への代入は、セッターが呼ばれる<r/>
-	property1++; // このような式では、ゲッターが呼ばれ、<r/>
-	             // 次にセッターが呼ばれて値が設定される<r/>
+	property1=5; // Assignment to property1 calls the setter<r/>
+	property1++; // In an expression like this, the getter is called,<r/>
+	             // and then the setter is called to set the value<r/>
 }<r/>
 </example>
-　プロパティも変数や関数やクラス同様、<kw>オーバーライド</kw>できます。<r/>
+　Like variables, functions, and classes, properties can also be <kw>overridden</kw>.<r/>
 </para>
 
 <para>
-<ptitle>プロパティオブジェクト</ptitle>
-　プロパティ自身も一つのオブジェクトです。しかし、なんらかのオブジェクトに登録されている場合は、普通のアクセス方法ではプロパティハンドラが呼ばれるだけであり、プロパティオブジェクトそのものにはアクセスできません。<r/>
-　プロパティオブジェクトそのものを取り出すには <tt><kw>&amp;</kw></tt> 演算子を使います。取り出したプロパティオブジェクトはローカル変数に入れることが出来ます。<r/>
-　また、<tt>&amp;</tt> 演算子を使ってプロパティオブジェクトを登録することもできます。<r/>
+<ptitle>Property Objects</ptitle>
+　A property itself is also an object. However, when it is registered to some object, normal access methods only call the property handler, and the property object itself cannot be accessed.<r/>
+　To retrieve the property object itself, use the <tt><kw>&amp;</kw></tt> operator. The retrieved property object can be placed in a local variable.<r/>
+　You can also use the <tt>&amp;</tt> operator to register a property object.<r/>
 <example>
-	property prop // プロパティ prop を宣言<r/>
+	property prop // Declare property prop<r/>
 	{<r/>
-		(略)<r/>
+		(omitted)<r/>
 	}<r/>
 <r/>
 {<r/>
-	var p = &amp;prop; // プロパティオブジェクトを得てローカル変数に入れる<r/>
+	var p = &amp;prop; // Get property object and put it in a local variable<r/>
 <r/>
-	&amp;object.property1 = p; // p を object の property1 として登録する<r/>
+	&amp;object.property1 = p; // Register p as property1 of object<r/>
 }<r/>
 </example>
 <r/>
-　<tt>&amp;</tt> 演算子を使うと、ゲッターやセッターは呼ばれずにプロパティオブジェクトそのものにアクセスする事ができます。<tt>&amp;</tt> 演算子を使わなければ通常のプロパティへのアクセスとなります。<r/>
+　Using the <tt>&amp;</tt> operator allows you to access the property object itself without calling the getter or setter. If you do not use the <tt>&amp;</tt> operator, it results in normal property access.<r/>
 <r/>
-　ローカル変数として取り出したプロパティオブジェクトは、オブジェクトに登録しなくとも、<tt><kw>*</kw></tt> 演算子を用いてプロパティハンドラを呼び出すことができます。<r/>
+　A property object retrieved as a local variable can have its property handler called using the <tt><kw>*</kw></tt> operator, even without registering it to an object.<r/>
 <r/>
 <example>
-	property prop // プロパティ prop を宣言<r/>
+	property prop // Declare property prop<r/>
 	{<r/>
-		(略)<r/>
+		(omitted)<r/>
 	}<r/>
 <r/>
 {<r/>
-	var p = &amp;prop; // プロパティオブジェクトを得てローカル変数に入れる<r/>
+	var p = &amp;prop; // Get property object and put it in a local variable<r/>
 <r/>
-	*p = 30; // setter を呼び出し 30 を設定する<r/>
-	func(*p); // getter を呼び出し値を取得し、func に渡す<r/>
+	*p = 30; // Call setter and set 30<r/>
+	func(*p); // Call getter to retrieve value and pass to func<r/>
 }<r/>
 </example>
 <note>
-上記のように var 変数にプロパティオブジェクトをとる場合は、変数はローカル変数にしてください。これは、プロパティオブジェクトはいったんオブジェクトに登録されると、プロパティオブジェクトとしてではなくプロパティとしてゲッターやセッターを介した動作をするようになるためです。つまり、ローカル変数ではなく、グローバル変数(＝globalのメンバ)やオブジェクトのメンバにプロパティオブジェクトを登録してしまうと、普通のプロパティと同じように振る舞うようになります。もちろんこのようにしてグローバル変数やオブジェクトのメンバに登録したプロパティオブジェクトを取り出すために &amp; 演算子を使うのはかまいません。
+When storing a property object in a var variable as shown above, please make the variable a local variable. This is because once a property object is registered to an object, it operates via setters and getters as a property rather than as a property object. In other words, if you register a property object as a global variable (= member of global) or a member of an object instead of a local variable, it will behave like a normal property. Of course, it is fine to use the &amp; operator to retrieve a property object registered to a global variable or object member in this way.
 </note>
 <r/>
-プロパティオブジェクトに対して instanceof 演算子を "Property" を伴って使用した場合は真になります(上記の例で言うと、&amp;prop instanceof "Property" は真)。<r/>
+When using the instanceof operator on a property object with "Property", it evaluates to true (in the example above, &amp;prop instanceof "Property" is true).<r/>
 </para>
 </doc>

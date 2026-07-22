@@ -1,115 +1,115 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <doc>
-<title>文字列に対する操作</title>
+<title>Operations on Strings</title>
 
 <para>
-<ptitle>文字列に対する操作</ptitle>
-　TJS2 では、文字列は擬似的に <kw>String</kw> クラスのオブジェクトということになっていますが、String クラスは存在していませんし、実際に String クラスのオブジェクトというわけではありません ( ただし 文字列に対して typeof 演算子を使うと "String" を返します )。<r/>
-　しかし 文字列をオブジェクトと見立てて、いくつかのメソッドやプロパティが使用可能になっています。<r/>
+<ptitle>Operations on Strings</ptitle>
+　In TJS2, strings pseudo-exist as objects of the <kw>String</kw> class, but the String class does not actually exist, nor are they truly objects of the String class (however, using the typeof operator on a string returns "String").<r/>
+　However, by treating strings as objects, several methods and properties are available.<r/>
 </para>
 
 <para>
 <ptitle>length</ptitle>
-　length プロパティは、文字列の長さを返します。メソッドではなくてプロパティですので注意してください。ただし、このプロパティへの値の代入はできません。<r/>
+　The length property returns the length of the string. Please note that it is a property and not a method. However, you cannot assign a value to this property.<r/>
 <r/>
-　TJS では内部的に文字をすべて <kw>UNICODE</kw> で扱っていますので、全角文字も 1 文字、半角文字も 1 文字と数えられます。<r/>
+　In TJS, all characters are handled internally as <kw>UNICODE</kw>, so full-width characters and half-width characters are both counted as 1 character.<r/>
 <example>
 	var str = "abc漢字";<r/>
-	var n = str.length;  // n には 5 が代入される<r/>
-	var n = "abc漢字".length; // これも同じく 5 が代入される<r/>
+	var n = str.length;  // 5 is assigned to n<r/>
+	var n = "abc漢字".length; // 5 is assigned to this as well<r/>
 </example>
 </para>
 
 <para>
-<ptitle>'数値' プロパティ</ptitle>
-　数値をプロパティとして間接指定すると、その文字位置にある文字にアクセスできます。<r/>
-　たとえば、str が文字列あるいは文字列を表す式だとすると、str[0] は先頭の一文字を表す文字列になります。<r/>
-　数値が文字列よりも長い位置や、負の場合は例外が発生します ( ただし文字列の最後の文字は 空文字 が返されます )。<r/>
+<ptitle>'Numeric' Properties</ptitle>
+　By indirectly specifying a number as a property, you can access the character at that character position.<r/>
+　For example, if str is a string or an expression representing a string, str[0] will be a string representing the first character.<r/>
+　An exception occurs if the number is longer than the string length or if it is negative (however, an empty string is returned at the position past the last character).<r/>
 <r/>
-　代入式を生成することはできません。<r/>
+　You cannot generate assignment expressions.<r/>
 <example>
 	var str = "abcdef";<r/>
-	var c = str[0];  // 'a' が c に代入される<r/>
-	var c = str[2];  // 'c' が c に代入される<r/>
-	str[3] = 'A'; // 代入式は生成できないのでエラーになる<r/>
-	var c = str[100]; // c 値が範囲外なのでエラーになる<r/>
-	var c = str[6]; // 空文字 '' が代入される<r/>
+	var c = str[0];  // 'a' is assigned to c<r/>
+	var c = str[2];  // 'c' is assigned to c<r/>
+	str[3] = 'A'; // Error because assignment expressions cannot be generated<r/>
+	var c = str[100]; // Error because the index is out of range<r/>
+	var c = str[6]; // Empty string '' is assigned<r/>
 </example>
 </para>
 
 <para>
 <ptitle>charAt</ptitle>
-　charAt メソッドは、文字列の指定位置で指定された位置の文字を返します。 '数値' プロパティと同様の動作をしますが、範囲外の場合は常に空文字列を返します (例外を出しません)。<r/>
+　The charAt method returns the character at the specified position in the string. It works similarly to the 'Numeric' property, but if it is out of range, it always returns an empty string (does not throw an exception).<r/>
 <bq>
-構文 : charAt(&lt;文字位置>)<r/>
+Syntax : charAt(&lt;character position>)<r/>
 </bq>
 <example>
 	var str = "abcdef";
-	var c = str.charAt(3); // 'd' が c に代入される
+	var c = str.charAt(3); // 'd' is assigned to c
 </example>
 </para>
 
 <para>
 <ptitle>indexOf</ptitle>
-　indexOf メソッドは、部分文字列の位置を返します。<r/>
+　The indexOf method returns the position of a substring.<r/>
 <bq>
-構文 : indexOf(&lt;部分文字列>[,&lt;検索開始位置>])<r/>
+Syntax : indexOf(&lt;substring>[,&lt;search start position>])<r/>
 </bq>
-　文字列から、&lt;部分文字列> を&lt;検索開始位置>から検索し、最初に見つかった位置を返します。 0 が返されれば文字列の先頭です。-1 が返されたときは見つからなかったときです。&lt;検索開始位置>を省略すると、文字列の先頭からの検索になります。<r/>
+　Searches the string for &lt;substring> starting from &lt;search start position>, and returns the position where it was first found. Returning 0 means the beginning of the string. Returning -1 means it was not found. If &lt;search start position> is omitted, the search starts from the beginning of the string.<r/>
 <r/>
 <example>
 	var str = "abcdefghijkl";<r/>
-	var n = str.indexOf("fgh"); // n には 5 が代入される<r/>
-	var n = str.indexOf("xyz"); // n には -1 が代入される<r/>
+	var n = str.indexOf("fgh"); // 5 is assigned to n<r/>
+	var n = str.indexOf("xyz"); // -1 is assigned to n<r/>
 </example>
 </para>
 
 <para>
 <ptitle>toLowerCase</ptitle>
-　このメソッドに引数はありません。<r/>
-　toLowerCase は、文字列のアルファベットを小文字にした文字列を返します。<r/>
-　全角文字は変換されません。<r/>
+　This method takes no arguments.<r/>
+　toLowerCase returns a string with the alphabetic characters converted to lowercase.<r/>
+　Full-width characters are not converted.<r/>
 <r/>
-　これらのメソッドは、もとの文字列には影響を与えません。<r/>
+　These methods do not affect the original string.<r/>
 <example>
-	var lwr="ABCDEF".toLowerCase(); // lwr には "abcdef" が代入される<r/>
+	var lwr="ABCDEF".toLowerCase(); // "abcdef" is assigned to lwr<r/>
 </example>
 <note>
-　現バージョンの TJS2 では 文字コード 0x80 未満の文字に対してのみ変換を行います。<r/>
+　In the current version of TJS2, conversion is performed only for characters with character codes less than 0x80.<r/>
 </note>
 </para>
 
 <para>
 <ptitle>toUpperCase</ptitle>
-　このメソッドは toLowerCase と逆で、小文字のアルファベットを大文字にした文字列を返します。<r/>
+　Opposite to toLowerCase, this method returns a string with lowercase alphabetic characters converted to uppercase.<r/>
 </para>
 
 
 <para>
 <ptitle>substring</ptitle>
-　substring メソッドは、文字列の部分文字列を返します。<r/>
+　The substring method returns a substring of the string.<r/>
 <bq>
-構文 : substring(&lt;開始文字位置>[,&lt;文字数>])
+Syntax : substring(&lt;start character position>[,&lt;character count>])
 </bq>
-　文字列の、&lt;開始文字位置>から&lt;文字数分>の部分文字列を返します。元の文字列に影響は与えません。&lt;文字数> を省略すると、&lt;開始文字位置> 以降の文字列がすべて返されます。<r/>
-　JavaScript の同メソッドとは引数の意味が違うので注意してください。<r/>
+　Returns a substring of the string starting from &lt;start character position> for &lt;character count> characters. It does not affect the original string. If &lt;character count> is omitted, all characters after &lt;start character position> are returned.<r/>
+　Note that the meaning of the arguments is different from the method of the same name in JavaScript.<r/>
 <example>
-	var ss="abcdefghijkl".substring(3,3); // ss には "def" が代入される
+	var ss="abcdefghijkl".substring(3,3); // "def" is assigned to ss
 </example>
 </para>
 
 <para>
 <ptitle>substr</ptitle>
-　substring と同じです。<r/>
+　Same as substring.<r/>
 </para>
 
 <para>
 <ptitle>sprintf</ptitle>
-　sprintf メソッドは、文字列を書式化します。<r/>
+　The sprintf method formats a string.<r/>
 <bq>
-構文 : sprintf(引数, 引数, ....)<r/>
+Syntax : sprintf(argument, argument, ....)<r/>
 </bq>
-　文字列を書式文字列と見なし、C言語における sprintf 同様のテキストのフォーマッティングを行った文字列を返します。元の文字列には影響を与えません。<r/>
+　Treats the string as a format string and returns a string with text formatted similarly to sprintf in C language. It does not affect the original string.<r/>
 <example>
 	var formatted = "%04X %c %5d".sprintf(v1, v2, dic[v1]);
 </example>
@@ -118,77 +118,77 @@
 
 <para>
 <ptitle>replace</ptitle>
-　replace メソッドは、文字列の置き換えを行います。<r/>
+　The replace method performs string replacement.<r/>
 <bq>
-構文 : replace(&lt;パターン>, &lt;置き換え後文字列>)
+Syntax : replace(&lt;pattern>, &lt;replacement string>)
 </bq>
-　正規表現パターンに従って文字列の置き換えを行い、置き換えを行ったあとの文字列を返します。元の文字列には影響を与えません。<r/>
-　動作については <link href="regexp"/> の replace メソッドを参照してください。<r/>
+　Replaces the string according to the regular expression pattern and returns the string after replacement. It does not affect the original string.<r/>
+　For details on operation, please refer to the replace method in <link href="regexp"/>.<r/>
 </para>
 
 <para>
 <ptitle>split</ptitle>
-　split メソッドは、文字列を分割します。<r/>
+　The split method splits a string.<r/>
 <bq>
-構文 : split(&lt;パターン/デリミタ集合>, &lt;(予約)>, &lt;空の要素を無視するか=false>)
+Syntax : split(&lt;pattern/delimiter set>, &lt;(reserved)>, &lt;ignore empty elements=false>)
 </bq>
-　文字列を分割した結果が格納された配列オブジェクトを返します。<r/>
+　Returns an array object containing the results of splitting the string.<r/>
 <r/>
-　<link href="array"/> の split メソッドも参照してください (引数の順番に注意してください)。<r/>
+　Please also refer to the split method in <link href="array"/> (note the order of arguments).<r/>
 </para>
 
 <para>
 <ptitle>escape</ptitle>
-　escape メソッドは、文字列を、TJSの文字列即値内で表現可能な形式に変換します。\ や " などの記号はすべて \ 記号を用いて特殊な用途として解釈されなくされます (エスケープされます)。<r/>
+　The escape method converts a string into a format that can be represented inside a TJS string literal. Symbols such as \ and " are all escaped using the \ symbol so that they are not interpreted for special purposes.<r/>
 <bq>
-構文 : escape()
+Syntax : escape()
 </bq>
-　エスケープされた文字列を返します。元の文字列には影響を与えません。<r/>
+　Returns the escaped string. It does not affect the original string.<r/>
 <r/>
 <example>
-	var escaped = str.escape(); // str 中の " は \" に、\ は \\ に変換されるなど<r/>
+	var escaped = str.escape(); // " in str is converted to \", \ to \\, etc.<r/>
 </example>
 </para>
 
 <para>
 <ptitle>trim</ptitle>
-　trim メソッドは、文字列の先頭と最後の空白を取り除いた文字列を返します。元の文字列には影響を与えません。<r/>
-　先頭と最後の空白とは、文字コードがU+0001縲弑+0020の文字を指します。つまり、ASCII制御文字なども含まれますが、いわゆる全角の空白は含みません。<r/>
-　連続して先頭または最後にこれらの空白があった場合は、すべて取り除かれます。<r/>
+　The trim method returns a string with leading and trailing whitespace removed. It does not affect the original string.<r/>
+　Leading and trailing whitespace refers to characters with character codes U+0001 to U+0020. That is, it includes ASCII control characters and the like, but does not include so-called full-width spaces.<r/>
+　If there are consecutive leading or trailing whitespaces, all of them are removed.<r/>
 <bq>
-構文 : trim()
+Syntax : trim()
 </bq>
-　先頭と末尾の空白文字が削除された文字列を返します。元の文字列には影響を与えません。<r/>
+　Returns a string with leading and trailing whitespace characters deleted. It does not affect the original string.<r/>
 <r/>
 <example>
-	var str = "  Hoge ".trim(); // str は "Hoge" です。<r/>
+	var str = "  Hoge ".trim(); // str is "Hoge".<r/>
 </example>
 </para>
 
 <para>
 <ptitle>reverse</ptitle>
-　reverse メソッドは、文字の並びを逆転した文字列を返します。元の文字列には影響を与えません。<r/>
-　現バージョンのTJS2では、UTF-16のうちサロゲートペアを含む文字列の動作は保証しません。<r/>
+　The reverse method returns a string with the sequence of characters reversed. It does not affect the original string.<r/>
+　In the current version of TJS2, behavior is not guaranteed for strings containing UTF-16 surrogate pairs.<r/>
 <bq>
-構文 : reverse()
+Syntax : reverse()
 </bq>
-　文字の並びを逆転した文字列を返します。元の文字列には影響を与えません。<r/>
+　Returns a string with the sequence of characters reversed. It does not affect the original string.<r/>
 <r/>
 <example>
-	var str = "Hoge".reverse(); // str は "egoH" です。
+	var str = "Hoge".reverse(); // str is "egoH".
 </example>
 </para>
 
 <para>
 <ptitle>repeat</ptitle>
-　repeat メソッドは、指定した回数だけ文字列を繰り返した文字列を返します。元の文字列には影響を与えません。<r/>
+　The repeat method returns a string repeated the specified number of times. It does not affect the original string.<r/>
 <bq>
-構文 : repeat(count)
+Syntax : repeat(count)
 </bq>
-　count個、この文字列を繰り返した文字列を返します。元の文字列には影響を与えません。<r/>
+　Returns a string with this string repeated count times. It does not affect the original string.<r/>
 <r/>
 <example>
-	var str = "Hoge".repeat(3); // str は "HogeHogeHoge" です。
+	var str = "Hoge".repeat(3); // str is "HogeHogeHoge".
 </example>
 </para>
 

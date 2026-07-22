@@ -1,82 +1,82 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <doc>
-<title>オクテット列に対する操作</title>
+<title>Operations on Octet Sequences</title>
 
 <para>
-<ptitle>オクテット列に対する操作</ptitle>
-　TJS2 では、オクテット列は擬似的に <kw>Octet</kw> クラスのオブジェクトということになっていますが、Octet クラスは存在していませんし、実際に Octet クラスのオブジェクトというわけではありません ( ただし オクテット列に対して typeof 演算子を使うと "Octet" を返します )。<r/>
-　しかし オクテット列をオブジェクトと見立てて、いくつかのメソッドやプロパティが使用可能になっています。<r/>
+<ptitle>Operations on Octet Sequences</ptitle>
+　In TJS2, an octet sequence is pseudo-treated as an object of the <kw>Octet</kw> class, but an Octet class does not actually exist, nor is it truly an object of an Octet class (however, using the typeof operator on an octet sequence returns "Octet").<r/>
+　However, by treating an octet sequence as an object, several methods and properties become available.<r/>
 <r/>
-　オクテット列に関する実装は未完成です。<r/>
+　The implementation regarding octet sequences is incomplete.<r/>
 </para>
 
 <para>
 <ptitle>length</ptitle>
-　length プロパティは、オクテット列の長さを返します。メソッドではなくてプロパティですので注意してください。ただし、このプロパティへの値の代入はできません。<r/>
+　The length property returns the length of the octet sequence. Please note that it is a property, not a method. However, values cannot be assigned to this property.<r/>
 <r/>
 <example>
 	var oct = &lt;% 11 22 33 %>;<r/>
-	var n = oct.length;  // n には 3 が代入される<r/>
-	var n = &lt;% 11 22 33 %>.length; // これも同じく 3 が代入される<r/>
+	var n = oct.length;  // 3 is assigned to n<r/>
+	var n = &lt;% 11 22 33 %>.length; // This also assigns 3<r/>
 </example>
 </para>
 
 <para>
-<ptitle>'数値' プロパティ</ptitle>
-　数値をプロパティとして間接指定すると、その位置にあるオクテットにアクセスできます。<r/>
-　結果はオクテットの数値で表されます。<r/>
-　たとえば、oct がオクテット列を表す式だとすると、oct[0] は先頭のオクテットの値を表す数値になります。<r/>
-　数値がオクテット列よりも長い位置や、負の場合は例外が発生します。<r/>
+<ptitle>'Numerical' Property</ptitle>
+　By indirectly specifying a number as a property, you can access the octet at that position.<r/>
+　The result is represented as a numerical value of the octet.<r/>
+　For example, assuming oct is an expression representing an octet sequence, oct[0] will be a number representing the value of the first octet.<r/>
+　If the number specifies a position longer than the octet sequence or is negative, an exception will occur.<r/>
 <r/>
-　代入式を生成することはできません。<r/>
+　Assignment expressions cannot be generated.<r/>
 <example>
 	var oct = &lt;% 11 22 33 44 55 %>;<r/>
-	var c = oct[0];  // 0x11 が c に代入される<r/>
-	var c = oct[2];  // 0x22 が c に代入される<r/>
-	oct[3] = 'A'; // 代入式は生成できないのでエラーになる<r/>
-	var c = oct[100]; // 値が範囲外なのでエラーになる<r/>
+	var c = oct[0];  // 0x11 is assigned to c<r/>
+	var c = oct[2];  // 0x22 is assigned to c<r/>
+	oct[3] = 'A'; // Error because assignment expressions cannot be generated<r/>
+	var c = oct[100]; // Error because the value is out of range<r/>
 </example>
 </para>
 
 <para>
 <ptitle>unpack</ptitle>
-　unpack メソッドは、引数で指定された文字列に従い、バイナリ(Octet)を配列(Array)化して返します。<r/>
-　指定の文字列はテンプレートと呼びます。<r/>
-　テンプレートは、型指定文字とその長さを並べたものです。長さとして * が指定された時は残り全ての長さを表します。長さが省略された場合は1として扱います。<r/>
+　The unpack method converts binary data (Octet) into an array (Array) according to the format string specified in the argument and returns it.<r/>
+　The specified format string is called a template.<r/>
+　A template is a series of type specifier characters and their lengths. When * is specified as the length, it represents all remaining length. If the length is omitted, it is treated as 1.<r/>
 <bq>
-構文 : unpack(テンプレート文字列)<r/>
+Syntax : unpack(template string)<r/>
 </bq>
-テンプレート文字列には以下の文字が使用可能です。<r/>
-　a : ASCII 文字列(ヌル文字が補完される)<r/>
-　A : ASCII 文字列(スペースが補完される)<r/>
-　b : 2進数文字列(下位ビットから上位ビットの順)<r/>
-　B : 2進数文字列(上位ビットから下位ビットの順)<r/>
-　c : 符号付き1バイト数値(-128 縲鰀 127)<r/>
-　C : 符号無し1バイト数値(0縲鰀255)<r/>
-　d : 倍精度浮動小数点値<r/>
-　f : 単精度浮動小数点値<r/>
-　h : 16進数文字列(low nybble first)<r/>
-　H : 16進数文字列(high nybble first)<r/>
-　i : 符号付きint数値(通常4バイト)<r/>
-　I : 符号無しint数値(通常4バイト)<r/>
-　l : 符号付きlong数値(通常4バイト)<r/>
-　L : 符号無しlong数値(通常4バイト)<r/>
-　n : 符号無しshort数値(ネットワークバイトオーダ)<r/>
-　N : 符号無しlong数値(ネットワークバイトオーダ)<r/>
-　s : 符号付きshort数値(通常2バイト)<r/>
-　S : 符号無しshort数値(通常2バイト)<r/>
-　v : 符号無しshort値(リトルエンディアン)<r/>
-　V : 符号無しlong値(リトルエンディアン)<r/>
-　x : 1バイト読み飛ばす<r/>
-　X : 1バイト後退<r/>
-　@ : 指定位置まで移動<r/>
+The following characters can be used in the template string.<r/>
+　a : ASCII string (null-padded)<r/>
+　A : ASCII string (space-padded)<r/>
+　b : Binary string (low bit to high bit order)<r/>
+　B : Binary string (high bit to low bit order)<r/>
+　c : Signed 1-byte integer (-128 to 127)<r/>
+　C : Unsigned 1-byte integer (0 to 255)<r/>
+　d : Double-precision floating point value<r/>
+　f : Single-precision floating point value<r/>
+　h : Hexadecimal string (low nybble first)<r/>
+　H : Hexadecimal string (high nybble first)<r/>
+　i : Signed int value (usually 4 bytes)<r/>
+　I : Unsigned int value (usually 4 bytes)<r/>
+　l : Signed long value (usually 4 bytes)<r/>
+　L : Unsigned long value (usually 4 bytes)<r/>
+　n : Unsigned short value (network byte order)<r/>
+　N : Unsigned long value (network byte order)<r/>
+　s : Signed short value (usually 2 bytes)<r/>
+　S : Unsigned short value (usually 2 bytes)<r/>
+　v : Unsigned short value (little endian)<r/>
+　V : Unsigned long value (little endian)<r/>
+　x : Skip 1 byte<r/>
+　X : Backtrack 1 byte<r/>
+　@ : Move to specified position<r/>
 　m : Base64 encode<r/>
 <example>
 	var array = octet.unpack("a4i2");<r/>
 </example>
-　この例ではoctetの最初4バイトをASCII文字であるとみなし4文字の文字列を配列の0番目に出力します。<r/>
-　次に8バイトを32ビット符号付き整数2個として、配列の1番目と2番目に出力します。<r/>
-　つまり、array[0]に"xxxx"と言った文字列、array[1]とarray[2]に整数が出力されます。<r/>
+　In this example, the first 4 bytes of octet are treated as ASCII characters, and a 4-character string is output to index 0 of the array.<r/>
+　Next, 8 bytes are treated as two 32-bit signed integers and output to index 1 and index 2 of the array.<r/>
+　In other words, a string such as "xxxx" is output to array[0], and integers are output to array[1] and array[2].<r/>
 </para>
 
 

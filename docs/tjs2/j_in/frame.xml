@@ -2,9 +2,9 @@
 <doc>
 <anchor target="main"/>
 <keywords/>
-<title>TJS2 リファレンス 目次</title>
+<title>TJS2 Reference Table of Contents</title>
 <para>
-<ptitle>言語リファレンス</ptitle>
+<ptitle>Language Reference</ptitle>
 <link href="about"/><r/>
 <link href="style"/><r/>
 <link href="pp"/><r/>
@@ -35,7 +35,7 @@
 </para>
 
 <para>
-<ptitle>組み込みの手引き</ptitle>
+<ptitle>Embedding Guide</ptitle>
 <link href="basictypes"/><r/>
 <link href="ttjs"/><r/>
 <link href="variant"/><r/>
@@ -44,7 +44,7 @@
 </para>
 
 <para>
-<ptitle>付録</ptitle>
+<ptitle>Appendix</ptitle>
 <link href="vmcodes"/><r/>
 </para>
 

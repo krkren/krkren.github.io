@@ -1,59 +1,59 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <doc>
-<title>Math.RandomGenerator クラス</title>
+<title>Math.RandomGenerator Class</title>
 
 <para>
-<ptitle>Math.RandomGenerator クラス</ptitle>
-　Math.RandomGenerator は、<at href="http://www.math.keio.ac.jp/~matumoto/emt.html" target="_blank">Mersenne Twister 法</at> による乱数を発生するためのクラスです。<r /><r/>
-　コンストラクタの構文は以下の通りです。
+<ptitle>Math.RandomGenerator Class</ptitle>
+　Math.RandomGenerator is a class for generating random numbers using the <at href="http://www.math.keio.ac.jp/~matumoto/emt.html" target="_blank">Mersenne Twister method</at>.<r /><r/>
+　The syntax for the constructor is as follows:
 <bq>
-new Math.RandomGenerator([&lt;乱数種>]);<r/>
+new Math.RandomGenerator([&lt;seed&gt;]);<r/>
 </bq>
 <r/>
-　コンストラクタに数値を指定すると、その数値で乱数発生器が初期化されます。<r />
-　コンストラクタに serialize メソッドで状態を保存した辞書配列オブジェクトを指定すると、その状態で乱数発生器を作成できます。<r />
-　コンストラクタを省略すると、現在時刻を元にした乱数値で乱数発生器が初期化されます (吉里吉里2の場合は現在時刻ではなく、環境ノイズを元にした乱数発生器からの乱数で初期化されます)。<r />
+　If a numerical value is specified in the constructor, the random number generator is initialized with that value.<r />
+　If a dictionary array object whose state was saved using the serialize method is specified in the constructor, the random number generator will be created with that state.<r />
+　If the constructor argument is omitted, the random number generator is initialized with a random value based on the current time (in Kirikiri 2, it is initialized with a random number from a generator based on environmental noise, rather than the current time).<r />
 </para>
 
 <para>
 <ptitle>randomize</ptitle>
-　randomize メソッドは、乱数発生器を初期化します。引数はコンストラクタに指定する物と同じです。<r/>
+　The randomize method initializes the random number generator. The arguments are the same as those passed to the constructor.<r/>
 </para>
 
 <para>
 <ptitle>random</ptitle>
-　random メソッドは、0以上1.0未満の実数の乱数値を返します。<r/>
+　The random method returns a real random number greater than or equal to 0 and less than 1.0.<r/>
 </para>
 
 <para>
 <ptitle>random32</ptitle>
-　random32 メソッドは、0以上4,294,967,295以下 (0xffffffff 以下) の整数の乱数値を返します。<r/>
+　The random32 method returns an integer random value greater than or equal to 0 and less than or equal to 4,294,967,295 (0xffffffff or less).<r/>
 </para>
 
 <para>
 <ptitle>random63</ptitle>
-　random63 メソッドは、0以上9,223,372,036,854,775,807以下(0x7fffffffffffffff 以下) の整数の乱数値を返します。<r/>
+　The random63 method returns an integer random value greater than or equal to 0 and less than or equal to 9,223,372,036,854,775,807 (0x7fffffffffffffff or less).<r/>
 </para>
 
 
 <para>
 <ptitle>random64</ptitle>
-　random64 メソッドは、-9,223,372,036,854,775,808以上9,223,372,036,854,775,807以下の整数の乱数値を返します。<r/>
+　The random64 method returns an integer random value greater than or equal to -9,223,372,036,854,775,808 and less than or equal to 9,223,372,036,854,775,807.<r/>
 </para>
 
 <para>
 <ptitle>serialize</ptitle>
-　serialize メソッドは、現在の状態を記録した辞書配列オブジェクトを返します。この辞書配列オブジェクトは、コンストラクタや randomize メソッドに渡すことで、再び現在の状態を再現できる物です。<r />
+　The serialize method returns a dictionary array object containing the current state. Passing this dictionary array object to the constructor or the randomize method reproduces the current state.<r />
 </para>
 
 <para>
 <ptitle>Copyright notice</ptitle>
-　Mersenne Twister法の実装には<r/>
+　The implementation of the Mersenne Twister method uses a modified version of:<r/>
 <r/>
    A C-program for MT19937, with initialization improved 2002/2/10.
    Coded by Takuji Nishimura and Makoto Matsumoto.<r/>
 <r/>
-　を改変した物を用いています。有用なプログラムソースを公開なさっている両氏に感謝します。<r />
+　We are grateful to both authors for making their useful program source code publicly available.<r />
 <r />
    Copyright (C) 1997 - 2002, Makoto Matsumoto and Takuji Nishimura,<r/>
    All rights reserved.<r/>
@@ -89,4 +89,3 @@ new Math.RandomGenerator([&lt;乱数種>]);<r/>
 
 
 </doc>
-
